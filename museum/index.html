@@ -6,38 +6,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>museum</title>
     <link rel="stylesheet" href="style.css">
-<link rel="icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.ico">
 </head>
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="container">
-                
+            <div class="container header_container">
+                <div class="header_logo">
+                    <img src="assets/svg/Logo.svg" alt="Logo">                    
+                </div>
+                <nav class="navigation">
+                    <ul class="navigation_list">
+                        <li class = "navigation_item"><a href="#">Visiting</a></li>
+                        <li class = "navigation_item"><a href="#">Explore</a></li>
+                        <li class = "navigation_item"><a href="#">Video</a></li>
+                        <li class = "navigation_item"><a href="#">Gallery</a></li>
+                        <li class = "navigation_item"><a href="#">Tickets</a></li>
+                        <li class = "navigation_item"><a href="#">Contacts</a></li>
+                    </ul>
+                </nav>    
             </div>
         </header>
         <main class="main">
-            <div class="section section_bg section_vidio">
-                <div class="container"></div>
+            <div class="section  Welcome section_black" id="visiting">
+                <div class="container">
+                    <div class="container_welcome">
+                        <!-- <img src="../museum/assets/img/monaliza.jpg" alt="Monaliza"> -->
+                        <div class="mona_liza"></div>
+                        <div class="slider">
+                            <div class="slider_numbers">
+                                <p class="slider_number">01</p>
+                                <p class="slider_number">|</p>
+                                <p class="slider_number">05</p>
+                            </div>
+                            <div class="slider_cubes">
+                                <p class = "cube cube_1"></p>
+                                <p class = "cube cube_2"></p>
+                                <p class = "cube cube_3"></p>
+                                <p class = "cube cube_4"></p>
+                                <p class = "cube cube_5"></p>
+                            </div>
+                            <div class="slider_pointers">
+                                <button class="slider_pointer"><img src="assets/svg/left-1.svg" alt="pointer"></button>
+                                <button class="slider_pointer"><img src="assets/svg/right-2.svg" alt="pointer"></button>
+                            </div>
+                        </div>
+                        <div class="welcome_text">
+                            <h1 class="section-title ">Welcome<br> to the Louvre</br>
+                            <h4>From the castle to the museum</h4>
+                            <div class="btn"><a href="https://www.google.com/maps/@48.8618159,2.3366818,3a,90y,252.09h,84.32t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736" class="btn">Discover the Louvre</a>                       
+                            </div>
+                        </div> 
+                    </div>                     
+                </div>
             </div>
-            <div class="section section_bg section_vidio">
-                <div class="container"></div>
+            <div class="section Visiting" id="visiting">
+                <div class="container">
+                    <h2 class="section-title "></h2>
+                    <div class="visiting_place">
+                        <a href="#" class="visitin_link">
+                            <img src="" alt="">
+                            <h3></h3>
+                            <p></p>
+                        </a>
+                        <a href="#" class="visitin_link">
+                            <img src="" alt="">
+                            <h3></h3>
+                            <p></p>
+                        </a>
+                        <a href="#" class="visitin_link">
+                            <img src="" alt="">
+                            <h3></h3>
+                            <p></p>
+                        </a>
+                        <a href="#" class="visitin_link">
+                            <img src="" alt="">
+                            <h3></h3>
+                            <p></p>
+                        </a>
+                        <a href="#" class="visitin_link">
+                            <img src="" alt="">
+                            <h3></h3>
+                            <p></p>
+                        </a>
+                        <a href="#" class="visitin_link">
+                            <img src="" alt="">
+                            <h3></h3>
+                            <p></p>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="section section_bg section_vidio">
-                <div class="container"></div>
+            <div class="section Explore section_black" id="">
+                <div class="container">
+                    <article class="explore_text">
+                        <h2 class="section-title "></h2>
+                        <p></p>
+                        <p><span></span></p>
+                        <p></p>
+                    </article>
+                    <div class="explore_picture"></div>
+                </div>
             </div>
-            <div class="section section_bg section_vidio">
-                <div class="container"></div>
+            <div class="section  Vidio" id="visiting">
+                <div class="container">
+                    <div class="video_text">
+                        <h2 class="section-title "></h2>
+                        <p></p>
+                    </div>
+                    <div class="video_players">
+                        <video src="assets/video/video.mp4" poster="assets/video/poster.jpg" controls></video>
+                    </div>
+                    <h2 class="section-title "></h2>
+                </div>
             </div>
-            <div class="section section_bg section_vidio">
-                <div class="container"></div>
+            <div class="section Galary section_black" id="">
+                <div class="container">
+                    <h2 class="section-title "></h2>                    
+                    <div class="galary_pictures">
+                    </div>                        
+                </div>
             </div>
-            <div class="section section_bg section_vidio">
-                <div class="container"></div>
+            <div class="section Tickets section_black" id="visiting">
+                <div class="container">
+                    <h2 class="section-title"></h2>
+                    <div class="tickets_place">
+                        <div class="tickets_image">
+                            <img src="" alt="">
+                        </div>
+                        <form action="" class="tickets_form">
+                            <ul></ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="section Contacts" id="visiting">
+                <div class="container">
+                    <h2 class="section-title "></h2>
+                    <div class="contacts_form">
+                        <div class="contacts_text">
+                            <h3 class="contacts_text_title"></h3>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="contacts_map"></div>
+                    </div>
+                </div>
             </div>
         </main>
-        <footer class="footer">
-            <div class="container"></div>
+        <footer class="footer section_black">
+            <div class="container">
+                <section class="footer_section">
+                    <div class="footer_logo"></div>
+                    <nav class="footer_nav">
+                        <ul>
+                            <li class = "navigation_item"><a href="#">Visiting</a></li>
+                            <li class = "navigation_item"><a href="#">Explore</a></li>
+                            <li class = "navigation_item"><a href="#">Video</a></li>
+                            <li class = "navigation_item"><a href="#">Gallery</a></li>
+                            <li class = "navigation_item"><a href="#">Tickets</a></li>
+                            <li class = "navigation_item"><a href="#">Contacts</a></li>
+                        </ul>
+                    </nav>
+                    <ul class="footer_icons">
+                        <li class="icon"></li>
+                        <li class="icon"></li>
+                        <li class="icon"></li>
+                        <li class="icon"></li>
+                        <li class="icon"></li>
+                    </ul>
+                </section>
+                <hr>
+                <section class="footer_section">
+                    <p class="year"></p>
+                    <a href="#" class="school"></a>
+                    <a href="#" class="user"></a>
+                </section>
+            </div>
         </footer>
     </div>
 </body>
-</html>
+</html> 

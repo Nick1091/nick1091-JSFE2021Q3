@@ -1,0 +1,274 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;400;500;700&display=swap'); */
+
+@font-face {
+  font-family: 'Forum', cursive;
+  src: url(./assets/fonts/Forum/Forum-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family:'Roboto', sans-serif;
+  src: url(./assets/fonts/Roboto-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(./assets/fonts/Roboto-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(./assets/fonts/Forum-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url(./assets/fonts/Roboto-Thin.ttf);
+  font-weight: 100;
+}
+ 
+/* body{font-family: 'Forum', cursive;
+font-family: 'Roboto', sans-serif;} */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root{
+  --font1: 80px;
+  --font2: 32px;
+  --font3: 28px;
+  --font4: 22px;
+  --font5: 18px;
+  --red: #710707;
+  --darkgolg: #9d8665;
+  --gold: #caaa7d;
+  --lightgold:#d2b183;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    width: 100%;
+    color: black;
+    font-weight: 300;
+    font-size: var(--font4);
+    letter-spacing: 2px;
+    
+
+}
+h1, h2, h3{
+  font-family: 'Forum', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: var(--font1);
+  letter-spacing: 5px;
+}
+h3{
+  font-size: var(--font2);   
+}
+h4{
+  font-size: var(--font3);
+  font-weight: 300;
+}
+li{
+    list-style: none;
+    font-weight: 100;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    transition: all .3s linear;
+}
+a:hover{
+    color: var(--gold);
+    transition: all 0,3s linear;
+    /* color: */
+}
+/* hr{
+    display: block;
+    overflow: visible;
+    max-width: 60%;
+    margin: 0px 0px 36px 0px;
+    padding: 0px;
+    height: 1px;
+    border: none;
+    background: #f0b426;
+} */
+.wrapper {
+}
+.header {
+  background-color: #000;
+  color:#fff;
+}
+.container {
+  max-width: 1440px;
+  margin: 0px auto;
+}
+.header_container {
+  height: 150px;
+  display: flex;
+  align-items: center;  
+  justify-content: space-between;
+  
+}
+
+.header_logo {
+}
+.logo {
+  height: 33px;;
+}
+.navigation {
+  align-content: center;
+  width: 775px;
+}
+.navigation_list {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+}
+.navigation_item {
+}
+.main {
+}
+.section {
+}
+.section_bg {
+  
+}
+.Welcome {
+}
+.container_welcome{
+  height: 810px;
+  position: relative;
+  background-image:url(../museum/assets/img/monaliza.jpg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0px) calc(100% - 60px);
+}
+.slider{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  height: 120px;
+  background-color:#000;
+  color:#fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.slider_numbers{
+  display: inline-flex;
+  padding-left: 30px;
+}
+.slider_number{
+  padding-left: 10px;
+}
+.slider_cubes{
+  width: 180px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+.cube{
+  background-color:#fff;
+  height: 16px;
+  width: 16px;
+}
+.cube :last-child{
+  margin-right: 0px;
+}
+.cube_1{
+  background-color: var(--lightgold);
+}
+.slider_pointer{
+  background: none;
+  border: none;
+  padding-right: 30px;
+}
+.section_black {
+  background-color:#000;
+  color:#fff;
+}
+.welcome_text{
+  top: 150px;
+  position: absolute;
+  z-index: 5;
+
+}
+h1.section-title {
+  padding-bottom: 28px;
+}
+h4{
+  padding-bottom: 75px;
+}
+.btn {
+  width: 360px;
+  height: 75px;
+  background-color: var(--red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.btn>a{
+
+}
+.Visiting {
+}
+.visiting_place {
+}
+.visitin_link {
+}
+.Explore {
+}
+.explore_text {
+}
+.explore_picture {
+}
+.Vidio {
+}
+.video_text {
+}
+.video_players {
+}
+.Galary {
+}
+.galary_pictures {
+}
+.Tickets {
+}
+.tickets_place {
+}
+.tickets_image {
+}
+.tickets_form {
+}
+.Contacts {
+}
+.contacts_form {
+}
+.contacts_text {
+}
+.contacts_text_title {
+}
+.contacts_map {
+}
+.footer {
+}
+.footer_section {
+}
+.footer_logo {
+}
+.footer_nav {
+}
+.footer_icons {
+}
+.icon {
+}
+.year {
+}
+.school {
+}
+.user {
+}
