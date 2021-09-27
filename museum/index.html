@@ -70,7 +70,7 @@
                         <hr class="big_line">
                     </div>                        
                     <div class="visiting_place">
-                        <a href="tours/tour2.html"  target="_blank" class="visiting_link">
+                        <a href="tours/tour2~.html"  target="_blank" class="visiting_link">
                             <img src="assets/img/Royalpalase.jpg" alt="Royal palace">
                             <h3>Royal Palace</h3>
                             <hr>
@@ -253,7 +253,8 @@
                     </div>
                 </div>
             </section>
-            <div class="parallax"></div>
+            <div class="over"></div>
+                <div class="parallax"></div>
             <section class="section Contacts section_white" id="contacts">
                 <div class="container">
                     <div class="title">
@@ -305,10 +306,97 @@
                 </div>
             </div>
         </footer>
+        <form class=form_buy_ticket>
+            <div class="popap">
+                <div class="form_tickets_inner">
+                    <button class="close"></button>
+                    <div class="book_form">
+                        <div class="book_text">
+                            <img src="assets/svg/logo_gold.svg" alt="">
+                            <h3 class="book_title">Booking tickets</h3>
+                            <p class="book_tour">Tour to Louvre</p>
+                        </div>
+                        <fieldset class="book_form_set">
+                            <div class="set set1">
+                                <div class="label">
+                                    <input class="area_input" type="date" value="2021-09-28">
+                                </div>
+                            </div>
+                            <div class="set set1">
+                                <div class="label">
+                                    <input class="area_input" type="time" value=" 20:00">
+                                </div>
+                            </div>
+                            <div class="set set2">
+                                <div class="label">
+                                    <input class="area_input" type="text" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="set set2">
+                                <div class="label">
+                                    <input class="area_input" type="email" placeholder="E-mail">
+                                </div>
+                            </div>
+                            <div class="set set2">
+                                <div class="label">
+                                    <input class="area_input" type="tel" placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="set set2">
+                                <div class="label">
+                                    <select class="selector" name="selec" id="selec" placeholder="Ticket type">
+                                        <option value="">Ticket type</option>
+                                        <option value="">Permanent exhibition</option>
+                                        <option value="">Temporary exhibition</option>
+                                        <option value="">Combined Admission</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="choise_tickets">
+                            <div class="choise_title">Entry tickets</div>
+                            <div class="basic age">Basic 18+ (20 €)</div>
+                            <button type="button" onclick="this.nextElementSibling.stepDown(1)"><span>–</span></button>
+                                <input type="number" min="0" max="10" value="1" readonly class="book_form_basic">
+                            <button type="button" onclick="this.previousElementSibling.stepUp(1)"><span>+</span></button>
+                            <div class="old age">Senior 65+ (10 €)</div>
+                            <button type="button" onclick="this.nextElementSibling.stepDown(1)"><span>–</span></button>
+                            <input type="number" min="0" max="10" value="1" readonly class="book_form_old">
+                            <button type="button" onclick="this.previousElementSibling.stepUp(1)"><span>+</span></button>
+                        </fieldset>
+                    </div>
+                    <div class="form_image_right">
+                        <div class="forme_image">
+                            <img src="assets/img/Payment.jpg" alt="">
+                            <div class="book_overview">
+                                <p class="overview">Overview</p>
+                                <p class="overview_tour">Tour to Louvre</p>
+                                <p class="overview_date">Friday,August 19</p>
+                                <p class="overview_time">16:30</p>
+                                <p class="overview_exhibition">Temporary exhibition</p>
+                                <ul>
+                                    <li class="book_tickets_items">
+                                        <span class="book_tickets_item">2</span>
+                                        <span class="book_tickets_item">basic (20 €) </span>
+                                        <span class="book_tickets_item">40 €</span>
+                                    </li>
+                                    <li class="book_tickets_items">
+                                        <span class="book_tickets_item">2</span>
+                                        <span class="book_tickets_item">basic (10 €)</span>
+                                        <span class="book_tickets_item">20 €</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <script src="js/jquery-3-6-0.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/videorange.js"></script>
     <script src="js/Gallary.js"></script>
+    <script src="js/console.js"></script>
 </body>
 </html> 
