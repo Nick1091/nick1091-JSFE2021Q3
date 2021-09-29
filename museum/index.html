@@ -70,7 +70,7 @@
                         <hr class="big_line">
                     </div>                        
                     <div class="visiting_place">
-                        <a href="tours/tour2~.html"  target="_blank" class="visiting_link">
+                        <a href="tours/tour2.html"  target="_blank" class="visiting_link">
                             <img src="assets/img/Royalpalase.jpg" alt="Royal palace">
                             <h3>Royal Palace</h3>
                             <hr>
@@ -246,7 +246,7 @@
                                 </div>     
                                 <h4 class ="total_number">Total €220</h4>                           
                                 <div class="total">
-                                    <button type="button" class="text_button">Buy Now</button>
+                                    <button type="button" id ="text_button" class="text_button" >Buy Now</button>
                                 </div>                
                            </div> 
                         </form>
@@ -254,7 +254,7 @@
                 </div>
             </section>
             <div class="over"></div>
-                <div class="parallax"></div>
+            <div class="parallax"></div>
             <section class="section Contacts section_white" id="contacts">
                 <div class="container">
                     <div class="title">
@@ -306,97 +306,146 @@
                 </div>
             </div>
         </footer>
-        <form class=form_buy_ticket>
-            <div class="popap">
-                <div class="form_tickets_inner">
-                    <button class="close"></button>
+        <div class="overlay overlay_no"></div>
+        <div class="form__buy-ticket">
+            <div class="popup">
+               
+                <button class="close"><span class="line_close1"></span><span class="line_close2"></span>
+                </button>
+                <form class="inner_form">
                     <div class="book_form">
                         <div class="book_text">
                             <img src="assets/svg/logo_gold.svg" alt="">
                             <h3 class="book_title">Booking tickets</h3>
                             <p class="book_tour">Tour to Louvre</p>
                         </div>
-                        <fieldset class="book_form_set">
+                        <div class="book_form_set">
                             <div class="set set1">
-                                <div class="label">
-                                    <input class="area_input" type="date" value="2021-09-28">
+                                <div class="label label1">
                                 </div>
+                                <input class="area_input" type="date"  value="Date">
                             </div>
                             <div class="set set1">
-                                <div class="label">
-                                    <input class="area_input" type="time" value="">
+                                <div class="label label2">
                                 </div>
+                                <input class="area_input" type="time" value="Time">
                             </div>
                             <div class="set set2">
-                                <div class="label">
-                                    <input class="area_input" type="text" placeholder="Name">
+                                <div class="label label_name">
                                 </div>
+                                <input class="area_input" type="text" placeholder="Name">
                             </div>
                             <div class="set set2">
-                                <div class="label">
-                                    <input class="area_input" type="email" placeholder="E-mail">
+                                <div class="label label_mail">
                                 </div>
+                                <input class="area_input" type="email" placeholder="E-mail">
                             </div>
                             <div class="set set2">
-                                <div class="label">
-                                    <input class="area_input" type="tel" placeholder="Phone">
+                                <div class="label label_phone">
                                 </div>
+                                <input class="area_input" type="tel" placeholder="Phone">
                             </div>
                             <div class="set set2">
-                                <div class="label">
-                                    <select class="selector" name="selec" id="selec">
-                                        <option value="">Ticket type</option>
-                                        <option value="">Permanent exhibition</option>
-                                        <option value="">Temporary exhibition</option>
-                                        <option value="">Combined Admission</option>
-                                    </select>
+                                <div class="label label_ticket_type">
                                 </div>
+                                <select class="selector" name="selec" id="selec">
+                                    <option value="">Ticket Type</option>
+                                    <option value="">Permanent exhibition</option>
+                                    <option value="">Temporary exhibition</option>
+                                    <option value="">Combined Admission</option>
+                                </select>
                             </div>
-                        </fieldset>
-                        <fieldset class="choise_tickets">
-                            <div class="choise_title">Entry tickets</div>
-                            <div class="basic age">Basic 18+ (20 €)</div>
-                            <button type="button" onclick="this.nextElementSibling.stepDown(1)"><span>–</span></button>
-                                <input type="number" min="0" max="10" value="1" readonly class="book_form_basic">
-                            <button type="button" onclick="this.previousElementSibling.stepUp(1)"><span>+</span></button>
-                            <div class="old age">Senior 65+ (10 €)</div>
-                            <button type="button" onclick="this.nextElementSibling.stepDown(1)"><span>–</span></button>
-                            <input type="number" min="0" max="10" value="1" readonly class="book_form_old">
-                            <button type="button" onclick="this.previousElementSibling.stepUp(1)"><span>+</span></button>
-                        </fieldset>
-                    </div>
-                    <div class="form_image_right">
-                        <div class="forme_image">
-                            <img src="assets/img/Payment.jpg" alt="">
-                            <div class="book_overview">
-                                <p class="overview">Overview</p>
-                                <p class="overview_tour">Tour to Louvre</p>
-                                <p class="overview_date">Friday,August 19</p>
-                                <p class="overview_time">16:30</p>
-                                <p class="overview_exhibition">Temporary exhibition</p>
-                                <ul>
-                                    <li class="book_tickets_items">
-                                        <span class="book_tickets_item">2</span>
-                                        <span class="book_tickets_item">basic (20 €) </span>
-                                        <span class="book_tickets_item">40 €</span>
-                                    </li>
-                                    <li class="book_tickets_items">
-                                        <span class="book_tickets_item">2</span>
-                                        <span class="book_tickets_item">basic (10 €)</span>
-                                        <span class="book_tickets_item">20 €</span>
-                                    </li>
-                                </ul>
-                            </div>
+                            <fieldset class="choise_tickets">
+                                <h4 class="choise_title">Entry tickets</h4>
+                                <div class="choise_age">
+                                    <span class="basic age">Basic 18+ (20 €)</span>
+                                    <div class="btn_inner">
+                                        <button class="black_btn" type="button" onclick="this.nextElementSibling.stepDown(1)">–</button>
+                                        <input class="black_btn_input" type="number" min="0" max="10" value="1" readonly class="book_form_basic">
+                                        <button class="black_btn" type="button" onclick="this.previousElementSibling.stepUp(1)">+</button>
+                                    </div>
+                                </div>
+                                <div class="choise_age2">
+                                    <span class="old age">Senior 65+ (10 €)</span>
+                                    <div class="btn_inner">
+                                        <button class="black_btn" type="button" onclick="this.nextElementSibling.stepDown(1)">–</button>
+                                        <input class="black_btn_input" type="number" min="0" max="10" value="1" readonly class="book_form_old">
+                                        <button class="black_btn" type="button" onclick="this.previousElementSibling.stepUp(1)">+</button>
+                                    </div>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
-                </div>
+                    <div class="book_inner_right">
+                        <div class="book_overview">
+                            <div class="overview_info">
+                                <h3 class="overview_title">Overview</h3>
+                                <h4 class="overview_subtitle">Tour to Louvre</h4>
+                                <p class="overview_date">Friday, August 19</p>
+                                <p class="overview_time">16:30</p>
+                                <p class="overview_type">Temporary exhibition</p>
+                            </div>
+                            <div class="overview_image">
+                                <img src="assets/img/overview.jpg" alt="overview" class="overview_image">
+                            </div>
+                        </div>
+                        <ul class="list_book" >
+                            <li class="list_book_tickets_item">
+                                <span class="tickets_total">2</span>
+                                <span class="tickets_total2">Basic (20 €)</span>
+                                <span class="tickets_total">40 €</span>
+                            </li>
+                            <li class="list_book_tickets_item">
+                                <span class="tickets_total">2</span>
+                                <span class="tickets_total2">Basic (10 €)</span>
+                                <span class="tickets_total">20 €</span>
+                            </li>
+                        </ul>
+                        <div class="total_value">
+                            <span class="value_text">Total:</span>
+                            <span class="value_sum">60 €</span>
+                        </div>
+                        <div class="book_card">
+                            <div class="card front_card">
+                                <div class="card_value">
+                                    <label class="cardnumber">Card number</label>
+                                    <input class="input_card_number" type="text" >
+                                </div>
+                                <div class="card_value">
+                                    <label>Expiration date</label>
+                                    <div class="expiration_inner">
+                                        <div class="expiration_inner_month">
+                                            <input class="input_expiration input_expiration_month" type="number"  min="1" max="12" value="03" title="Card expiration month" >
+                                        </div>
+                                        <div class="expiration_inner_year">
+                                            <input class="input_expiration input_expiration_year" type="number"  min="2021" max="2030" value="2024"  title="Card expiration year" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card_value">
+                                    <label>Cardholder name</label>
+                                    <input class="input_cardholder" type="text" placeholder=""  title="Cardholder name">
+                                </div>
+                            </div>
+                            <div class="card back_card">
+                                <div class="card_value card_cvc">
+                                <label>CVC/CVV</label>
+                                <input class="input_cvc" type="text" placeholder="" title="CVC/CVV">
+                                </div>
+                                <span class="card_text">The last<br>3 or 4 digits on back<br>of the card</span>
+                            </div>
+                        </div>
+                        <button class="ripple book_pay_button" type="button">Book</button>
+                    </div>
+                </form>                 
             </div>
-        </form>
+        </div>
     </div>
     <script src="js/jquery-3-6-0.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/videorange.js"></script>
     <script src="js/Gallary.js"></script>
     <script src="js/console.js"></script>
+    <script src='js/tickets.js'></script>
 </body>
 </html> 
