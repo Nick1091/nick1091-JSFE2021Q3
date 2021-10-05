@@ -1717,8 +1717,8 @@ margin-bottom: 5px;
     letter-spacing: 2px;
   }
   .container {
-    max-width: calc(100%-40px);
-    margin: 0px auto;
+    max-width: calc(100% - 40px);
+   
   }
 
 
@@ -2286,10 +2286,10 @@ h4{
   font-size: 24px;
   letter-spacing: 2px;
 }
-.container {
+/* .container {
   max-width: calc(100%-40px);
   margin: 0px auto;
-}
+} */
 
 
 
@@ -2955,10 +2955,10 @@ footer .navigation_item{
  line-height: 40px;
 }
 body{}
-.container{ 
+/* .container{ 
   max-width: calc(100% - 40px);
   margin: 0px auto;
-}
+} */
 
 
 
@@ -2967,7 +2967,8 @@ body{}
   height: 90px;
 }
 .header_logo img{
-  /* padding-top: 7px; */
+  height: 25px;
+  width: auto;
 }
 .burger_menu{
   /* display: block;
@@ -3126,8 +3127,11 @@ body{}
  .welcome_text{
   position: relative;
   margin: 0 auto;
-  /* margin-top: 5px; */
+  top: 0px;
   text-align: center;
+}
+ .welcome_text h2 {
+    padding-bottom: 28px;
  }
 .welcome_text h4{
   padding-bottom: 50px;
@@ -3550,11 +3554,12 @@ footer .navigation_item{
   overflow-y: auto;
   height: 100vh;
   position: fixed;
-  max-width: 590px;
+  max-width: 420px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
   background-color: #ffff;
+  
 }
 .popup{
   padding: 0px ;
@@ -3565,6 +3570,7 @@ footer .navigation_item{
   margin-right: 0px;
   position: relative;
   gap: 0px;
+  
 }
 .close{
   width: 32px;
@@ -3573,15 +3579,15 @@ footer .navigation_item{
   margin-right: 25px
 }
 .inner_form{
-  padding: 60px 30px 40px 30px;
-  max-width: 590px;
+  padding: 60px 0px 40px 0px;
+  max-width: 360px;
   height: 100%;
   flex-wrap: wrap;
   background-color: #ffff;
 }
 .book_form{
   width: 100%;
-  max-width: 530px;
+  max-width: 360px;
   
   
   
@@ -3589,17 +3595,17 @@ footer .navigation_item{
   margin-right: 0;
 }
 .book_inner_right{
-  max-width: 530px;
+  max-width: 360px;
   width: 100%;
-  margin-top: 0px;
+  margin-bottom: 30px;
   
   margin-left: auto;
   margin-right: auto;
   padding: 25px 15px 10px 15px;
 }
 .book_title{
-  font-size: 50px;
-  line-height: 55px;
+  font-size: 32px;
+  line-height: 35px;
   margin: 0px;
   padding: 0px;
 }
@@ -3612,11 +3618,17 @@ footer .navigation_item{
   margin-bottom: 40px;
 }
 .set1{
-  width: calc(50%-15px);
+  width: 100%;
+}
+.overview_image{
+  width: 120px;
+}
+.front_card{
+  width:330px
 }
 .book_form_set {
   row-gap: 20px;
-  column-gap: 30px;
+  /* column-gap: 30px; */
 }
 .set2{
   width:100%;
@@ -3645,10 +3657,14 @@ footer .navigation_item{
   line-height: 21px; */
 }
 .back_card{
-  left: 138px;
+  top: 235px;
+  left: 0px;
+  width: 330px;
+  padding-left: 235px;
+
 }
 .book_pay_button{
-  margin: 10px 5px 10px auto;
+  margin: 225px 0px 15px auto;
 }
 }
 
