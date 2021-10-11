@@ -49,3 +49,40 @@ document.addEventListener("DOMContentLoaded", ready);
 
 
 /* <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache</img>=0"> */
+
+
+
+function debounce(func, wait = 20, immediate = true){
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if(immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
+const sliderImages = document.querySelectorAll('.gallery_column')
+
+function checkSlide(){
+    sliderImages.forEach(sliderImage => {
+
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 4;
+       
+        const imageBottom = sliderImage.getBoundingClientRect().top + sliderImage.height + window.scrollY ;
+        const isHalfShown = slideInAt > sliderImage.getBoundingClientRect().top + window.scrollY;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
+            sliderImage.classList.add('gallery_column_active');
+        } else {
+            sliderImage.classList.remove('gallery_column_active');
+        }
+    });
+}
+
+window.addEventListener('scroll', debounce(checkSlide));
