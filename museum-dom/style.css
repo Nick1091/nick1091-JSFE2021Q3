@@ -735,8 +735,8 @@ video{
  max-width: calc((100% - 72px) / 3);
  height: auto;
  opacity: 0;
- transition: all .4s ease-in-out; 
- transform: translateY(50px) scale(0.9)  ;
+ transition: all .6s ease-in-out;
+ transform: translateY(70px) ;
 }
 .gallery_column_active{
   opacity: 1 !important;
@@ -1213,11 +1213,12 @@ footer{
   gap: 20px;
 }
 .set{
+  position: relative;
    height: 45px;
    display: flex;
    align-items: center;
    border: 1px solid #000;
-   position: relative;
+   
 }
 .set1{
   width: 190px;
@@ -1277,6 +1278,48 @@ footer{
 .time_select{
   font-size: 16px !important;
 }
+.border_input{
+  border: 3px solid #f30202af !important;
+  border-radius: 2px;
+}
+.valid_name{
+  position: absolute;
+  top: 45px;
+  left: 0;
+  color:#a00000af;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.1s;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.valid_email{
+  position: absolute;
+  top: 45px;
+  left: 0;
+  color:#a00000af;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.1s;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.valid_tel{
+  position: absolute;
+  top: 45px;
+  left: 0;
+  color:#a00000af;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.1s;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+.valid_name_active{
+  opacity: 1;
+  
+}
+
 .selector{
   height: 100%;
   width: 100%;
