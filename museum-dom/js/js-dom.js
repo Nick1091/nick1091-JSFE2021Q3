@@ -239,17 +239,22 @@ function updateAmountOfTickets() {
 }
 let valueType 
 function changeSum(){
+    
     if (radios[0].checked){
         valueType = 20;
+        ticketType = 0; // localStorage 
     } else if (radios[1].checked){
         valueType = 25;
+        ticketType = 1 // localStorage 
         } else if (radios[2].checked){
         valueType = 40;
+        ticketType = 2; // localStorage 
     } 
     createSum();
 }
     
-function createSum(){        
+function createSum(){ 
+         
    money = (basicAmount.value * valueType) + (seniorAmount.value * valueType / 2);
         updateAmountOfTickets();
         CostBasic2.textContent = valueType;
@@ -260,7 +265,38 @@ function createSum(){
         CostSeniorSum.textContent = Number(amountSeniorTickets.textContent) * valueType / 2;
     amount.textContent = money;
     TotalSum.textContent = money;exhibitionType.textContent = selectTicketType.options[selectTicketType.selectedIndex].value;
+    
 }
+
+
+// function createStorage(){
+//     const digitBasic = document.querySelector ('.basic_count_value').value;
+//     const digitSenior = document.querySelector ('.senior_count_value').value;
+//     const totalSum = document.querySelector('.tickets_total_sum').value;
+
+//     localStorage.setItem('digitBasic', digitBasic);
+//     localStorage.setItem('digitSenior', digitSenior);
+//     localStorage.setItem('ticketType', ticketType);
+   
+//     getStorage()
+// }
+
+// function getStorage() {
+//     const digitBasic = document.querySelector ('.basic_count_value').value;
+//     const digitSenior = document.querySelector ('.senior_count_value').value;
+//     const totalSum = TotalSum.querySelector('.tickets_total_sum').value;
+
+//     const localBasic = localStorage.getItem('digitBasic');
+//     const localSenior = localStorage.getItem('digitSenior');
+//     const localTicketType = localStorage.getItem('ticketType');
+
+//     digitBasic = +localBasic;
+//     digitSenior = +localSenior;
+//     radios[+localTicketType].checked = true;
+//     changeSum();
+// }
+
+
 
     createSum()
     btnBasicLow.addEventListener('click', ()=>{
@@ -290,6 +326,9 @@ function createSum(){
         exhibitionType.textContent = selectTicketType.options[2].value;
         changeSum()
     });    
+    
+    
+
 
     
     function showSelectChanges(){
@@ -331,7 +370,7 @@ function createSum(){
 
     
 
-    
+    // calendar
 const dateInput = document.querySelector('.date_input');    
 dateInput.valueAsDate  = new Date();
 
@@ -343,7 +382,7 @@ const monthsArray = ['January', 'February', 'March', 'April', 'May', 'June', 'Ju
 const daysArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 
-
+        // time
 function changeDate() {
     let newDate = new Date(dateInput.value);
     dayOfWeek.textContent = daysArray[newDate.getDay()];
@@ -353,8 +392,6 @@ function changeDate() {
 changeDate()
 dateInput.addEventListener('input', changeDate)
 
-
-
 const timeSelected = document.querySelector('.time_select');
 const timeSelect = document.querySelector('.overview_time');
 
@@ -363,3 +400,68 @@ function  changeTime() {
 }
 changeTime()
 timeSelected.addEventListener('input', changeTime);
+
+
+
+
+
+// form correct name
+
+
+const nameInput = document.querySelector('.name_value'); 
+const nameValue = document.querySelector('.name_input'); 
+
+const emailInput = document.querySelector('.email_value'); 
+const emailValue = document.querySelector('.email_input'); 
+
+const phoneInput = document.querySelector('.phone_value'); 
+const phoneValue = document.querySelector('.phone_input'); 
+
+const validName = document.querySelector('.valid_name'); 
+const validEmail = document.querySelector('.valid_email'); 
+const validPhone = document.querySelector('.valid_tel'); 
+// let nameSumValid = /^[A-Za-zА-Яа-я\s]{3,15}$/;
+
+nameInput.addEventListener("change", (event) => {
+    const nameInputValue = nameInput.value
+    let nameSumValid = /^[A-Za-zА-Яа-я\s]{3,15}$/.test(nameInputValue);
+    // const nameInputUpperCase = /[A - Z]/.test(nameInputValue)
+    // const nameInputUpperCaseRus = /[А - Я]/.test(nameInputValue)
+    // const nameInputLowerCase = /[a - z]/.test(nameInputValue)
+    // const nameInputLowerCaseRus = /[а - я]/.test(nameInputValue)
+    // const nameInputDigital = /\d/.test(nameInputValue);
+    // const nameInputSpace = /\s/.test(nameInputValue)
+
+    if(!nameSumValid) {
+        nameValue.classList.add('border_input');
+        validName.classList.add('valid_name_active'); 
+    } else {
+        nameValue.classList.remove('border_input');
+        validName.classList.remove('valid_name_active'); 
+    }
+});
+
+emailInput.addEventListener("change", (event) => {
+    const emailInputValue = emailInput.value
+    let emailSumValid = /^[\w-]{3,15}@[a-z]{4,}.[a-z]{2,}$/.test(emailInputValue);
+    if(!emailSumValid) {
+        emailValue.classList.add('border_input');
+        validEmail.classList.add('valid_name_active'); 
+    } else {
+        emailValue.classList.remove('border_input');
+        validEmail.classList.remove('valid_name_active'); 
+    }
+});
+
+phoneInput.addEventListener("change", (event) => {
+    const phoneInputValue = phoneInput.value
+    let phoneSumValid = /^[[0-9]{1,10}|\s{1,4}|-{1,4}]{1,14}$/.test(phoneInputValue);
+    if(!phoneSumValid) {
+        phoneValue.classList.add('border_input');
+        validPhone.classList.add('valid_name_active'); 
+    } else {
+        phoneValue.classList.remove('border_input');
+        validPhone.classList.remove('valid_name_active'); 
+    }
+});
+
