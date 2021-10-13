@@ -572,6 +572,10 @@ h1.section-title {
   position: relative;
 
 }
+.video_inner:-webkit-full-screen video {
+  width: 100%;
+  
+}
 .controls_panel button:hover{
   z-index: 5;
   filter: invert(76%) sepia(0%) saturate(19%) hue-rotate(161deg) brightness(99%) contrast(81%);
@@ -585,7 +589,6 @@ h1.section-title {
   padding: 0px 0px 45% 0px;
 }
 video{
-  
   width:100%;
   position: absolute;
   height: 100%;
@@ -599,6 +602,14 @@ video{
   transform: translate(-50%, -50%);
   transition: filter 0.3s linear;
 }
+.btn_play_none{
+  display: none;
+}
+.big_play_none{
+  display: none;
+}
+
+
  .big_play:hover{
   filter: invert(63%) sepia(0%) saturate(0%) hue-rotate(83deg) brightness(95%) contrast(96%);
   transition: filter 0.3s linear;
@@ -617,9 +628,12 @@ video{
   border: none;
   transition: 0.1s;
 }
+.range1,.range2:hover{
+  cursor: pointer;
+}
 .range1{
   width: 930px;
-  background: linear-gradient(to right, var(--red) 0%, var(--red) 54%, #fff 46%, #fff 100%);
+  background: linear-gradient(to right, var(--red) 0%, var(--red) 0%, #fff 0%, #fff 100%);
   border: none;
   border-radius: 8px;
   height: 7px;
@@ -636,7 +650,7 @@ video{
   cursor: pointer;
 }
 .range2{
-  background: linear-gradient(to right, var(--red) 0%, var(--red) 46%, #fff 54%, #fff 100%);
+  background: linear-gradient(to right, var(--red) 0%, var(--red) 100%, #fff 100%, #fff 100%);
   border: none;
   border-radius: 8px;
   height: 7px;

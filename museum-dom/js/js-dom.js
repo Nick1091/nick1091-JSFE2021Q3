@@ -465,3 +465,121 @@ phoneInput.addEventListener("change", (event) => {
     }
 });
 
+
+
+
+
+
+
+
+
+
+const player = document.querySelector('.video_inner');
+const video = player.querySelector('.player-video');
+const bigBtn = player.querySelector('.big_play');
+const playVideo = player.querySelector('.btn_play');
+const range1 = player.querySelector('.range1');
+const volumeBtn = player.querySelector('btn_volume');
+const range2 = player.querySelector('.range2');
+const fullScreen = player.querySelector('.btn_fullscren');
+
+// Logic
+function togglePlay() {
+  const playState = video.paused ? 'play' : 'pause';
+  video[playState](); // Call play or paused method 
+}
+
+video.addEventListener('click', togglePlay);
+bigBtn.addEventListener('click', togglePlay);
+playVideo.addEventListener('click', togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+
+// video.addEventListener('timeupdate', progressUpdate);
+
+function updateButton() {
+    const playVideoBtn = document.querySelector('.btn_play>img');
+  if(this.paused) {
+    playVideoBtn.src ='assets/svg/video_play.svg';
+    bigBtn.classList.remove('btn_play_none');
+  } else {
+    bigBtn.classList.add('btn_play_none');
+    playVideoBtn.src ='assets/svg/hidden/play.svg';
+  }
+}
+
+function handleRange1Update(){
+    video.currentTime = range1.value / 100 * video.duration;
+};
+// function handleRange2Update(){
+//     video.volume = range2.value;
+// }
+const volumeBtnLow = document.querySelector('.btn_volume>img');
+function handleRange2Progress(){
+    let v = range2.value;
+    video.volume = v / 100;
+    if(video.volume === 0){
+        range2.style.background = `linear-gradient(to right, #710707 0%, #710707 ${ range2.value}%, #C4C4C4 ${range2.value}%), #C4C4C4 100%`;
+        volumeBtnLow.src='assets/svg/hidden/volumelow.svg'
+    } else{
+        volumeBtnLow.src='assets/svg/video_volume.svg'
+        range2.style.background = `linear-gradient(to right, #710707 0%, #710707 ${ range2.value}%, #C4C4C4 ${range2.value}%), #C4C4C4 100%`;
+    }    
+}
+function changeVolume(){
+    if(video.volume !== 0 ){
+        volumeBtnLow.src='assets/svg/hidden/volumelow.svg';
+        video.volume = 0;
+        range2.value = 0;
+        range2.style.background = `linear-gradient(to right, #710707 0%, #710707 ${video.volume * 100}%, #C4C4C4 ${video.volume * 100}%), #C4C4C4 100%`;
+    } else if (video.volume === 0){
+        volumeBtnLow.src='assets/svg/video_volume.svg';
+        video.volume = 0.2;
+        range2.value = 20;
+        range2.style.background = `linear-gradient(to right, #710707 0%, #710707 ${video.volume * 100}%, #C4C4C4 ${video.volume * 100}%), #C4C4C4 100%`;
+    }
+}
+function handleProgress(){
+    const percent = (video.currentTime / video.duration) * 100;
+    range1.value = `${percent}`;
+    range1.style.background = `linear-gradient(to right, #710707 0%, #710707 ${percent}%, #C4C4C4 ${percent}%), #C4C4C4 100%`;
+    if (video.currentTime === video.duration) {
+        video.paused();
+        updateButton() 
+    }   
+}
+video.addEventListener('timeupdate',  handleProgress);
+range1.addEventListener('input',  handleRange1Update);
+range2.addEventListener('input',  handleRange2Progress);
+volumeBtnLow.addEventListener('click', changeVolume);
+
+
+
+const fullScreenBtn = player.querySelector('.btn_fullscren>img');
+const videoPlayer = document.querySelector('.video_player');
+
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        player.requestFullscreen();
+        fullScreenBtn.src = 'assets/svg/hidden/fullscreenExit.svg';
+        videoPlayer.style.height = 'calc(100% - 80px)';
+        range1.style.width = '100%';
+        range2.style.maxWidth = '100%';
+        
+    } 
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+        fullScreenBtn.src = 'assets/svg/video_fullscreen.svg';
+    }
+}
+fullScreen.addEventListener('click', toggleFullScreen);
+
+
+
+
+// function onClickKeyboard() {
+//     if ((video.getBoundingClientRect().top < 600) && (video.getBoundingClientRect().top > -400)) {
+  
+     
+//   }
+//   document.addEventListener('keydown', onClickKeyboard);
