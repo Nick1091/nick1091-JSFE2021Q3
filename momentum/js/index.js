@@ -805,7 +805,6 @@ function getLocalStorage() {
   translateSite()
   if(localStorage.getItem('isWeather')){
     isWeather = localStorage.getItem('isWeather');
-    
   
     // weatherHidden()
   }
@@ -838,6 +837,7 @@ toDo.addEventListener('click', () =>{
 toDoBtn.addEventListener('click', () => {
   toDoBtn.classList.add('btn_to');
   let newInput = document.createElement('input')
+
   newInput.innerHTML = `type="text"  id="input_to_do" `;
   newInput.placeholder = "New Todo";
   toDoList.prepend(newInput);
@@ -891,7 +891,6 @@ toDoBtn.addEventListener('click', () => {
 // }
 // document.addEventListener('click', clickCheckbox)
 
-
 let settingText = document.querySelector('.text_settings')
 function translateSetting(){
   settingText.textContent = `${trans["settings"][lang]}`
@@ -909,3 +908,4 @@ settings.addEventListener('click', () =>{
     isSettings = false;
   }
 })
+
