@@ -785,7 +785,7 @@ function getLocalStorage() {
   translateSite()
   if(localStorage.getItem('isWeather')){
     isWeather = localStorage.getItem('isWeather');
-    console.log(isWeather)
+    
   
     // weatherHidden()
   }
@@ -815,16 +815,49 @@ toDo.addEventListener('click', () =>{
 toDoBtn.addEventListener('click', () => {
   toDoBtn.classList.add('btn_to');
   let newInput = document.createElement('input')
-  newInput.innerHTML = `type="text"  id="input_to_do" placeholder = "New Todo"`;
-  
+  newInput.innerHTML = `type="text"  id="input_to_do" `;
+  newInput.placeholder = "New Todo";
   toDoList.prepend(newInput);
   // toDoList.innerHTML = `<input type="checkbox" name="checkbox" id="checbox"></input><label for = checbox></label>`;
   // toDoList.prepend(newInput);
-
+  let sum = 0;
 newInput.addEventListener('change', () => {
+  let newContainerDiv = document.createElement('div');
+  newContainerDiv.style.display = 'flex';
+  newContainerDiv.style.gap = '10px';
+  newContainerDiv.style.marginBottom = '3px';
   let newChecbox = document.createElement('input');
-  newChecbox.innerHTML = `type="checkbox" name="checkbox" id="checbox"`
-  toDoList.prepend(newChecbox);
+  
+  // newChecbox.textContent = `type="checkbox" id = "chek${sum}"class="check_box"`
+  newChecbox.style.marginBottom = "px"
+  newChecbox.type = 'checkbox'
+  newChecbox.id = `'chek${sum}'`
+  newChecbox.style.display = "inline-block";
+  newChecbox.style.cursor = "pointer";
+  // toDoList.prepend(newChecbox);
+  let labelCheck = document.createElement('label')
+  labelCheck.htmlFor = `'chek${sum}'`;
+  labelCheck.class = 'lable_check';
+  labelCheck.appendChild(document.createTextNode(`${newInput.value}`));
+  labelCheck.style.lineHeight = `0.9`;
+  labelCheck.style.color = "#000000"
+  labelCheck.style.display = "inline-block"
+  labelCheck.style.cursor = "pointer"
+  newContainerDiv.prepend(labelCheck);
+  newContainerDiv.prepend(newChecbox);
+  toDoList.prepend(newContainerDiv);
+  sum++;
+})
+})
 
-})
-})
+
+let LableList = document.querySelectorAll('.lable_check');
+let checkList = document.querySelectorAll('input[type=checkbox]');
+
+for (let i = 0; i < checkList.length; i++){
+  checkList[i].addEventListener ('change', () =>{
+    if(checkList[i].checked){
+      LableList[i].style.textDecoration = 'line-through'
+    } else LableList[i].style.textDecoration = "none";
+  })
+}
