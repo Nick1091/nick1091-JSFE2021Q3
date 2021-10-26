@@ -50,31 +50,36 @@
     </div>
   </main>
   <footer class="footer">
+    <div class="setting"><img class ="setting_icon" src="assets/svg/setings.svg" alt="setings"><span class = 'text_settings'></span>
+    </div>
     <div class="menu">
-      <div class = "images">
-        <input type="radio" id ="GitHub" class="GHub" name="bgImage" value="gitHub" checked>
-        <label class="g_h" for = "GitHub">GitHub</label>
-        <input type="radio" id ="UnsplashAPI" class="unsplash" value="unsplash" name="bgImage">
-        <label class="unsplash1" for = "UnsplashAPI">Unsplash API</label>
-        <input type="radio" id ="flick" class="flick" value="flick" name="bgImage">
-        <label class="flick2" for = "flick">Flickr API</label>
+      <div class="settings">    
+       <div class = "images">
+          <input type="radio" id ="GitHub" class="GHub" name="bgImage" value="gitHub" checked>
+          <label class="g_h" for = "GitHub">GitHub</label>
+          <input type="radio" id ="UnsplashAPI" class="unsplash" value="unsplash" name="bgImage">
+          <label class="unsplash1" for = "UnsplashAPI">Unsplash API</label>
+          <input type="radio" id ="flick" class="flick" value="flick" name="bgImage">
+          <label class="flick2" for = "flick">Flickr API</label>
+        </div>
+        <div class="photoSource">
+          <input class= "unspl" type="text">
+          <input class = "flic" type="text">
+        </div>
+        <div class="HiddenBlock">
+          <div class="time_hidden check_hidden">Time</div>
+          <div class="data_hidden check_hidden">Date</div>
+          <div class="greeting_hidden check_hidden">Greeting</div>
+          <div class="quote_hidden check_hidden">Quote</div>
+          <div class="weather_hidden check_hidden">Weather</div>
+          <div class="audio_hidden check_hidden">Audio</div>
+          <div class="todo_hidden check_hidden">Todo</div>
+        </div>
+        <select name="text" id="select">
+          <option class='langru options' value="ru" >ru</option>
+          <option class='langen options' value="en" selected>en</option>
+        </select>
       </div>
-      <div class="photoSource">
-        <input class= "unspl" type="text">
-        <input class = "flic" type="text">
-      </div>
-      <div class="HiddenBlock">
-        <div class="time_hidden check_hidden">Time</div>
-        <div class="data_hidden check_hidden">Date</div>
-        <div class="greeting_hidden check_hidden">Greeting</div>
-        <div class="quote_hidden check_hidden">Quote</div>
-        <div class="weather_hidden check_hidden">Weather</div>
-        <div class="audio_hidden check_hidden">Audio</div>
-      </div>
-      <select name="text" id="select">
-        <option class='langru options' value="ru" >ru</option>
-        <option class='langen options' value="en" selected>en</option>
-      </select>
     </div>
     <div class="quote_block">
       <button class="change-quote"></button>
@@ -88,7 +93,7 @@
        <!-- <label class = "lab_to_do" for = checbox></label> -->
        <button class="btn_todo">New Todo</button>
      </div>
-     <p class="to_do">Todo</p>
+     <p class="to_do"></p>
     </div>
   </footer>
   <script type="module" src="js/index.js"></script>

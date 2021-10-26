@@ -196,7 +196,6 @@ li.item-active::before {
   background-image: url("../assets/svg/play-next.svg");
 }
 .play_item{
-  /* position: relative; */
   padding: 5px;
   padding-left: 25px;
   list-style: none;
@@ -376,13 +375,8 @@ li.item-active::before {
 .menu{
   position: absolute;
   left: 4vw;
-  top: 20%;
+  top: 0%;
   max-width: 400px;
-  display: grid;
-  grid-template-columns: 3fr 2fr 2fr 1fr ;
-  grid-template-rows: 1fr; 
-  gap: 20px;
-  columns: 3;
 }
 .images{
   display: flex;
@@ -428,6 +422,9 @@ li.item-active::before {
   cursor: pointer;
   /* margin-bottom: 5px; */
 }
+.to_do{
+  min-width: 90px;
+}
 .list_to_do{
   position: absolute;
   right: 0;
@@ -441,19 +438,22 @@ li.item-active::before {
   flex-direction: column;
   justify-content: end;
   align-items: flex-start;
-}
-.to_do_bg{
-  position: absolute;
-  background-color:#fff;
   width: 300px;
-  opacity: 1;
-  visibility: visible;
-  transition: 0.2s;
   min-height: 100px;
   bottom: 80px;
   right: 3vw;
   border-radius: 5px;
   padding: 10px;
+  position: absolute;
+}
+.to_do_bg{
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.624);
+  width: 300px;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.2s;
+  
 }
 .to_do{
   position: absolute;
@@ -461,23 +461,20 @@ li.item-active::before {
   bottom : 4vh;
   cursor: pointer;
   display: block;
-  /* width: 100%; */
   height: 16px;
 }
 .btn_todo{
   align-self: center;
-  margin-left: 0px;
-  /* justify-self: center; */
+  margin-right: 5px;
   background: hsl(209, 55%, 50%);
   width: 80px;
   height: 30px;
-  /* align-content: center; */
   border: none;
   border-radius: 20px;
   cursor: pointer;
   opacity: 1;
   transition: 0.2s;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 .btn_todo:hover{
   background: #21588c;
@@ -492,16 +489,46 @@ li.item-active::before {
 #input_to_do{
   border: none;
   background: none;
-  /* position: absolute; */
   left: 1vw;
   margin-bottom: 10px;
-  /* height: 10px; */
   margin-left: 10px;
 }
-/* #checbox{
-  width: 5px;
-  height: 5px;
-} */
+.text_settings{
+  margin-left: 10px;
+  text-align: center;
+  margin-top: 2px;
+}
+.settings{
+  padding: 10px;
+  border-radius: 3px;
+  background-color:#e8e8e8aa;
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 1fr ;
+  grid-template-rows: 1fr; 
+  gap: 20px;
+  columns: 3;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+.settings_active{
+  transition: 0.3s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+}
+.setting{
+  position:absolute;
+  bottom: 4vh;
+  left: 2vw;
+  cursor: pointer;
+  display: flex;
+  align-items:center;
+}
+.setting_icon{
+  width: 25px;
+  height: 25px;
+  
+}
 @media (max-width: 768px) {
   .time {
     min-height: 80px;

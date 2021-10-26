@@ -27,6 +27,8 @@ function translateSite(){
   getQuotes();
   CityValue();
   textHidden();
+  todoTranslate();
+  translateSetting();
 }
 select.addEventListener('change', translateSite);
 
@@ -618,6 +620,9 @@ let WeatherBlock = document.querySelector('.weather')
 let audioHidden = document.querySelector('.audio_hidden')
 let playerHidden = document.querySelector('.player')
 
+let toDoHidden = document.querySelector('.todo_hidden')
+let todoBlock = document.querySelector('.list_to_do')
+
 function textHidden(){
 timeHidden.textContent = `${trans["timeHidden"][lang]}`;
 dataHidden.textContent = `${trans["dataHidden"][lang]}`;
@@ -625,6 +630,7 @@ greetingHidden.textContent = `${trans["greetingHidden"][lang]}`;
 quoteHidden.textContent = `${trans["quoteHidden"][lang]}`;
 weathHidden.textContent = `${trans["weathHidden"][lang]}`;
 audioHidden.textContent = `${trans["audioHidden"][lang]}`;
+toDoHidden.textContent = `${trans["todoHidden"][lang]}`;
 }
 
 
@@ -645,8 +651,6 @@ function HiddenAudio (){
 }
 }
 audioHidden.addEventListener('click', HiddenAudio)
-
-
 
 let isTime = false;
 function HiddenTime (){
@@ -709,7 +713,6 @@ function HiddenQuote(){
 quoteHidden.addEventListener('click', HiddenQuote)
 
 let isWeather = false;
-
 function weatherHidden(){
   if (!isWeather) {
     WeatherBlock.style.transition = "0.2s"
@@ -723,6 +726,22 @@ function weatherHidden(){
 }
 }
 weathHidden.addEventListener('click', weatherHidden)
+
+let isTodo
+function todoHidden(){
+  if (!isTodo) {
+    todoBlock.style.transition = "0.2s"
+    todoBlock.style.opacity = '0';
+    todoBlock.style.visibility = "hidden";
+    isTodo = true;
+} else{
+  todoBlock.style.opacity = '1';
+  todoBlock.style.visibility = "visible";
+  isTodo = false;
+}
+}
+
+toDoHidden.addEventListener('click', todoHidden)
 
 
 
@@ -761,6 +780,7 @@ function setLocalStorage() {
   localStorage.setItem('isDate', isDate);
   localStorage.setItem('isTime', isTime );
   localStorage.setItem('isAudio', isAudio);
+  localStorage.setItem('isTodo', isTodo);
   
   
   
@@ -801,6 +821,9 @@ window.addEventListener('load', getLocalStorage);
 let isToDo = false;
 let toDoList = document.querySelector('.to_do_list')
 let toDo = document.querySelector('.to_do');
+function todoTranslate(){
+toDo.textContent = `${trans["todoHidden"][lang]}`;
+}
 let toDoBtn = document.querySelector('.btn_todo');
 toDo.addEventListener('click', () =>{
   if (!isToDo){
@@ -818,23 +841,25 @@ toDoBtn.addEventListener('click', () => {
   newInput.innerHTML = `type="text"  id="input_to_do" `;
   newInput.placeholder = "New Todo";
   toDoList.prepend(newInput);
-  // toDoList.innerHTML = `<input type="checkbox" name="checkbox" id="checbox"></input><label for = checbox></label>`;
-  // toDoList.prepend(newInput);
   let sum = 0;
-newInput.addEventListener('change', () => {
+  newInput.addEventListener('change', () => {
   let newContainerDiv = document.createElement('div');
   newContainerDiv.style.display = 'flex';
   newContainerDiv.style.gap = '10px';
   newContainerDiv.style.marginBottom = '3px';
   let newChecbox = document.createElement('input');
-  
-  // newChecbox.textContent = `type="checkbox" id = "chek${sum}"class="check_box"`
   newChecbox.style.marginBottom = "px"
   newChecbox.type = 'checkbox'
-  newChecbox.id = `'chek${sum}'`
+  newChecbox.class = 'check_box'
+  newChecbox.id = `'chek${sum}'`;
+  newChecbox.addEventListener('click', () =>{
+    if(newChecbox.checked){
+      labelCheck.style.textDecoration = 'line-through'
+      
+    } else labelCheck.style.textDecoration = "none";
+  })
   newChecbox.style.display = "inline-block";
   newChecbox.style.cursor = "pointer";
-  // toDoList.prepend(newChecbox);
   let labelCheck = document.createElement('label')
   labelCheck.htmlFor = `'chek${sum}'`;
   labelCheck.class = 'lable_check';
@@ -851,13 +876,36 @@ newInput.addEventListener('change', () => {
 })
 
 
-let LableList = document.querySelectorAll('.lable_check');
-let checkList = document.querySelectorAll('input[type=checkbox]');
+// let LableList = document.querySelectorAll('.lable_check');
+// let checkList = document.querySelectorAll('.check_box');
 
-for (let i = 0; i < checkList.length; i++){
-  checkList[i].addEventListener ('change', () =>{
-    if(checkList[i].checked){
-      LableList[i].style.textDecoration = 'line-through'
-    } else LableList[i].style.textDecoration = "none";
-  })
+// function clickCheckbox(){
+// for (let i = 0; i < checkList.length; i++){
+//   checkList[i].addEventListener ('click', () =>{
+//     if(checkList[i].checked){
+//       LableList[i].style.textDecoration = 'line-through'
+//       console.log(checkList)
+//     } else LableList[i].style.textDecoration = "none";
+//   })
+// }
+// }
+// document.addEventListener('click', clickCheckbox)
+
+
+let settingText = document.querySelector('.text_settings')
+function translateSetting(){
+  settingText.textContent = `${trans["settings"][lang]}`
 }
+let settings = document.querySelector('.setting');
+let settingsMenu = document.querySelector('.settings');
+
+let isSettings = false;
+settings.addEventListener('click', () =>{
+  if(!isSettings){
+    settingsMenu.classList.add('settings_active');
+    isSettings = true;
+  } else {
+    settingsMenu.classList.remove('settings_active')
+    isSettings = false;
+  }
+})

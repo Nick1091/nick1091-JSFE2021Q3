@@ -85,6 +85,14 @@ const trans =
   "audioHidden" :  {
     "ru": "Аудио",
     "en": "Audio"  
+  },
+  "todoHidden" :  {
+    "ru": "Список дел",
+    "en": "Todo"  
+  },
+  "settings" :  {
+    "ru": "Настройки",
+    "en": "Settings"  
   }
   }
   export default trans;
