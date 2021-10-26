@@ -785,7 +785,6 @@ function getLocalStorage() {
   translateSite()
   if(localStorage.getItem('isWeather')){
     isWeather = localStorage.getItem('isWeather');
-    
   
     // weatherHidden()
   }
@@ -815,6 +814,7 @@ toDo.addEventListener('click', () =>{
 toDoBtn.addEventListener('click', () => {
   toDoBtn.classList.add('btn_to');
   let newInput = document.createElement('input')
+
   newInput.innerHTML = `type="text"  id="input_to_do" `;
   newInput.placeholder = "New Todo";
   toDoList.prepend(newInput);
@@ -861,3 +861,4 @@ for (let i = 0; i < checkList.length; i++){
     } else LableList[i].style.textDecoration = "none";
   })
 }
+
