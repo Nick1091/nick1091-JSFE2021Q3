@@ -133,17 +133,21 @@ button{
   color: var(--shadow-color);
   border: var(--whole-color);
 }
-.current_answer:active, .home_button:active, .btn_default_save:active, .seconds:active, .footer_gh:active, .main_artist:active, .main_pictures:active{
+.exit_btn:hover, .exit_btn:active, .current_answer:active, .home_button:active, .btn_default_save:active, .seconds:active, .footer_gh:active, .main_artist:active, .main_pictures:active{
   background-color: var(--tertiary-color);
   border: var(--tertiary-color);
   transform: scale(1);
   color: var(--shadow-color);
 }
-
+.main, .artists_categories, .pictures_categories, .question_artists, .question_pictures, .settings, .overlay, .popup_window, .popup_congratulations{
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
 
  /* first page */
 .main{
   height: 100%; 
+  transition: all 0.2s;
 }
 .container{
   width: calc(100% - 30px);
@@ -635,7 +639,7 @@ progress::-webkit-progress-value {
   align-items: center;
 }
 .popup {
-  max-height: 600px;
+  max-height: 500px;
   max-width: 450px;
   width: calc((100% - 15vw));
   margin: 30px auto;
@@ -645,14 +649,14 @@ progress::-webkit-progress-value {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 .pass_icon {
   background-image: url(assets/svg/wrong_answer.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  width: 60px;
-  min-height: 60px;
+  width: 50px;
+  min-height: 50px;
 }
 .image_current {
   background-image: url(assets/image/0.jpg);
@@ -665,6 +669,17 @@ progress::-webkit-progress-value {
   width: 100%;  
 }
 .next_btn {
+  height: 56px;
+  max-width: 300px;
+  padding: 0px 30px; 
+  border-radius: 56px;
+  border: 1px solid;
+  text-align: center;
+  line-height: 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.exit_btn {
   height: 56px;
   max-width: 300px;
   padding: 0px 30px; 

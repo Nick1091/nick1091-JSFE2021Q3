@@ -83,12 +83,6 @@ while(arrayAllResults.length < 24){
 const blockCategory = document.querySelectorAll('.block_category');
 let result
 let interval
-// const handleClick = (e) => {
-  // result = e.currentTarget.dataset.num;
-  // ind = 0; 
-//   (result < 12) ? showQuestionArtists() : showQuestionPictures()
-//   checkChecked()
-// }
 
 blockCategory.forEach(button =>{
   button.addEventListener('click', (e) =>{
@@ -189,6 +183,7 @@ function fillingPicture(){
 }  
 
 
+  let popup = document.querySelector('.popup')
   let popupWindow = document.querySelector('.popup_window')
   let overlay = document.querySelector('.overlay')
   let passIcon = document.querySelector('.pass_icon')
@@ -276,15 +271,12 @@ function fillingPicture(){
     if (right == 1) {
       passIcon.style.backgroundImage = 'url(assets/svg/righty_answer.svg)';
       audio2.play();
-      // console.log(ind)
     }
     else {
       right = 0;
       passIcon.style.backgroundImage = 'url(assets/svg/wrong_answer.svg)';
       audio3.play();
-      // console.log(ind)
     }
-    // bullets[ind].style.background = 'red';
     saveResult.push(right);
     if(saveResult.length < 10){
       showInfoPicture()
@@ -292,16 +284,12 @@ function fillingPicture(){
       arrayAllResults.splice(result, 1, saveResult)///lockal
       let sumRound = saveResult.reduce((a, b) => a + b, 0)
       showFinalResults(sumRound)
-      // console.log(saveResult)
-      // console.log( Array.isArray( arrayAllResults[result] ))
-      // console.log(arrayAllResults)
       audio4.play()
       setBg();
     }
     deleteInterval()
   }
   
-
   imageQuestions.forEach(button =>{
     button.addEventListener('click', showNextQuestion)
   })
@@ -311,24 +299,9 @@ function fillingPicture(){
 
 const picture = document.querySelectorAll('.picture');
 const currentAnswer = document.querySelectorAll('.current_answer');
-
-// function getImageRandomFull(){
-//   return Math.floor(Math.random() * 240 );
-// }
-// function getImageRandomArr(){
-//   return Math.floor(Math.random() * 24 );
-// }
-
-
-
-
 const settingsCategory = document.querySelector('.settings');
 const mainSettings = document.querySelector('.main_settings');
 const settingsTitle = document.querySelector('.settings_title');
-
-// function settingsToggle(){
-//   hiddenMain()
-// }
 
 mainSettings.addEventListener('click', ()=>{
   hideSettings()
@@ -351,41 +324,32 @@ const audio = document.querySelector('.audio1');
 const audio2 = document.querySelector('.audio2');
 const audio3 = document.querySelector('.audio3');
 const audio4 = document.querySelector('.audio4');
-
-// inputVolume.value = inputVolume.value;
-// let volumeValue;
+let volumeValue;
 inputVolume.style.background = `linear-gradient(to right, var(--tertiary-color) 0%, var(--tertiary-color) ${inputVolume.value}%, #fff ${inputVolume.value}%, #fff 100%)`
-
 inputVolume.addEventListener('input', ()=>{
-  // volumeDefault = inputVolume.value / 100;
   changeVolume()
-  setLocalStorage()
+  volumeValue = inputVolume.value;
   audio.play()
 })
 volumeUp.addEventListener('click', ()=>{
-  // volumeDefault = 0.2;
-  inputVolume.value = 20;
-  setLocalStorage()
+  if(volumeValue !== 'undefined') {
+    inputVolume.value = volumeValue 
+   }else inputVolume.value = 20;
   changeVolume()
 })
 volumeLower.addEventListener('click', ()=>{
   inputVolume.value = 0;
-  setLocalStorage()
-  // volumeDefault = inputVolume.value /100
   changeVolume()
 })
 function changeVolume(){
-  // volumeValue = volumeDefault;
   audio.volume = inputVolume.value / 100;;
   audio2.volume = inputVolume.value / 100;;
   audio3.volume = inputVolume.value / 100;;
   audio4.volume = inputVolume.value / 100;;
-  // inputVolume.value = volumeDefault * 100;
   inputVolume.style.background = `linear-gradient(to right, var(--tertiary-color) 0%, var(--tertiary-color) ${inputVolume.value}%, #fff ${inputVolume.value}%, #fff 100%)`
 }
 let buttons = document.querySelectorAll('button') 
 buttons.forEach(item => item.addEventListener('click', () => {
-  audio.volume = inputVolume.value / 100;
   audio.play()
   changeVolume()
 }))
@@ -398,25 +362,33 @@ let progress = document.querySelectorAll('progress')
 let timeQuestion = document.querySelectorAll('.time_question')
 let btnSave = document.querySelector('.btn_save')
 let sec;
-let isChecked = false; 
+let isChecked = 0; 
 btnSave.addEventListener('click', ()=>{
+  SaveSettings()
+  hideSettings()
+})
+function SaveSettings(){
   if(timeCheckbox.checked){
       timeQuestion.forEach(item => item.classList.remove('hidden'))
       progress.forEach(item => item.classList.remove('hidden'))        
-      // progress.forEach(item => item.value = 0);
       progress.forEach(item => item.max = time.value);
-      // timeQuestion.forEach(item => item.innerHTML = time.value);
       sec = time.value;
-      isChecked = true;
+      isChecked = 1;
   } else{
       timeQuestion.forEach(item => item.classList.add('hidden'))
       progress.forEach(item => item.classList.add('hidden'))
       sec = 0;
       timeQuestion.forEach(item => item.innerHTML = 0);
+      isChecked = 0;
   }
-  hideSettings()
   
- })
+ }
+ function isCheckedCheckbox(){
+   if(isChecked == 1){
+    timeCheckbox.checked = true;
+  }
+  SaveSettings()
+ }
       
 //timer
 function deleteInterval(){
@@ -524,7 +496,36 @@ function showNewWindowResults(){
     imag.onload = ()  =>{   
       imageScoreCategory.style.backgroundImage = `url(${imag.src})`;   
     }    
-    if(arrayAllResults[result][i] == 1) imageScoreCategory.style.filter = 'grayscale(0)';
+    if(arrayAllResults[result][i] == 1) {
+      imageScoreCategory.style.filter = 'grayscale(0)';
+      imageScoreCategory.style.cursor = 'pointer';
+      imageScoreCategory.addEventListener('click' , ()=>{
+        // function showInfoPicture(){
+        popupWindow.classList.toggle('hidden')
+        overlay.classList.toggle('hidden')
+        passIcon.classList.add('hidden')
+        nameAuthor.textContent = currentName(i).author;
+        namePicture.textContent = currentName(i).name;
+        yearPicture.textContent = currentName(i).year;
+        let img = new Image();
+        img.src = `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${currentName(i).imageNum}.jpg`;
+          img.onload = ()  =>{   
+          imageCurrent.style.backgroundImage = `url(${img.src})`;}
+        nextBtn.classList.add('hidden');
+        let buttonExit = document.createElement('button');
+        buttonExit.classList.add('exit_btn')
+        buttonExit.classList.add('text_regular2'); 
+        buttonExit.innerHTML = 'назад'; 
+        popup.append(buttonExit) 
+        buttonExit.addEventListener('click', ()=>{
+          nextBtn.classList.remove('hidden');
+          popupWindow.classList.toggle('hidden')
+          overlay.classList.toggle('hidden')
+          passIcon.classList.add('hidden')
+          popup.removeChild(buttonExit)
+        })
+      })
+    }
     }
     scoreWrapper.prepend(scoreBtn);
     scoreBtn.addEventListener('click', ()=>{
@@ -541,19 +542,27 @@ function showNewWindowResults(){
 
 function setLocalStorage() {
   localStorage.setItem('answers', JSON.stringify(arrayAllResults));
-  localStorage.setItem('volume', JSON.stringify(inputVolume.value));  
+  localStorage.setItem('isChecked', isChecked);
+  localStorage.setItem('volume', inputVolume.value);  
+  localStorage.setItem('time', time.value);  
 }
 window.addEventListener('beforeunload', setLocalStorage)
 function getLocalStorage() {
-    if(localStorage.getItem('answers')) {
+  if(localStorage.getItem('answers')) {
     let ar = localStorage.getItem('answers');
     arrayAllResults = JSON.parse(ar);
   }
+  if(localStorage.getItem('isChecked')) {
+    isChecked = +(localStorage.getItem('isChecked'));
+    // console.log(isChecked)
+    isCheckedCheckbox()
+  }
   if(localStorage.getItem('volume')) {
-    inputVolume.value = JSON.parse(localStorage.getItem('volume'));
-    // audio.volume = inputVolume.value / 100;
-    console.log(inputVolume.value)
-    changeVolume()
+    inputVolume.value = Number(localStorage.getItem('volume'));
+  }
+  if(localStorage.getItem('time')) {
+    time.value = Number(localStorage.getItem('time'));
   }
 }
 window.addEventListener('load', getLocalStorage); 
+getLocalStorage() 
