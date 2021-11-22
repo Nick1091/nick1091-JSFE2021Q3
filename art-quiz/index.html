@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>art-quiz</title>
+  <link type="image/x-icon" href="favicon.ico" rel="shortcut icon">
+  <link type="Image/x-icon" href="favicon.ico" rel="icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="main">
+      <div class="container main_flex">
+        <div class="main_page">
+          <button class="main_settings">
+            <img src="assets/svg/carbon_settings.svg" alt="settings">
+          </button>
+          <div class="main_logo"></div>
+          <div class="btn_category text_regular">
+            <button class="main_artist main_category text_regular">Художники</button>
+            <button class="main_pictures main_category text_regular">Картины</button>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper_bg"></div>
+    </div>
+    <div class="artists_categories hidden">
+      <div class="container">
+        <div class="artists_header">
+          <div class="logo_category"></div>
+          <button class="home_button back_button_artists text_regular">Home</button>
+        </div>
+        <h2 class="title_categories text_wither">Категории</h2>
+        <div class="categories_wrapper">
+          <button class="block_category" data-num = '0'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 1</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '1'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 2</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '2'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 3</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '3'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 4</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '4'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 5</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '5'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 6</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '6'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 7</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '7'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 8</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '8'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 9</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '9'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 10</h3>
+              <h3></h3>  
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '10'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 11</h3>
+              <h3></h3>  
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '11'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 12</h3>
+              <h3></h3>  
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="pictures_categories hidden">
+      <div class="container">
+        <div class="artists_header">
+          <div class="logo_category"></div>
+          <button class="home_button back_button_pictures text_regular">Домой</button>
+        </div>
+        <h2 class="title_categories text_wither">Категории</h2>
+        <div class="categories_wrapper">
+          <button class="block_category " data-num = '12'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 1</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '13'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 2</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '14'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 3</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '15'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 4</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '16'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 5</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '17'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 6</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '18'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 7</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '19'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 8</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '20'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 9</h3>
+              <h3></h3>
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '21'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 10</h3>
+              <h3></h3>  
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '22'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 11</h3>
+              <h3></h3>  
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+          <button class="block_category" data-num = '23'>
+            <div class="title_block_category text_wither2">
+              <h3 class="title_category text_wither2">Раунд 12</h3>
+              <h3></h3>  
+            </div>
+            <div class="image_category">
+            </div>
+            <div class = "score"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="question_artists hidden">
+      <div class="container artists_container">
+        <div class="time_show">
+          <button class="close"></button>
+            <progress class = 'hidden' max="30" value="0"></progress>
+          <div class="time_question hidden text_wither2">30</div>
+        </div>
+        <div class="question text_regular">Кто автор картины?</div>
+          <div class="picture"><div class="bullets"><p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+          </div>
+        </div>
+        <div class="question_picture">
+          <button type="button" class="current_answer text_wither"></button>
+          <button type="button" class="current_answer text_wither"></button>
+          <button type="button" class="current_answer text_wither"></button>
+          <button type="button" class="current_answer text_wither"></button>
+        </div>
+      </div>
+    </div>
+    <div class="question_pictures hidden">
+      <div class="container artists_container">
+        <div class="time_show">
+          <button class="close"></button>
+            <progress class = "hidden" max="30" value="0"></progress>
+          <div class="time_question hidden text_wither2"></div>
+        </div>
+        <div class="picture_question text_regular">Какую из картин написал <span class="author_choice"></span>?</div>
+        <div class="pictures">
+          <button class="image_question"></button>
+          <button class="image_question"></button>
+          <button class="image_question"></button>
+          <button class="image_question"></button>
+          <div class="bullets_pictures">
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+            <p class="bullet"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="settings hidden">
+      <div class="container">
+        <div class="container_settings">
+          <div class="settings_title">
+            <button class="settings_back"></button>
+            <div class="title_settings text_regular">Настройки</div>
+          </div>
+          <div class="settings_volume">
+            <div class="volume_title text_bold">Звук</div>
+            <div class="volume_icon">
+              <input class="input_volume" type="range" value="0" min="0" max="100" step="1">
+              <button class="volume_low"></button>
+              <button class="volume_up"></button>
+            </div>
+          </div>  
+          <div class="settings_time">
+            <div class="time_title text_bold">Игра на время</div>
+            <div class="checkbox_container">
+              <button class="checkbox-group">
+                <input type="checkbox" class="time_game" id="time_game">
+                <label for="time_game" class ="label_checkbox"></label>
+              </button>
+              <p class="text_label text_regular">Выкл / вкл</p>
+            </div>
+          </div>
+          <div class="settings_time_answer">
+            <div class="answer_time_title text_bold">Время игры</div>
+            <div class="btn_time">
+              <button type="button" class="seconds_low seconds" onclick="this.nextElementSibling.stepDown()"><span class="minus">–</span></button>
+              <input type="number" min="5" max="30" value="20" step ="5" class="number time_count_value">
+              <button type="button" class="seconds_up seconds" onclick="this.previousElementSibling.stepUp()"><span class="plus">+</span></button>
+            </div>
+          </div>
+          <div class="settings_btn">
+            <!-- <div class="btn_default btn_default_save text_regular">Стандартные</div> -->
+            <button class="btn_save btn_default_save text_regular">Сохранить</button>
+          </div>
+        </div>  
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container footer_flex">  
+        <div class="text_footer">© 2021</div>
+        <a href = "https://github.com/Nick1091" class="text_footer footer_gh">NIKOLAI KUKHARCHUK</a>
+        <a href="https://rs.school/js/" class="footer_school"></a>
+      </div>
+    </div>
+  </div>
+  <div class="overlay hidden">
+  </div>
+  <div class="popup_window hidden">
+    <div class="popup">
+      <div class="pass_icon"></div>
+      <div class="image_current"></div>
+      <div class="name_picture text_regular2">Название картины</div>
+      <div class="name_author text_regular2">Название автора</div>
+      <div class="year_picture text_regular2">Г201</div>
+      <button class="next_btn text_regular2">Продолжить</button>
+    </div>
+  </div>
+  <div class="popup_congratulations hidden">
+    <div class="popup">
+      <div class="gift_icon"></div>
+      <div class="congratulations">Поздравляю!</div>
+      <div class="name_picture result">resultat</div>
+      <div class="buttons">
+        <button class="home_btn btn_congratulation text_regular2">Домой</button>
+        <button class="next_button btn_congratulation text_regular2">Продолжить</button>
+      </div>
+    </div>
+  </div>
+  <audio class = 'audio1' src="assets/audio/press_btn.mp3"></audio>
+  <audio class = 'audio2' src="assets/audio/correct_a.mp3"></audio>
+  <audio class = 'audio3' src="assets/audio/incorrect_a.mp3"></audio>
+  <audio class = 'audio4' src="assets/audio/final.mp3"></audio>
+  <!-- <audio src="assets/audio/6_sto-k-odnomu-ne-pra_ilnyy-ot_et.mp3"></audio> -->
+  <!-- <audio src="assets/audio/elearning-correct-answer-sound-3.mp3"></audio> -->
+  <!-- <audio src="assets/audio/line_open.mp3"></audio> -->
+  <!-- <div class="popup_grand hidden">
+    <div class="popup">
+      <div class="stars_icon"></div>
+      <div class="grand_result">Прекрасный результат</div>
+      <div class="congratulations">Поздравляю!</div>       
+      <button class="next_btn btn_congratulation text_regular2">Продолжить</button>
+    </div>
+  </div> -->
+  <!-- <div class="popup_game_over hidden">
+    <div class="popup">
+      <div class="game_over_icon"></div>
+      <div class="name_picture">Проигрыш</div>
+      <div class="congratulations">Играем снова!</div>
+      <div class="buttons">
+        <button class="home_btn btn_congratulation text_regular2">Домой</button>
+        <button class="next_btn btn_congratulation text_regular2">Да</button>
+      </div>
+    </div>
+  </div> -->
+  <script type='module' src="js/index.js"></script>
+</body>
+
+</html>
