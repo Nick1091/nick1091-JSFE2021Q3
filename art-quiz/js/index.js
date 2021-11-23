@@ -1,5 +1,5 @@
-// import play from './category_artist'
-
+import OutputInfo from './console.js'
+OutputInfo();
 // заполнение карточек категорий
 
 
@@ -48,6 +48,7 @@ function hiddenMain(){
    hiddenMain()
  })
 // close game
+const back = document.querySelectorAll('.category_back')
 const clos = document.querySelectorAll('.close');
 clos.forEach(btn =>{
   btn.addEventListener('click', () =>{
@@ -58,6 +59,17 @@ clos.forEach(btn =>{
     ind = 0;
     saveResult.length = 0;
     colorBullet();
+  })
+});  
+back.forEach(btn =>{
+  btn.addEventListener('click', () =>{
+    questionPictures.classList.add('hidden');
+    questionArtists.classList.add('hidden');
+    deleteInterval();
+    ind = 0;
+    saveResult.length = 0;
+    colorBullet();
+    (result<12)? artistCategory.classList.toggle('hidden') : pictureCategory.classList.toggle('hidden');
   })
 });  
 
@@ -231,7 +243,6 @@ function fillingPicture(){
   const nextBtn = document.querySelector('.next_btn');
   nextBtn.addEventListener('click', ()=>{
     ind +=1
-    // number += 
     showInfoPicture()
     checkChecked()
     if(result < 12){
@@ -478,56 +489,74 @@ function showNewWindowResults(){
    scoreWrapper.classList.add('score_wrapper')  
    scoreWrapper.prepend(scoreResult)
    scoreResult.classList.add('results_wrapper')
+   let category = document.createElement("button")
    let scoreBtn = document.createElement("button")
-    scoreBtn.innerHTML = `Назад`;
-    scoreBtn.classList.add('category_button');
-   for(let i = 0; i < 10; i++){
-    let titleCategory;
-    titleCategory = `Часть ${result % 12 + 1}`;
-    let scoreResultBlock = document.createElement("div")
-    scoreResult.append(scoreResultBlock);
-    scoreResultBlock.classList.add('score_result_block')
-    scoreResultBlock.innerHTML = 
-     `<h3 class="title_category text_wither2">${titleCategory}</h3>
+   scoreBtn.innerHTML = `Назад`;
+   category.innerHTML = `Домой`;
+   category.classList.add('home_button');
+   category.classList.add('back_button_pictures');
+   scoreBtn.classList.add('category_button');
+    category.classList.add('text_regular');
+    scoreBtn.classList.add('text_regular');
+    for(let i = 0; i < 10; i++){
+      let titleCategory;
+      titleCategory = `Часть ${result % 12 + 1}`;
+      let scoreResultBlock = document.createElement("div")
+      scoreResult.append(scoreResultBlock);
+      scoreResultBlock.classList.add('score_result_block')
+      scoreResultBlock.innerHTML = 
+      `<h3 class="title_category text_wither2">${titleCategory}</h3>
       <div class="image_score_category">`;
-    let imageScoreCategory = document.querySelectorAll('.image_score_category')[i];
-    let imag = new Image();
-    imag.src = `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${currentName(i).imageNum}.jpg`;
-    imag.onload = ()  =>{   
-      imageScoreCategory.style.backgroundImage = `url(${imag.src})`;   
-    }    
-    if(arrayAllResults[result][i] == 1) {
-      imageScoreCategory.style.filter = 'grayscale(0)';
-      imageScoreCategory.style.cursor = 'pointer';
-      imageScoreCategory.addEventListener('click' , ()=>{
-        // function showInfoPicture(){
-        popupWindow.classList.toggle('hidden')
-        overlay.classList.toggle('hidden')
-        passIcon.classList.add('hidden')
-        nameAuthor.textContent = currentName(i).author;
-        namePicture.textContent = currentName(i).name;
-        yearPicture.textContent = currentName(i).year;
-        let img = new Image();
-        img.src = `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${currentName(i).imageNum}.jpg`;
-          img.onload = ()  =>{   
-          imageCurrent.style.backgroundImage = `url(${img.src})`;}
-        nextBtn.classList.add('hidden');
-        let buttonExit = document.createElement('button');
-        buttonExit.classList.add('exit_btn')
-        buttonExit.classList.add('text_regular2'); 
-        buttonExit.innerHTML = 'назад'; 
-        popup.append(buttonExit) 
-        buttonExit.addEventListener('click', ()=>{
-          nextBtn.classList.remove('hidden');
-          popupWindow.classList.toggle('hidden')
-          overlay.classList.toggle('hidden')
-          passIcon.classList.add('hidden')
-          popup.removeChild(buttonExit)
-        })
-      })
-    }
-    }
-    scoreWrapper.prepend(scoreBtn);
+      let imageScoreCategory = document.querySelectorAll('.image_score_category')[i];
+      let imag = new Image();
+      imag.src = `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${currentName(i).imageNum}.jpg`;
+      imag.onload = ()  =>{   
+        imageScoreCategory.style.backgroundImage = `url(${imag.src})`;   
+      }    
+      if(arrayAllResults[result][i] == 1) {
+        imageScoreCategory.style.filter = 'grayscale(0)'};
+        imageScoreCategory.style.cursor = 'pointer';
+        imageScoreCategory.addEventListener('click' , ()=>{
+          // function showInfoPicture(){
+            popupWindow.classList.toggle('hidden')
+            overlay.classList.toggle('hidden')
+            passIcon.classList.add('hidden')
+            nameAuthor.textContent = currentName(i).author;
+            namePicture.textContent = currentName(i).name;
+            yearPicture.textContent = currentName(i).year;
+            let img = new Image();
+            img.src = `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${currentName(i).imageNum}.jpg`;
+            img.onload = ()  =>{   
+              imageCurrent.style.backgroundImage = `url(${img.src})`;}
+              nextBtn.classList.add('hidden');
+              let buttonExit = document.createElement('button');
+              buttonExit.classList.add('exit_btn')
+              buttonExit.classList.add('text_regular2'); 
+              buttonExit.innerHTML = 'назад'; 
+              popup.append(buttonExit) 
+              buttonExit.addEventListener('click', ()=>{
+                nextBtn.classList.remove('hidden');
+                popupWindow.classList.toggle('hidden')
+                overlay.classList.toggle('hidden')
+                passIcon.classList.remove('hidden')
+                popup.removeChild(buttonExit)
+                // passIcon.classList.add('hidden')
+              })
+            })
+          
+        }
+        let scoreResultBtn = document.createElement("div")
+        scoreWrapper.prepend(scoreResultBtn);
+        scoreResultBtn.style.cssText=`display: flex;
+        gap: 20px;
+        width: 100%;
+        text-align: center;
+        justify-content: flex-end;
+      `;
+      category.style.display = 'inline-block'
+      scoreBtn.style.display = 'inline-block'
+      scoreResultBtn.prepend(scoreBtn);
+      scoreResultBtn.prepend(category);
     scoreBtn.addEventListener('click', ()=>{
       wrapper.removeChild(wrapper.firstChild)
       if (result < 12){
@@ -535,6 +564,10 @@ function showNewWindowResults(){
       }
       else {pictureCategory.classList.toggle('hidden');
       }
+    })
+    category.addEventListener('click', ()=>{
+      wrapper.removeChild(wrapper.firstChild)
+      mainPage.classList.toggle('hidden');
     })
 }
 
