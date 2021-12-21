@@ -1,95 +1,159 @@
 import Loader from './loader';
-import Filter from './filter';
+import FilterFirst from './filtersFirst';
 import { IData } from './types/types';
-import { Shape } from './types/types';
-import Slider from './slider';
-import SliderRange from './range';
+import { target } from '../node_modules/nouislider/dist/nouislider';
+import SliderRender from './slidersrender';
+import { getSortItems, getSortPage, getSortPagePage, filterSearch } from './otherFilter';
+import { renderPage, ShowPopup } from './renderPage';
+import { resetFilters } from './reset';
 
 class CardRender {
   async getCard() {
+    const elementCheck = document.querySelector('.favorite__input') as HTMLInputElement;
+    const outputs = document.querySelectorAll('.toys-output') as NodeListOf<HTMLOutputElement>;
+    const sliderCount = document.querySelector('.count-slider') as target;
+    const sliderYears = document.querySelector('.year-slider') as target;
+
+    const sliderRender = new SliderRender();
+    sliderRender.slidersRenderCount();
+    sliderRender.slidersRenderYears();
+
     const loader = new Loader();
     const list = await loader.getToyList();
-    const cardContainer = document.querySelector('.card__container') as HTMLTemplateElement;
-    cardContainer.innerHTML = '';
-    list.forEach((item) => {
-      const fragmentCard = `
-        <div class="card" data-num = "${item.num}">
-          <h2 class="card__title">${item.name}</h2>
-          <img src="./assets/toys/${item.num}.png" alt="toy" class="card-img">
-          <div class="card__info">
-            <p class="count">Количество: <span>${item.count}</span></p>
-            <p class="year">Год покупки: <span>${item.year}</span></p>
-            <p class="form">Форма: <span>${item.shape}</span></p>
-            <p class="color">Цвет: <span>${item.color}</span></p>
-            <p class="size">Размер: <span>${item.size}</span></p>
-            <p class="favorite">Любимая: <span>${item.favorite ? 'да' : 'нет'}</span></p>
-          </div>
-          <div class="mark"></div>
-        </div>`;
-      cardContainer.innerHTML += fragmentCard;
-    });
-    const elementShape = document.querySelectorAll('.shape button') as NodeListOf<HTMLElement>;
-    let arrShape = [] as IData[];
-    const elShape: Shape = {
-      шар: false,
-      колокольчик: false,
-      шишка: false,
-      снежинка: false,
-      фигурка: false,
+    const ObjectFlag = {
+      shape: {
+        шар: false,
+        колокольчик: false,
+        шишка: false,
+        снежинка: false,
+        фигурка: false,
+      },
+      color: {
+        белый: false,
+        желтый: false,
+        красный: false,
+        синий: false,
+        зелёный: false,
+      },
+      size: {
+        большой: false,
+        средний: false,
+        малый: false,
+      },
+      favorites: {
+        favorite: false,
+      },
     };
-    elementShape.forEach((element) => {
+    let countSort = 0;
+    let isSearch = false;
+    let searching: IData[] = [];
+    let filters: IData[] = [];
+    const filtersData = list;
+
+    //render card
+    function loadRender(arr: IData[]) {
+      let render = getSortPage(isSearch ? searching : arr, ObjectFlag);
+      if (countSort == 1) render = getSortPagePage(render);
+      renderPage(render);
+      if (render.length <= 0) ShowPopup('Извините, совпадений не обнаружено');
+    }
+    loadRender(filtersData);
+
+    // filter form, color, favorite
+    const elementList = document.querySelectorAll(
+      '.filters-meaning button, .favorite__input'
+    ) as NodeListOf<HTMLElement>;
+
+    function objFilter(element: HTMLElement): IData[] {
+      const filter = new FilterFirst(filtersData, elementList, element, ObjectFlag);
+      filter.getFirstFilters();
+      filters = filter.getShape();
+      return filters;
+    }
+    elementList.forEach((element) => {
       element.addEventListener('click', () => {
-        const filter = new Filter(list, elShape, elementShape, element);
-        arrShape = [...filter.getShape()];
-        console.log(arrShape);
+        filters = objFilter(element);
+        loadRender(filters);
       });
-    });
-    const elementColor = document.querySelectorAll('.color button') as NodeListOf<HTMLElement>;
-    let arrColor = [] as IData[];
-    const elColor: Shape = {
-      белый: false,
-      желтый: false,
-      красный: false,
-      синий: false,
-      зелёный: false,
-    };
-    elementColor.forEach((element) => {
-      element.addEventListener('click', () => {
-        const filter = new Filter(list, elColor, elementColor, element);
-        arrColor = [...filter.getColor()];
-        console.log(arrColor);
-      });
-    });
-    const elementSize = document.querySelectorAll('.size button') as NodeListOf<HTMLElement>;
-    let arrSize = [] as IData[];
-    const elSize: Shape = {
-      большой: false,
-      средний: false,
-      малый: false,
-    };
-    elementSize.forEach((element) => {
-      element.addEventListener('click', () => {
-        const filter = new Filter(list, elSize, elementSize, element);
-        arrSize = [...filter.getSize()];
-        console.log(arrSize);
-      });
-    });
-    const elementFavorite = document.querySelector('.favorite__input') as HTMLInputElement;
-    const arrFavorite = [] as IData[];
-    elementFavorite.addEventListener('click', () => {
-      if (elementFavorite.checked) {
-        list.filter((item) => {
-          if (item.favorite === true) {
-            arrFavorite.push(item);
-          }
-        });
-        console.log([...new Set(arrFavorite)]);
-      }
     });
 
-    const slider = new Slider();
-    const counArray = slider.slidersCount();
-    const yearsArray = slider.slidersYears();
+    //filter range slider
+    const arrayCount: number[] = [];
+    const arrayYears: number[] = [];
+
+    sliderCount.noUiSlider.on('update', (values) => {
+      arrayCount.length = 0;
+      const a = values.map((item) => (+item).toFixed(0));
+      for (let i = +a[0]; i <= +a[1]; i++) {
+        arrayCount.push(i);
+      }
+      filters = getSortItems(filtersData, arrayCount, 'count', ObjectFlag);
+
+      loadRender(filters);
+    });
+    sliderYears.noUiSlider.on('update', (values) => {
+      arrayYears.length = 0;
+      const a = values.map((item) => (+item).toFixed(0));
+      for (let i = +a[0]; i <= +a[1]; ) {
+        arrayYears.push(i);
+        i += 10;
+      }
+      filters = getSortItems(filtersData, arrayYears, 'year', ObjectFlag);
+      loadRender(filters);
+    });
+
+    //sort selected
+    const select = document.querySelector('.sort-select') as HTMLSelectElement;
+    select.addEventListener('input', () => {
+      localStorage.setItem('SortData', JSON.stringify(select.value));
+      countSort = 1;
+      filters = getSortPage(filtersData, ObjectFlag);
+      filters = getSortPagePage(filters);
+      loadRender(filters);
+    });
+
+    //sort search
+    const search = document.querySelector('.search') as HTMLInputElement;
+    window.addEventListener('load', () => {
+      if (localStorage.getItem('SortSearch') || '') {
+        search.value = JSON.parse(localStorage.getItem('SortSearch') || '');
+      }
+      if (localStorage.getItem('flagSearch') || '') {
+        isSearch = JSON.parse(localStorage.getItem('flagSearch') || '');
+      }
+    });
+    search.addEventListener('focus', () => {
+      search.style.backgroundSize = '0';
+    });
+    search.addEventListener('blur', () => {
+      search.style.backgroundSize = '20px';
+    });
+    search.addEventListener('input', () => {
+      localStorage.setItem('SortSearch', JSON.stringify(search.value));
+      localStorage.setItem('flagSearch', JSON.stringify(isSearch));
+      if (search.value.length > 0) isSearch = true;
+      searching = filterSearch(filtersData, search.value);
+      loadRender(searching);
+    });
+
+    // reset
+    const reset = document.querySelector('.reset');
+    reset?.addEventListener('click', () => {
+      isSearch = false;
+      resetFilters(ObjectFlag, elementList, search, elementCheck);
+      sliderCount.noUiSlider.set([1, 12]);
+      sliderYears.noUiSlider.set([1940, 2020]);
+      (outputs[0] as HTMLOutputElement).innerHTML = '1';
+      (outputs[1] as HTMLOutputElement).innerHTML = '12';
+      (outputs[2] as HTMLOutputElement).innerHTML = '1940';
+      (outputs[3] as HTMLOutputElement).innerHTML = '2020';
+      loadRender(filtersData);
+    });
+    //clear storage
+    document.querySelector('.resetSettings')?.addEventListener('click', () => {
+      console.log('ashed');
+      localStorage.clear();
+    });
   }
 }
 

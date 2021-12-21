@@ -1,69 +1,91 @@
 import { IData } from './types/types';
-import { Shape } from './types/types';
+import { IObj } from './types/types';
+// import { getSortItems } from './otherFilter';
 
 export default class Filter {
-  arr = [] as IData[];
+  arr: IData[] = [];
 
-  isShape: Shape;
+  array: IData[] = [];
 
-  array = [] as IData[];
+  ObjectFlag: IObj;
 
-  nodeList: NodeListOf<HTMLElement>;
-
-  element: HTMLElement;
-
-  constructor(arr: IData[], isShape: Shape, nodeList: NodeListOf<HTMLElement>, element: HTMLElement) {
+  constructor(arr: IData[], ObjectFlag: IObj) {
     this.arr = arr;
-    this.isShape = isShape;
-    this.nodeList = nodeList;
-    this.element = element;
+    if (localStorage.getItem('object') || '') {
+      ObjectFlag = JSON.parse(localStorage.getItem('object') || '');
+    }
+    this.ObjectFlag = ObjectFlag;
   }
 
-  getShape(): IData[] {
-    if (this.isShape[`${this.element.dataset.filter}`] === true) {
-      this.isShape[`${this.element.dataset.filter}`] = false;
-    } else this.isShape[`${this.element.dataset.filter}`] = true;
-    this.arr.forEach((el) => {
-      this.nodeList.forEach((elem) => {
-        if (this.isShape[`${elem.dataset.filter}`] === true) {
-          if (elem.dataset.filter === el.shape) {
-            this.array.push(el);
-          }
-        }
-      });
-    });
-    return [...new Set(this.array)];
-  }
+  getShape() {
+    const keys: string[] = Object.keys(this.ObjectFlag);
+    for (let i = 0; i < keys.length - 1; i++) {
+      const key = Object.keys(this.ObjectFlag[`${keys[i]}`]);
+      const ar = document.querySelector(`.${keys[i]}`) as HTMLLIElement;
+      for (let j = 0; j < key.length; j++) {
+        if (this.ObjectFlag[`${keys[i]}`][`${key[j]}`] == true) {
+          ar.querySelectorAll('button')[j].classList.add('active');
+        } else ar.querySelectorAll('button')[j].classList.remove('active');
+      }
+    }
+    if (this.ObjectFlag[`${keys[3]}`].favorite == true) {
+      (document.querySelector('.favorite__input') as HTMLInputElement).checked = true;
+    } else (document.querySelector('.favorite__input') as HTMLInputElement).checked = false;
 
-  getColor(): IData[] {
-    if (this.isShape[`${this.element.dataset.filter}`] === true) {
-      this.isShape[`${this.element.dataset.filter}`] = false;
-    } else this.isShape[`${this.element.dataset.filter}`] = true;
-    this.arr.forEach((el) => {
-      this.nodeList.forEach((elem) => {
-        if (this.isShape[`${elem.dataset.filter}`] === true) {
-          if (elem.dataset.filter === el.color) {
-            this.array.push(el);
-          }
+    if ((document.querySelector(`.${keys[0]}`) as HTMLElement).querySelector('.active') !== null) {
+      this.array = [];
+      const keyFilter: string[] = Object.keys(this.ObjectFlag[`${keys[0]}`]);
+      for (let j = 0; j < keys[0].length; j++) {
+        if (this.ObjectFlag[`${keys[0]}`][`${keyFilter[j]}`] == true) {
+          this.arr.forEach((el) => {
+            if (keyFilter[j] == el[`${keys[0]}`]) {
+              this.array.push(el);
+            }
+          });
+        }
+      }
+      this.arr = this.array;
+    }
+    if ((document.querySelector(`.${keys[1]}`) as HTMLElement).querySelector('.active') !== null) {
+      this.array = [];
+      const keyFilter: string[] = Object.keys(this.ObjectFlag[`${keys[1]}`]);
+      for (let j = 0; j < keys[1].length; j++) {
+        if (this.ObjectFlag[`${keys[1]}`][`${keyFilter[j]}`] == true) {
+          this.arr.forEach((el) => {
+            if (keyFilter[j] == el[`${keys[1]}`]) {
+              this.array.push(el);
+            }
+          });
+        }
+      }
+      this.arr = this.array;
+    }
+    if ((document.querySelector(`.${keys[2]}`) as HTMLElement).querySelector('.active') !== null) {
+      this.array = [];
+      const keyFilter: string[] = Object.keys(this.ObjectFlag[`${keys[2]}`]);
+      for (let j = 0; j < keys[2].length; j++) {
+        if (this.ObjectFlag[`${keys[2]}`][`${keyFilter[j]}`] == true) {
+          this.arr.forEach((el) => {
+            if (keyFilter[j] == el[`${keys[2]}`]) {
+              this.array.push(el);
+            }
+          });
+        }
+      }
+      this.arr = this.array;
+    }
+    if ((document.querySelector('.favorite__input') as HTMLInputElement).checked) {
+      this.array = [];
+      const keyFilter: string[] = Object.keys(this.ObjectFlag[`${keys[3]}`]);
+      this.arr.forEach((el) => {
+        const r = el[`${keyFilter[0]}`];
+        if ((r as unknown as boolean) == true) {
+          this.array.push(el);
         }
       });
-    });
-    return [...new Set(this.array)];
-  }
-
-  getSize(): IData[] {
-    if (this.isShape[`${this.element.dataset.filter}`] === true) {
-      this.isShape[`${this.element.dataset.filter}`] = false;
-    } else this.isShape[`${this.element.dataset.filter}`] = true;
-    this.arr.forEach((el) => {
-      this.nodeList.forEach((elem) => {
-        if (this.isShape[`${elem.dataset.filter}`] === true) {
-          if (elem.dataset.filter === el.size) {
-            this.array.push(el);
-          }
-        }
-      });
-    });
-    return [...new Set(this.array)];
+      this.arr = this.array;
+    }
+    localStorage.setItem('object', JSON.stringify(this.ObjectFlag));
+    return this.arr;
   }
 }

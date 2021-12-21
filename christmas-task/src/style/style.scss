@@ -44,7 +44,8 @@ body{
   .background-blur{
     background: rgba(22, 41, 41, 0.5);
     backdrop-filter: blur(3px);
-    .main__container {
+    min-height: calc(100vh - 140px);
+    &.main__container {
       height: 100%;
       width: 100% ;
     }

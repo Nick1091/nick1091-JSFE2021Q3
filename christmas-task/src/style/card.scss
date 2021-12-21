@@ -11,6 +11,10 @@
   background-color: rgba(31, 112, 127, .3);
   backdrop-filter: blur(6px);
   cursor: pointer;
+  transition: all .3s;
+  &:hover{
+    transform: scale(1.02);
+  }
   .card__title{
     width: 100%;
     font-size: 20px;
@@ -46,8 +50,9 @@
     height: 40px;
     background: #24C5DB;
     left: -8px;
-    &:active{
-      background: #CBB77A;
+    transition: all .1s ;
+    &.active{
+      background: #ceac48;
     }
   }
 }

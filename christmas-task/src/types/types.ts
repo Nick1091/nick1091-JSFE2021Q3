@@ -1,14 +1,9 @@
 export interface IData {
-  num: string;
-  name: string;
-  count: string;
-  year: string;
-  shape: string;
-  color: string;
-  size: string;
-  favorite: boolean;
+  [key: string]: string;
 }
-
 export type Shape = {
   [key: string]: boolean;
 };
+export interface IObj {
+  [key: string]: Shape;
+}
