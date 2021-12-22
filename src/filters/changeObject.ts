@@ -1,7 +1,6 @@
-import { IData } from './types/types';
-import Filter from './filter';
-import { IObj } from './types/types';
-// import Slider from './slider';
+import { IData } from '../types/types';
+import Filter from './filterProperty';
+import { IObj } from '../types/types';
 
 export default class FilterFirst extends Filter {
   array: IData[] = [];
@@ -16,23 +15,23 @@ export default class FilterFirst extends Filter {
     this.element = element;
   }
 
-  getFirstFilters() {
+  getObjFilters() {
     const dataParent = (this.element.parentNode as HTMLElement).dataset.filter as string;
     const dataItem = this.element.dataset.filter as string;
 
     if (this.element.nodeName == 'INPUT') {
-      if (this.ObjectFlag[`${dataParent}`][`${dataItem}`] == false) {
+      if (this.ObjectFlag[dataParent][dataItem] === false) {
         (this.element as HTMLInputElement).checked = true;
-        this.ObjectFlag[`${dataParent}`][`${dataItem}`] = true;
+        this.ObjectFlag[dataParent][dataItem] = true;
       } else {
-        this.ObjectFlag[`${dataParent}`][`${dataItem}`] = false;
+        this.ObjectFlag[dataParent][dataItem] = false;
         (this.element as HTMLInputElement).checked = false;
       }
-    } else if (this.ObjectFlag[`${dataParent}`][`${dataItem}`] === true) {
+    } else if (this.ObjectFlag[dataParent][dataItem] === true) {
       this.element.classList.toggle('active');
-      this.ObjectFlag[`${dataParent}`][`${dataItem}`] = false;
+      this.ObjectFlag[dataParent][dataItem] = false;
     } else {
-      this.ObjectFlag[`${dataParent}`][`${dataItem}`] = true;
+      this.ObjectFlag[dataParent][dataItem] = true;
       this.element.classList.toggle('active');
     }
   }

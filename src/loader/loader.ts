@@ -1,4 +1,4 @@
-import { IData } from './types/types';
+import { IData } from '../types/types';
 const data = ' ./data.json';
 class Loader {
   async getToyList() {

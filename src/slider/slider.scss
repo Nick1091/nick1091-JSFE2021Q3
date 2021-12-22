@@ -1,0 +1,21 @@
+@import 'nouislider/dist/nouislider.css';
+.noUi-horizontal {
+  height: 6px;
+}
+.noUi-horizontal .noUi-handle {
+  width: 26px;
+  height: 26px;
+  right: -17px;
+  top: -10px;
+  border-radius: 50%;
+  cursor: ew-resize;
+}
+.noUi-touch-area {
+  height: 100%;
+  width: 100%;
+}
+.noUi-handle{
+  &::before, &::after{
+    background: transparent;
+  }
+}

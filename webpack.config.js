@@ -32,6 +32,11 @@ const config = {
           to: path.resolve(__dirname, 'dist/assets/toys'),
           noErrorOnMissing: true,
         },
+        { 
+          from: path.resolve(__dirname, 'public'),
+          to: path.resolve(__dirname, 'dist'),
+          noErrorOnMissing: true,
+        },
       ],
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),      
@@ -42,13 +47,6 @@ const config = {
         test: /\.(ts|tsx)$/i,
         loader: "ts-loader",
         exclude: ["/node_modules/"],
-      },
-      {
-        test: /.json/,
-        type: 'asset/resource',
-        // generator: {
-        //   filename: assets/[name][ext]
-        // } 
       },
       {
         test: /\.css$/i,
@@ -73,7 +71,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", "mjs", ".ts", ".js"],
   },
   performance: {
     maxEntrypointSize: 512000,

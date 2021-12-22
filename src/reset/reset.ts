@@ -1,4 +1,4 @@
-import { IObj } from './types/types';
+import { IObj } from '../types/types';
 
 export function resetFilters(
   obj: IObj,
@@ -7,15 +7,13 @@ export function resetFilters(
   elementCheck: HTMLInputElement
 ) {
   for (const keys in obj) {
-    for (const key in obj[`${keys}`]) {
-      obj[`${keys}`][`${key}`] = false;
+    for (const key in obj[keys]) {
+      obj[keys][key] = false;
     }
   }
   localStorage.setItem('object', JSON.stringify(obj));
-  console.log(obj);
   collection.forEach((el) => {
     el.classList.remove('active');
-    // console.log(che)
   });
   elementCheck.checked = false;
   search.value = '';

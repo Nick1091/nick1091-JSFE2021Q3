@@ -1,10 +1,10 @@
-import { IData } from './types/types';
-// import { IObj } from './types/types';
-// import Filter from './filter';
+import { IData } from '../types/types';
+import './card.scss';
+import './popup.scss';
 
 let popupActive = 0;
 export function ShowPopup(text: string) {
-  if (popupActive == 0) {
+  if (popupActive === 0) {
     popupActive = 1;
     const overlay = document.createElement('div') as HTMLElement;
     overlay.className = 'overlay';
@@ -26,18 +26,15 @@ export function ShowPopup(text: string) {
 }
 
 let arrayFavorite: IData[] = [];
-if (localStorage.getItem('arrayFavorite') || '') {
-  arrayFavorite = JSON.parse(localStorage.getItem('arrayFavorite') || '');
-  // (document.querySelector('.selected span') as HTMLElement).innerHTML = String(arrayFavorite.length);
+if (localStorage.getItem('arrayFavorite')) {
+  arrayFavorite = JSON.parse(localStorage.getItem('arrayFavorite') as string);
 }
 
 function favoriteCheck(item: IData, card: HTMLDivElement) {
   if (arrayFavorite.length < 20) {
     if ((card.lastChild as HTMLElement).classList.contains('active')) {
       (card.lastChild as HTMLElement).classList.toggle('active');
-      arrayFavorite = arrayFavorite.filter((el) => {
-        if (JSON.stringify(el) !== JSON.stringify(item)) return el;
-      });
+      arrayFavorite = arrayFavorite.filter((el) => JSON.stringify(el) !== JSON.stringify(item));
     } else {
       arrayFavorite.push(item);
       (card.lastChild as HTMLElement).classList.toggle('active');
@@ -45,14 +42,12 @@ function favoriteCheck(item: IData, card: HTMLDivElement) {
   } else {
     if ((card.lastChild as HTMLElement).classList.contains('active')) {
       (card.lastChild as HTMLElement).classList.toggle('active');
-      arrayFavorite = arrayFavorite.filter((el) => {
-        if (JSON.stringify(el) == JSON.stringify(item)) return el;
-      });
+      arrayFavorite = arrayFavorite.filter((el) => JSON.stringify(el) === JSON.stringify(item));
     } else {
       ShowPopup('Извините, все слоты заполнены');
     }
   }
-  (document.querySelector('.selected span') as HTMLElement).innerHTML = String(arrayFavorite.length);
+  (document.querySelector('.selected span') as HTMLElement).innerHTML = `${arrayFavorite.length}`;
   console.log(arrayFavorite.length);
   localStorage.setItem('arrayFavorite', JSON.stringify(arrayFavorite));
 }
@@ -60,7 +55,7 @@ function favoriteCheck(item: IData, card: HTMLDivElement) {
 export const renderPage = function renderPage(arr: IData[]) {
   const cardContainer = document.querySelector('.card__container') as HTMLTemplateElement;
   cardContainer.innerHTML = '';
-  (document.querySelector('.selected span') as HTMLElement).innerHTML = String(arrayFavorite.length);
+  (document.querySelector('.selected span') as HTMLElement).innerHTML = `${arrayFavorite.length}`;
   arr.forEach((item) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -79,7 +74,7 @@ export const renderPage = function renderPage(arr: IData[]) {
           <div class="mark"></div>`;
     cardContainer.append(card);
     arrayFavorite.forEach((el) => {
-      if (JSON.stringify(el) == JSON.stringify(item)) {
+      if (JSON.stringify(el) === JSON.stringify(item)) {
         (card.lastChild as HTMLElement).classList.add('active');
       }
     });
