@@ -62,8 +62,8 @@ class Header {
               <select class="sort-select">
                 <option selected value="sort-name-max">По названию от «А» до «Я»</option>
                 <option value="sort-name-min">По названию от «Я» до «А»</option>
-                <option value="sort-year-max">По по году приобретения первые</option>
-                <option value="sort-year-min">По по году приобретения последние</option>
+                <option value="sort-year-max">По году приобретения первые</option>
+                <option value="sort-year-min">По году приобретения последние</option>
               </select>
               <button class="resetSettings">Сброс настроек</button>
               <button class="reset">Сброс фильтров</button>
