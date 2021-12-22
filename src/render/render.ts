@@ -1,10 +1,14 @@
 import './render.scss';
 class Header {
-  headerRender() {
-    const mainContainer = document.querySelector('.main') as HTMLTemplateElement;
+  async headerRender() {
+    const main = document.querySelector('.main') as HTMLTemplateElement;
+    const backgroundBlur = document.createElement('div');
+    const mainContainer = document.createElement('div');
+    const cardContainer = document.createElement('div');
+    backgroundBlur.className = 'background-blur';
+    mainContainer.className = 'main__container';
+    cardContainer.className = 'card__container';
     mainContainer.innerHTML = `
-    <div class="background-blur">    
-      <div class="main__container">
         <div class="controls-panel">                  
           <div class="filters-meaning">
               <div class="controls-title">Фильтры по значению</div>
@@ -64,11 +68,10 @@ class Header {
               <button class="resetSettings">Сброс настроек</button>
               <button class="reset">Сброс фильтров</button>
           </div>
-        </div>
-      </div>
-      <div class="card__container">
-      </div>
-    </div> `;
+        </div> `;
+    main.append(backgroundBlur);
+    backgroundBlur.append(mainContainer);
+    backgroundBlur.append(cardContainer);
   }
 }
 

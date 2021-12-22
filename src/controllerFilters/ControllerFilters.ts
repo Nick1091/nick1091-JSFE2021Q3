@@ -24,7 +24,7 @@ class CardRender {
     const loader = new Loader();
     const list = await loader.getToyList();
 
-    let isCountSort = true;
+    let isCountSort = false;
     let filterers: IData[] = [];
     const filtersData = list;
     let isSearch = false;
@@ -80,7 +80,6 @@ class CardRender {
         arrayCount.push(i);
       }
       filterers = getSortRange(filtersData, arrayCount, 'count', ObjectFlag);
-
       loadRender(filterers);
     });
     sliderYears.noUiSlider.on('update', (values) => {

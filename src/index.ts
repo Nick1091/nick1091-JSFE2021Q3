@@ -5,6 +5,5 @@ import './style/style.scss';
 
 const app = new Header();
 app.headerRender();
-
 const card = new CardRender();
 card.getCard();

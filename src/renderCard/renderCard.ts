@@ -1,4 +1,5 @@
 import { IData } from '../types/types';
+// import { main } from '../render/render';
 import './card.scss';
 import './popup.scss';
 
@@ -52,8 +53,11 @@ function favoriteCheck(item: IData, card: HTMLDivElement) {
   localStorage.setItem('arrayFavorite', JSON.stringify(arrayFavorite));
 }
 
-export const renderPage = function renderPage(arr: IData[]) {
+export function renderPage(arr: IData[]) {
   const cardContainer = document.querySelector('.card__container') as HTMLTemplateElement;
+  console.log(cardContainer);
+  // const cardContainer = document.createElement('div');
+  // cardContainer.className = 'card__container';
   cardContainer.innerHTML = '';
   (document.querySelector('.selected span') as HTMLElement).innerHTML = `${arrayFavorite.length}`;
   arr.forEach((item) => {
@@ -61,17 +65,17 @@ export const renderPage = function renderPage(arr: IData[]) {
     card.className = 'card';
     card.dataset.num = item.num;
     card.innerHTML = `
-          <h2 class="card__title">${item.name}</h2>
-          <img src="./assets/toys/${item.num}.png" alt="toy" class="card-img">
-          <div class="card__info">
-            <p class="count">Количество: <span>${item.count}</span></p>
-            <p class="year">Год покупки: <span>${item.year}</span></p>
-            <p class="form">Форма: <span>${item.shape}</span></p>
-            <p class="color">Цвет: <span>${item.color}</span></p>
-            <p class="size">Размер: <span>${item.size}</span></p>
-            <p class="favorite">Любимая: <span>${item.favorite ? 'да' : 'нет'}</span></p>
-          </div>
-          <div class="mark"></div>`;
+    <h2 class="card__title">${item.name}</h2>
+    <img src="./assets/toys/${item.num}.png" alt="toy" class="card-img">
+    <div class="card__info">
+    <p class="count">Количество: <span>${item.count}</span></p>
+    <p class="year">Год покупки: <span>${item.year}</span></p>
+    <p class="form">Форма: <span>${item.shape}</span></p>
+    <p class="color">Цвет: <span>${item.color}</span></p>
+    <p class="size">Размер: <span>${item.size}</span></p>
+    <p class="favorite">Любимая: <span>${item.favorite ? 'да' : 'нет'}</span></p>
+    </div>
+    <div class="mark"></div>`;
     cardContainer.append(card);
     arrayFavorite.forEach((el) => {
       if (JSON.stringify(el) === JSON.stringify(item)) {
@@ -82,4 +86,5 @@ export const renderPage = function renderPage(arr: IData[]) {
       favoriteCheck(item, card);
     });
   });
-};
+  // main.append(cardContainer);
+}
