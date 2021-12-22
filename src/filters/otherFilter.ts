@@ -43,11 +43,11 @@ export const getSortData = function getSortData(arr: IData[]) {
     case 'sort-name-min':
       arr.sort((a, b) => (a.name < b.name ? 1 : -1));
       break;
-    case 'sort-count-max':
-      arr.sort((a, b) => (+a.count > +b.count ? 1 : -1));
+    case 'sort-year-max':
+      arr.sort((a, b) => (+a.year > +b.year ? 1 : -1));
       break;
-    case 'sort-count-min':
-      arr.sort((a, b) => (+a.count < +b.count ? 1 : -1));
+    case 'sort-year-min':
+      arr.sort((a, b) => (+a.year < +b.year ? 1 : -1));
       break;
   }
   return arr;

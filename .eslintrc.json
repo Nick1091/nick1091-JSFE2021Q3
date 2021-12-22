@@ -24,7 +24,7 @@
   ],
   "rules": {
       "eol-last": 2,
-    //   "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/comma-dangle": "off",
       "no-debugger": "off",
       "no-console": 0,
