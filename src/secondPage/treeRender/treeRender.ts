@@ -63,7 +63,7 @@ class TreeRender {
         choiceImg.draggable = true;
         choiceImg.dataset.number = `${ind}`;
         choiceImg.id = `${item.num}-${i}`;
-        choiceImg.src = `../../assets/toys/${item.num}.png`;
+        choiceImg.src = `./assets/toys/${item.num}.png`;
         result.push(choiceImg);
       }
       choiceToy.append(choiceNumber);

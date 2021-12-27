@@ -5,11 +5,11 @@ export function getBgImages() {
   if (localStorage.getItem('isBgNumber')) {
     isBgNumber = JSON.parse(localStorage.getItem('isBgNumber') as string);
   }
-  treeContainer.style.backgroundImage = `url(../../assets/bg/${isBgNumber}.jpg)`;
+  treeContainer.style.backgroundImage = `url(./assets/bg/${isBgNumber}.jpg)`;
   bgItems.forEach((it) => {
     it.addEventListener('click', (e) => {
       e.stopPropagation();
-      treeContainer.style.backgroundImage = `url(../../assets/bg/${(e.target as HTMLElement).dataset.bg}.jpg)`;
+      treeContainer.style.backgroundImage = `url(./assets/bg/${(e.target as HTMLElement).dataset.bg}.jpg)`;
       isBgNumber = (e.target as HTMLElement).dataset.bg as string;
       localStorage.setItem('isBgNumber', JSON.stringify(isBgNumber));
     });
