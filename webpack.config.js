@@ -15,10 +15,13 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: 'assets/[name][ext][query]',
   },
+  
   devServer: {
     open: true,
     host: "localhost",
-    static: ['./src', './public'],
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -30,6 +33,21 @@ const config = {
         { 
           from: path.resolve(__dirname, 'src/assets/toys'),
           to: path.resolve(__dirname, 'dist/assets/toys'),
+          noErrorOnMissing: true,
+        },
+        { 
+          from: path.resolve(__dirname, 'src/assets/tree'),
+          to: path.resolve(__dirname, 'dist/assets/tree'),
+          noErrorOnMissing: true,
+        },
+        { 
+          from: path.resolve(__dirname, 'src/assets/audio'),
+          to: path.resolve(__dirname, 'dist/assets/audio'),
+          noErrorOnMissing: true,
+        },
+        { 
+          from: path.resolve(__dirname, 'src/assets/bg'),
+          to: path.resolve(__dirname, 'dist/assets/bg'),
           noErrorOnMissing: true,
         },
         { 
@@ -57,7 +75,7 @@ const config = {
         use: [stylesHandler, "css-loader", "sass-loader"],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|mp3)$/i,
         type: 'asset/resource',
       },
       {

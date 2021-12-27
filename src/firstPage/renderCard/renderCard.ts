@@ -1,27 +1,29 @@
-import { IData } from '../types/types';
+import { IData } from '../../types/types';
 import './card.scss';
 import './popup.scss';
 
 let popupActive = 0;
 export function ShowPopup(text: string) {
-  if (popupActive === 0) {
-    popupActive = 1;
-    const overlay = document.createElement('div') as HTMLElement;
-    overlay.className = 'overlay';
-    const popup = document.createElement('div') as HTMLElement;
-    const close = document.createElement('div') as HTMLElement;
-    close.className = 'close';
-    popup.className = 'popup';
-    popup.innerHTML = text;
-    const window = document.querySelector('.main') as HTMLElement;
-    popup.append(close);
-    window.append(overlay);
-    window.append(popup);
-    close.addEventListener('click', () => {
-      popup.remove();
-      overlay.remove();
-      popupActive = 0;
-    });
+  const window = document.querySelector('.main__container') as HTMLElement;
+  if (window !== null) {
+    if (popupActive === 0) {
+      popupActive = 1;
+      const overlay = document.createElement('div') as HTMLElement;
+      overlay.className = 'overlay';
+      const popup = document.createElement('div') as HTMLElement;
+      const close = document.createElement('div') as HTMLElement;
+      close.className = 'close';
+      popup.className = 'popup';
+      popup.innerHTML = text;
+      popup.append(close);
+      window.append(overlay);
+      window.append(popup);
+      close.addEventListener('click', () => {
+        popup.remove();
+        overlay.remove();
+        popupActive = 0;
+      });
+    }
   }
 }
 
@@ -29,7 +31,6 @@ let arrayFavorite: IData[] = [];
 if (localStorage.getItem('arrayFavorite')) {
   arrayFavorite = JSON.parse(localStorage.getItem('arrayFavorite') as string);
 }
-console.log(arrayFavorite.length);
 
 function favoriteCheck(item: IData, card: HTMLDivElement) {
   if (arrayFavorite.length < 20) {
@@ -55,7 +56,9 @@ function favoriteCheck(item: IData, card: HTMLDivElement) {
 
 export function renderPage(arr: IData[]) {
   const cardContainer = document.querySelector('.card__container') as HTMLTemplateElement;
-  cardContainer.innerHTML = '';
+  if (cardContainer !== null) {
+    cardContainer.innerHTML = '';
+  }
   (document.querySelector('.selected span') as HTMLElement).innerHTML = `${arrayFavorite.length}`;
   arr.forEach((item) => {
     const card = document.createElement('div');

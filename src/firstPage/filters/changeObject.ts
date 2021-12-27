@@ -1,6 +1,6 @@
-import { IData } from '../types/types';
+import { IData } from '../../types/types';
 import Filter from './filterProperty';
-import { IObj } from '../types/types';
+import { IObj } from '../../types/types';
 
 export default class FilterFirst extends Filter {
   array: IData[] = [];

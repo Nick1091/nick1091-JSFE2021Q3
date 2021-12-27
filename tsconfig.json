@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts", "./src/secondPage/typings.d.ts"]
 }

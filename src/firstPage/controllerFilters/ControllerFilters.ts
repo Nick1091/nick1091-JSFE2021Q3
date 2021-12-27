@@ -1,8 +1,8 @@
-import { target } from '../nouislider';
-import Loader from '../loader/loader';
+import { target } from '../../nouislider';
+import Loader from '../../loader/loader';
 import SliderRender from '../slider/slidersRender';
 import FilterFirst from '../filters/changeObject';
-import { IData } from '../types/types';
+import { IData } from '../../types/types';
 import { getSortRange, getFilterPage, getSortData, getFilterSearch } from '../filters/otherFilter';
 import { renderPage, ShowPopup } from '../renderCard/renderCard';
 import { resetFilters } from '../reset/reset';
@@ -72,36 +72,41 @@ class CardRender {
     //filter range slider
     const arrayCount: number[] = [];
     const arrayYears: number[] = [];
-
-    sliderCount.noUiSlider.on('update', (values) => {
-      arrayCount.length = 0;
-      const a = values.map((item) => (+item).toFixed(0));
-      for (let i = +a[0]; i <= +a[1]; i++) {
-        arrayCount.push(i);
-      }
-      filterers = getSortRange(filtersData, arrayCount, 'count', ObjectFlag);
-      loadRender(filterers);
-    });
-    sliderYears.noUiSlider.on('update', (values) => {
-      arrayYears.length = 0;
-      const a = values.map((item) => (+item).toFixed(0));
-      for (let i = +a[0]; i <= +a[1]; ) {
-        arrayYears.push(i);
-        i += 10;
-      }
-      filterers = getSortRange(filtersData, arrayYears, 'year', ObjectFlag);
-      loadRender(filterers);
-    });
+    if (sliderCount !== null) {
+      sliderCount.noUiSlider?.on('update', (values) => {
+        arrayCount.length = 0;
+        const a = values.map((item) => (+item).toFixed(0));
+        for (let i = +a[0]; i <= +a[1]; i++) {
+          arrayCount.push(i);
+        }
+        filterers = getSortRange(filtersData, arrayCount, 'count', ObjectFlag);
+        loadRender(filterers);
+      });
+    }
+    if (sliderYears !== null) {
+      sliderYears.noUiSlider?.on('update', (values) => {
+        arrayYears.length = 0;
+        const a = values.map((item) => (+item).toFixed(0));
+        for (let i = +a[0]; i <= +a[1]; ) {
+          arrayYears.push(i);
+          i += 10;
+        }
+        filterers = getSortRange(filtersData, arrayYears, 'year', ObjectFlag);
+        loadRender(filterers);
+      });
+    }
 
     //sort selected
-    select.addEventListener('input', () => {
-      isCountSort = true;
-      localStorage.setItem('SortData', JSON.stringify(select.value));
-      localStorage.setItem('isCountSort', JSON.stringify(isCountSort));
-      filterers = getFilterPage(filtersData, ObjectFlag);
-      filterers = getSortData(filterers);
-      loadRender(filterers);
-    });
+    if (select !== null) {
+      select.addEventListener('input', () => {
+        isCountSort = true;
+        localStorage.setItem('SortData', JSON.stringify(select.value));
+        localStorage.setItem('isCountSort', JSON.stringify(isCountSort));
+        filterers = getFilterPage(filtersData, ObjectFlag);
+        filterers = getSortData(filterers);
+        loadRender(filterers);
+      });
+    }
 
     //sort search
     search.addEventListener('change', () => {

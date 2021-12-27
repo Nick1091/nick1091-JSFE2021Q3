@@ -1,7 +1,8 @@
 import './render.scss';
-class Header {
+class PageFirst {
   async mainRender() {
     const main = document.querySelector('.main') as HTMLTemplateElement;
+    main.innerHTML = '';
     const backgroundBlur = document.createElement('div');
     const mainContainer = document.createElement('div');
     const cardContainer = document.createElement('div');
@@ -75,4 +76,4 @@ class Header {
   }
 }
 
-export default Header;
+export default PageFirst;

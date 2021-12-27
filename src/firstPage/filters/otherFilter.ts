@@ -1,5 +1,5 @@
-import { IData } from '../types/types';
-import { IObj } from '../types/types';
+import { IData } from '../../types/types';
+import { IObj } from '../../types/types';
 import Filter from './filterProperty';
 
 let year: number[] = [1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020];

@@ -1,5 +1,5 @@
-import { IData } from '../types/types';
-import { IObj } from '../types/types';
+import { IData } from '../../types/types';
+import { IObj } from '../../types/types';
 
 export default class Filter {
   arr: IData[] = [];
@@ -23,15 +23,17 @@ export default class Filter {
       const ar = document.querySelector(`.${keys[i]}`) as HTMLLIElement;
       for (let j = 0; j < key.length; j++) {
         if (this.ObjectFlag[keys[i]][key[j]] === true) {
-          ar.querySelectorAll('button')[j].classList.add('active');
-        } else ar.querySelectorAll('button')[j].classList.remove('active');
+          ar?.querySelectorAll('button')[j].classList.add('active');
+        } else ar?.querySelectorAll('button')[j].classList.remove('active');
       }
     }
-    if (this.ObjectFlag[keys[3]].favorite == true) {
-      (document.querySelector('.favorite__input') as HTMLInputElement).checked = true;
-    } else (document.querySelector('.favorite__input') as HTMLInputElement).checked = false;
-
-    if ((document.querySelector(`.${keys[0]}`) as HTMLElement).querySelector('.active') !== null) {
+    const inputCheckbox = document.querySelector('.favorite__input') as HTMLInputElement;
+    if (inputCheckbox !== null) {
+      if (this.ObjectFlag[keys[3]].favorite == true) {
+        inputCheckbox.checked = true;
+      } else inputCheckbox.checked = false;
+    }
+    if ((document.querySelector(`.${keys[0]}`) as HTMLElement)?.querySelector('.active') !== null) {
       this.array = [];
       const keyFilter: string[] = Object.keys(this.ObjectFlag[keys[0]]);
       for (let j = 0; j < keys[0].length; j++) {
@@ -45,7 +47,7 @@ export default class Filter {
       }
       this.arr = this.array;
     }
-    if ((document.querySelector(`.${keys[1]}`) as HTMLElement).querySelector('.active') !== null) {
+    if ((document.querySelector(`.${keys[1]}`) as HTMLElement)?.querySelector('.active') !== null) {
       this.array = [];
       const keyFilter: string[] = Object.keys(this.ObjectFlag[keys[1]]);
       for (let j = 0; j < keys[1].length; j++) {
@@ -59,7 +61,7 @@ export default class Filter {
       }
       this.arr = this.array;
     }
-    if ((document.querySelector(`.${keys[2]}`) as HTMLElement).querySelector('.active') !== null) {
+    if ((document.querySelector(`.${keys[2]}`) as HTMLElement)?.querySelector('.active') !== null) {
       this.array = [];
       const keyFilter: string[] = Object.keys(this.ObjectFlag[keys[2]]);
       for (let j = 0; j < keys[2].length; j++) {
@@ -73,7 +75,7 @@ export default class Filter {
       }
       this.arr = this.array;
     }
-    if ((document.querySelector('.favorite__input') as HTMLInputElement).checked) {
+    if ((document.querySelector('.favorite__input') as HTMLInputElement)?.checked) {
       this.array = [];
       const keyFilter: string[] = Object.keys(this.ObjectFlag[keys[3]]);
       this.arr.forEach((el) => {
