@@ -24,7 +24,6 @@ li {
   height: 5px;
   border-radius: 50%;
   margin: -5px;
-  animation-name: blue;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   animation-duration: 2s;
@@ -46,35 +45,30 @@ li {
 .chain-garland li.red { animation-name: red; }
 .chain-garland li.green { animation-name: green; }
 .chain-garland li.blue { animation-name: blue; }
-.chain-garland li.yellow { animation-name: yellow; }
+.chain-garland li.yell { animation-name: yell; }
 
 .chain-garland li.multicolor:nth-child(1n + 1) { animation-name: red; }
 .chain-garland li:nth-child(2n + 2).multicolor { animation-name: green; }
 .chain-garland li:nth-child(3n + 3).multicolor { animation-name: blue; }
-.chain-garland li:nth-child(4n + 4).multicolor { animation-name: yellow; }
-@keyframes flash-0 { 
-    0%, 100% { background: rgba(0, 25, 247,1);
-    box-shadow: 0px 2px 15px 2px rgba(0,255,255,1);} 
-    50% { background: rgba(0,255,255,$light-off-opacity);
-    box-shadow: 0px 2px 15px 2px  rgba(0,255,255,0.2);}
-}
+.chain-garland li:nth-child(4n + 4).multicolor { animation-name: yell; }
 @keyframes blue { 
     0%, 100% { background: rgba(0, 25, 247,1);
-    box-shadow: 2px 2px 15px 2px rgba(0, 25, 247,1);} 
+    box-shadow: 2px 2px 15px 2px rgba(0, 25, 247, 1);} 
     50% { background: rgba(0, 25, 247,$light-off-opacity);
-    box-shadow: 2px 2px 15px 2px rgba(0, 25, 247,0.2);}
+    box-shadow: 2px 2px 15px 2px rgba(0, 25, 247, 0.2);}
 }
 @keyframes red { 
     0%, 100% { background: rgb(247, 49, 0);
-    box-shadow: 0px 2px 15px 2px rgba(247, 0, 0,1);} 
+    box-shadow: 0px 2px 15px 2px rgba(247, 0, 0, 1);} 
     50% { background: rgba(247, 0, 0,$light-off-opacity);
-    box-shadow: 0px 2px 15px 2px rgba(247, 0, 0,0.2);}
+    box-shadow: 0px 2px 15px 2px rgba(247, 0, 0, 0.2);}
 }
-@keyframes yellow { 
-    0%, 100% { background: rgb(251, 255, 2);
-    box-shadow: 0px 2px 15px 2px rgba(251, 255, 2,1);} 
-    50% { background: rgba(158, 255, 2,$light-off-opacity);
-    box-shadow: 0px 2px 15px 2px rgba(158, 255, 2, 0.2);}
+@keyframes yell {
+    0%, 100% { background: rgba(255, 255, 0, 1);
+    box-shadow: 0px 2px 12px 2px rgba(255, 255, 0, 1);}
+    50% { background: rgba(255, 255, 0, 0.4);
+    box-shadow: 0px 2px 15px 2px rgba(255, 255, 0, 0.2);
+  }
 }
 @keyframes green { 
     0%, 100% { background: rgb(1, 255, 86);

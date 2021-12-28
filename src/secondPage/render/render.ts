@@ -44,7 +44,7 @@ class PageSecond {
                     <button class="btn-color multicolor-btn" data-color="multicolor"></button>
                     <button class="btn-color red-btn" data-color="red"></button>
                     <button class="btn-color blue-btn" data-color="blue"></button>
-                    <button class="btn-color yellow-btn" data-color="yellow"></button>
+                    <button class="btn-color yellow-btn" data-color="yell"></button>
                     <button class="btn-color green-btn" data-color="green"></button>
                   </div>
                   <button class="turn-lights">
