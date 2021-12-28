@@ -77,9 +77,6 @@ class PageSecond {
                 <h2 class="tree-decorate-title">ВЫ НАРЯДИЛИ</h2>
                 <div class="tree-decorate-container">
                   <div class="tree-decorate"></div>
-                  <div class="tree-decorate"></div>
-                  <div class="tree-decorate"></div>
-                  <div class="tree-decorate"></div>
                 </div>
               </div>
             </div>

@@ -16,9 +16,6 @@ export function handleDraggle() {
       (e.target as HTMLImageElement).style.left = '';
       (e.target as HTMLImageElement).style.top = '';
     }
-    console.log(choiceToy[+index]);
-    console.log(choiceToy[+index].firstChild);
-    console.log(e.target);
     (choiceToy[+index].firstChild as HTMLElement).innerHTML = `${
       choiceToy[+index].querySelectorAll('.choice-img').length
     }`;

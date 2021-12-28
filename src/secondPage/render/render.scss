@@ -219,7 +219,6 @@
   align-content: flex-start;
   gap: 10px;
   width: 100%;
-  // padding-top: 25px;
   padding-left: 25px;
 }
 .choice-tree {
@@ -286,15 +285,6 @@
   }
   .tree-decorate:nth-child(1) {
     background-image: url(../../assets/tree/-1.png);
-  }
-  .tree-decorate:nth-child(2) {
-    background-image: url(../../assets/tree/-2.png);
-  }
-  .tree-decorate:nth-child(3) {
-    background-image: url(../../assets/tree/-3.png);
-  }
-  .tree-decorate:nth-child(4) {
-    background-image: url(../../assets/tree/-4.png);
   }
 }
 .tree-decorate-container::-webkit-scrollbar {

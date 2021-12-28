@@ -8,7 +8,6 @@ export function getTreesStart() {
   mainTree.src = `./assets/tree/-${isTree}.png`;
   greenTree.forEach((el) => {
     el.addEventListener('click', (e) => {
-      console.log(e.currentTarget);
       mainTree.src = `./assets/tree/-${el.dataset.tree}.png`;
       isTree = el.dataset.tree as string;
       localStorage.setItem('isTree', JSON.stringify(isTree));
