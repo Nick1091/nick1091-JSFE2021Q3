@@ -1,15 +1,22 @@
 import './garland.scss';
 export function getGarland() {
-  const turnGarland = document.querySelector('#turn-lights-id') as HTMLInputElement;
-  const treeGarland = document.querySelector('.tree-lights-container') as HTMLInputElement;
+  const treeGarland = document.querySelector('.tree-lights-container');
   let colorGarland = 'multicolor';
+  const turnGarland = document.querySelector('#turn-lights-id');
   function getGarlandColor(e: Event) {
+    if (!(turnGarland instanceof HTMLInputElement)) {
+      throw new Error('Error');
+    }
+    if (!(treeGarland instanceof HTMLElement)) {
+      throw new Error('Error');
+    }
+    if (!(e.target instanceof HTMLButtonElement || e.target instanceof HTMLInputElement)) {
+      throw new Error('Error');
+    }
+    const { target } = e;
     treeGarland.innerHTML = '';
-    turnGarland.checked = (e.target as HTMLButtonElement).classList.contains('btn-color') ? true : turnGarland.checked;
-    colorGarland =
-      (e.target as HTMLButtonElement).dataset.color !== undefined
-        ? `${(e.target as HTMLButtonElement).dataset.color}`
-        : colorGarland;
+    turnGarland.checked = target.classList.contains('btn-color') ? true : turnGarland.checked;
+    colorGarland = target.dataset.color !== undefined ? `${target.dataset.color}` : colorGarland;
     if (turnGarland.checked) {
       let angle = 12;
       const n = [
@@ -44,9 +51,9 @@ export function getGarland() {
     }
     return;
   }
-  const btnColor = document.querySelectorAll('.btn-color') as NodeListOf<HTMLButtonElement>;
+  const btnColor: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.btn-color');
   btnColor.forEach((elem) => {
     elem.addEventListener('click', getGarlandColor);
   });
-  turnGarland.addEventListener('click', getGarlandColor);
+  turnGarland?.addEventListener('click', getGarlandColor);
 }

@@ -1,7 +1,7 @@
-import { IData } from '../types/types';
+import { IData } from '../types/index';
 const data = './data.json';
 class Loader {
-  async getToyList() {
+  async getToysList() {
     const res = await fetch(data);
     const list: IData[] = await res.json();
     return list;

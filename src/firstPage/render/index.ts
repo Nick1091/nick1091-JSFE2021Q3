@@ -1,7 +1,10 @@
 import './render.scss';
 class PageFirst {
   async mainRender() {
-    const main = document.querySelector('.main') as HTMLTemplateElement;
+    const main = document.querySelector('.main');
+    if (!(main instanceof HTMLElement)) {
+      throw new Error('Error');
+    }
     main.innerHTML = '';
     const backgroundBlur = document.createElement('div');
     const mainContainer = document.createElement('div');

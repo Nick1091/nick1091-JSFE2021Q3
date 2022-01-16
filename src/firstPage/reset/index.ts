@@ -1,4 +1,4 @@
-import { IObj } from '../../types/types';
+import { IObj } from '../../types/index';
 
 export function resetFilters(
   obj: IObj,

@@ -1,6 +1,6 @@
-import { IData } from '../../types/types';
+import { IData } from '../../types/index';
 import Filter from './filterProperty';
-import { IObj } from '../../types/types';
+import { IObj } from '../../types/index';
 
 export default class FilterFirst extends Filter {
   array: IData[] = [];
@@ -15,24 +15,29 @@ export default class FilterFirst extends Filter {
     this.element = element;
   }
 
-  getObjFilters() {
-    const dataParent = (this.element.parentNode as HTMLElement).dataset.filter as string;
-    const dataItem = this.element.dataset.filter as string;
-
-    if (this.element.nodeName == 'INPUT') {
-      if (this.ObjectFlag[dataParent][dataItem] === false) {
-        (this.element as HTMLInputElement).checked = true;
-        this.ObjectFlag[dataParent][dataItem] = true;
-      } else {
+  getObjFilters(): void {
+    const el = this.element;
+    const dataParent = this.element.parentElement?.dataset.filter;
+    if (dataParent === undefined) {
+      throw new Error('Error');
+    }
+    const dataItem = this.element.dataset.filter;
+    if (dataItem !== undefined) {
+      if (el instanceof HTMLInputElement) {
+        if (this.ObjectFlag[dataParent][dataItem] === false) {
+          el.checked = true;
+          this.ObjectFlag[dataParent][dataItem] = true;
+        } else {
+          this.ObjectFlag[dataParent][dataItem] = false;
+          el.checked = false;
+        }
+      } else if (this.ObjectFlag[dataParent][dataItem] === true) {
+        el.classList.toggle('active');
         this.ObjectFlag[dataParent][dataItem] = false;
-        (this.element as HTMLInputElement).checked = false;
+      } else {
+        this.ObjectFlag[dataParent][dataItem] = true;
+        el.classList.toggle('active');
       }
-    } else if (this.ObjectFlag[dataParent][dataItem] === true) {
-      this.element.classList.toggle('active');
-      this.ObjectFlag[dataParent][dataItem] = false;
-    } else {
-      this.ObjectFlag[dataParent][dataItem] = true;
-      this.element.classList.toggle('active');
     }
   }
 }

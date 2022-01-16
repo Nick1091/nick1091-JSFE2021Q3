@@ -1,7 +1,10 @@
 import './render.scss';
 class PageMain {
   async mainRender() {
-    const main = document.querySelector('.main') as HTMLTemplateElement;
+    const main = document.querySelector('.main');
+    if (!(main instanceof HTMLElement)) {
+      throw new Error('Error');
+    }
     main.innerHTML = `
     <div class="first__page">
       <div class="toy1"></div>
