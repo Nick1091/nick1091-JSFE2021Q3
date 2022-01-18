@@ -371,31 +371,52 @@
   margin-top: 10px;
   position: relative;
   z-index: 10;
-  width: 48px;
-  height: 24px;
-  background: rgba(0, 255, 98, 0.5) !important;
   border-radius: 24px;
-  box-shadow: inset 0px 1px 2px rgb(0 0 0 / 50%), 0px 1px 0px rgb(255 255 255 / 30%);
   background: none;
   border: none;
+  cursor: pointer;
   #turn-lights-id{
-    visibility: hidden;
+    display: none;	
   }
   .turn-lights-label{
-    display: block;
-    width: 18px;
-    height: 18px;
-    border-radius: 50px;
-    background-color: var(--whole-color);
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    box-shadow: 2px 1px 5px rgb(0 0 0 / 50%);
-    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #8f978b 100%);
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    user-select: none;
+    .turn-lights-inner{
+      display: inline-block;	
+      width: 50px;
+      height: 26px;	
+      border-radius: 20px;
+      top: 0px;			
+      vertical-align: top;
+      background: #424242;
+      transition: .1s;
+      box-shadow: inset 0px 1px 2px rgb(0 0 0 / 50%), 0px 1px 1px rgb(255 255 255 / 30%);
+      position: relative;
+      cursor: pointer;
+      border-color: rgba(0, 0, 0, .3);
+      user-select: none;
+      line-height: 28px;
+      &::before {
+        content: '';
+        display: inline-block;	
+        width: 20px;	
+        height: 20px;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        box-shadow: 2px 1px 5px rgb(0 0 0 / 50%);
+        background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #8f978b 100%);
+        transition: .15s;	
+      }
+    }
+    #turn-lights-id:checked + .turn-lights-inner {
+      background:#04b17d;
+    }
   }
-  #turn-lights-id:checked + .turn-lights-label {
+  #turn-lights-id:checked + .turn-lights-inner::before {
     left: 27px;
   }
 }

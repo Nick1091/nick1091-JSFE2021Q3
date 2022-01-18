@@ -23,7 +23,7 @@ export function ShowPopup(text: string) {
       popup.className = 'popup';
       popup.innerHTML = text;
       popup.append(close);
-      windowMain.append(overlay);
+      document.body.append(overlay);
       window.append(popup);
       close.addEventListener('click', () => {
         popup.remove();

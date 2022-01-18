@@ -3,6 +3,10 @@ export function getGarland() {
   const treeGarland = document.querySelector('.tree-lights-container');
   let colorGarland = 'multicolor';
   const turnGarland = document.querySelector('#turn-lights-id');
+  const turnGarlandLabel = document.querySelector('.turn-lights');
+  if (!(turnGarlandLabel instanceof HTMLButtonElement)) {
+    throw new Error('Error');
+  }
   function getGarlandColor(e: Event) {
     if (!(turnGarland instanceof HTMLInputElement)) {
       throw new Error('Error');
@@ -10,7 +14,14 @@ export function getGarland() {
     if (!(treeGarland instanceof HTMLElement)) {
       throw new Error('Error');
     }
-    if (!(e.target instanceof HTMLButtonElement || e.target instanceof HTMLInputElement)) {
+    if (
+      !(
+        e.target instanceof HTMLButtonElement ||
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLLabelElement ||
+        e.target instanceof HTMLDivElement
+      )
+    ) {
       throw new Error('Error');
     }
     const { target } = e;
@@ -49,11 +60,16 @@ export function getGarland() {
         treeGarland.append(listLight);
       }
     }
-    return;
   }
   const btnColor: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.btn-color');
   btnColor.forEach((elem) => {
     elem.addEventListener('click', getGarlandColor);
   });
-  turnGarland?.addEventListener('click', getGarlandColor);
+  turnGarlandLabel?.addEventListener('click', (e) => {
+    if (!(turnGarland instanceof HTMLInputElement)) {
+      throw new Error('Error');
+    }
+    turnGarland.checked = turnGarland.checked ? false : true;
+    getGarlandColor(e);
+  });
 }

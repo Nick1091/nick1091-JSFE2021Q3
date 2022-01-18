@@ -1,4 +1,5 @@
 import _default, { target } from 'nouislider';
+import './nouislider.css';
 import './slider.scss';
 import { getStorage } from '../getLocalStorage/index';
 

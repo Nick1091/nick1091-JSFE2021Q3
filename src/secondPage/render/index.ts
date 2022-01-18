@@ -51,10 +51,9 @@ class PageSecond {
                     <button class="btn-color green-btn" data-color="green"></button>
                   </div>
                   <button class="turn-lights">
-                    <input type="checkbox" name="turn-lights" class="turn-lights-checkbox" id="turn-lights-id">
-                    <label class="turn-lights-label" for="turn-lights-id">
+                  <label class="turn-lights-label" for="turn-lights-id">
+                      <input type="checkbox" name="turn-lights" class="turn-lights-checkbox" id="turn-lights-id">
                       <div class="turn-lights-inner"></div>
-                      <div class="turn-lights-switch"></div>
                     </label>
                   </button>
                 </div>

@@ -1,4 +1,4 @@
-import { target } from '../../nouislider';
+import { target } from '../slider/nouislider';
 import Loader from '../../loader/index';
 import SliderRender from '../slider/index';
 import FilterFirst from '../filters/changeObject';
@@ -65,7 +65,7 @@ class CardRender {
     });
 
     //filter range slider
-    sliderCount?.noUiSlider?.on('update', (values) => {
+    sliderCount?.noUiSlider?.on('change', (values) => {
       const arrayCount: number[] = [];
       for (let i = +values[0]; i <= +values[1]; i++) {
         arrayCount.push(i);
@@ -73,7 +73,7 @@ class CardRender {
       getToysPage(getSortRange(list, arrayCount, 'count', ObjectFlag));
     });
 
-    sliderYears?.noUiSlider?.on('update', (values) => {
+    sliderYears?.noUiSlider?.on('change', (values) => {
       const arrayYears: number[] = [];
       for (let i = +values[0]; i <= +values[1]; ) {
         arrayYears.push(i);
