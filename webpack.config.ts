@@ -9,6 +9,7 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "style-loader";
 
 const config = {
+  mode: isProduction ? 'production': 'development',
   entry: "./src/index.ts",
   devtool: 'inline-source-map',
   output: {
@@ -98,12 +99,6 @@ const config = {
 };
 
 module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-
-    config.plugins.push(new MiniCssExtractPlugin());
-  } else {
-    config.mode = "development";
-  }
+  if (isProduction)  config.plugins.push(new MiniCssExtractPlugin());
   return config;
 };
