@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "strict": true, 
+    "esModuleInterop": true,
+    "module": "es6",
+    "target": "es2016",
+    "forceConsistentCasingInFileNames": true, 
+    "moduleResolution": "node",
+  },
+  "files": ["src/index.ts"]
+}
