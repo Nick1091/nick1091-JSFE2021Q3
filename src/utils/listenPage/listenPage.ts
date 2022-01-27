@@ -109,6 +109,7 @@ export async function listenPage() {
   raceButton.addEventListener('click', async () => {
     raceButton.disabled = true;
     const winner = await race(startDriving);
+    if (winner === null) return (resetButton.disabled = false);
     const winnerMessage = document.getElementById('message-winner');
     if (!(winnerMessage instanceof HTMLElement)) {
       throw new Error("it's not a button");
