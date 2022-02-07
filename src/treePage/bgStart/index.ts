@@ -1,4 +1,4 @@
-import { getStorage } from '../../firstPage/getLocalStorage/index';
+import { getStorage } from '../../toysPage/getLocalStorage/index';
 export function getBgImages() {
   let isBgNumber = '1';
   const treeContainer = document.querySelector('.tree-container');

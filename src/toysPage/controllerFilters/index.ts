@@ -39,7 +39,6 @@ class CardRender {
     select.value = getStorage('SortData') ? getStorage('SortData') : select.value;
     search.value = getStorage('SortSearch') ? getStorage('SortSearch') : search.value;
 
-    //render card
     function getToysPage(arr: IData[]) {
       if (!(search instanceof HTMLInputElement)) {
         throw new Error('Error');
@@ -50,7 +49,6 @@ class CardRender {
     }
     getToysPage(list);
 
-    // filter form, color, favorite
     const elementList: NodeListOf<HTMLElement> = document.querySelectorAll('.filters-meaning button, .favorite__input');
 
     function objFilter(element: HTMLElement): IData[] {
@@ -64,7 +62,6 @@ class CardRender {
       });
     });
 
-    //filter range slider
     sliderCount?.noUiSlider?.on('change', (values) => {
       const arrayCount: number[] = [];
       for (let i = +values[0]; i <= +values[1]; i++) {
@@ -82,13 +79,11 @@ class CardRender {
       getToysPage(getSortRange(list, arrayYears, 'year', ObjectFlag));
     });
 
-    //sort selected
     select.addEventListener('input', () => {
       getIsBooleanSort(select);
       getToysPage(getFilterPage(list, ObjectFlag));
     });
 
-    //sort search
     search.addEventListener('change', () => {
       localStorage.setItem('SortSearch', JSON.stringify(search.value));
       localStorage.setItem('flagSearch', JSON.stringify(isSearch));
@@ -96,7 +91,6 @@ class CardRender {
       getToysPage(getFilterSearch(list, search.value));
     });
 
-    // reset
     const reset = document.querySelector('.reset');
     reset?.addEventListener('click', () => {
       isSearch = false;
@@ -109,7 +103,7 @@ class CardRender {
       outputs[3].innerHTML = '2020';
       getToysPage(list);
     });
-    //clear storage
+
     document.querySelector('.resetSettings')?.addEventListener('click', () => {
       localStorage.clear();
     });

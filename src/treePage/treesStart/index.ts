@@ -1,4 +1,4 @@
-import { getStorage } from '../../firstPage/getLocalStorage/index';
+import { getStorage } from '../../toysPage/getLocalStorage/index';
 export function getTreesStart() {
   const greenTree: NodeListOf<HTMLElement> = document.querySelectorAll('.green-tree');
   const mainTree = document.querySelector('.main-tree');

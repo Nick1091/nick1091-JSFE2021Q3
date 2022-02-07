@@ -7,13 +7,12 @@ import { handleDraggle } from './handleDraggle/index';
 import { getGarland } from './getGarland/index';
 import { addToysPage } from './renderToysArray/index';
 import './treeRender.scss';
-import { getStorage } from '../../firstPage/getLocalStorage/index';
+import { getStorage } from '../../toysPage/getLocalStorage/index';
 
 class TreeRender {
   async getPageTree() {
-    //play audio
     audioPlay();
-    //show snow
+
     let isSnow = false;
     const snowControl = document.querySelector('.snow-setting');
     if (!(snowControl instanceof HTMLElement)) {
@@ -35,13 +34,13 @@ class TreeRender {
     document.querySelector('.storage-setting')?.addEventListener('click', () => {
       localStorage.clear();
     });
-    //choice tree
+
     getTreesStart();
-    //background
+
     getBgImages();
-    //garlands
+
     getGarland();
-    //getToys
+
     const loader = new Loader();
     const list = await loader.getToysList();
     let arrayToys = list.slice(0, 20);
@@ -57,7 +56,7 @@ class TreeRender {
       throw new Error('Error');
     }
     addToysPage(arrayToys, containerToysFavorite);
-    //drag and drop
+
     handleDraggle();
   }
 }

@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
   },
-  "files": ["./src/index.ts", "./src/secondPage/typings.d.ts", "node_modules/nouislider/dist/nouislider.d.ts"]
+  "files": ["./src/index.ts", "src/treePage/typings.d.ts", "node_modules/nouislider/dist/nouislider.d.ts"]
 }

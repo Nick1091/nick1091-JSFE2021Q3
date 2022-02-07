@@ -59,11 +59,13 @@ export function getFilterPage(arr: IData[], ObjectFlag: IObj): IData[] {
 }
 
 export function getSortRange(arr: IData[], currentArr: number[], area: string, ObjectFlag: IObj) {
-  if (area === 'count') {
-    count = currentArr;
-  }
-  if (area === 'year') {
-    year = currentArr;
+  switch (area) {
+    case 'count':
+      count = currentArr;
+      break;
+    case 'year':
+      year = currentArr;
+      break;
   }
   return getFilterPage(arr, ObjectFlag);
 }

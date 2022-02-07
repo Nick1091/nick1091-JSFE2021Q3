@@ -7,7 +7,7 @@ export function getSnowInterval() {
     const snowFlake = document.createElement('i');
     snowFlake.classList.add('fa-snowflake');
     snowFlake.style.left = Math.random() * (snowWindow.clientWidth - 20) + 'px';
-    snowFlake.style.animationDuration = Math.random() * 3 + 2 + 's'; // between 2 - 5 seconds
+    snowFlake.style.animationDuration = Math.random() * 3 + 2 + 's';
     snowFlake.style.opacity = `${Math.random()}`;
     snowFlake.style.width = Math.random() * 10 + 10 + 'px';
     snowWindow?.appendChild(snowFlake);

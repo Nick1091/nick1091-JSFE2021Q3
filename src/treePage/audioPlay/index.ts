@@ -1,4 +1,4 @@
-import { getStorage } from '../../firstPage/getLocalStorage/index';
+import { getStorage } from '../../toysPage/getLocalStorage/index';
 export function audioPlay() {
   let isPlay = false;
   const playAudio = document.querySelector('.audio-setting');
