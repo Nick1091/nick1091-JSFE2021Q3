@@ -28,7 +28,7 @@ class CategoryItem extends Control {
       controller.onSelect();
     };
     const score = new Control(this.node, 'div', 'category_score', 'score');
-    score.node.style.display = !dataModel[i] ? 'none' : 'category_score';
+    score.node.style.display = !rightAnswers ? 'none' : 'category_score';
     score.node.onclick = () => {
       controller.onScore();
     };
