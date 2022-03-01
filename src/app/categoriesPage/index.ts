@@ -17,13 +17,13 @@ class CategoryItem extends Control {
     dataModel: IQuizResults[]
   ) {
     super(parentNode, 'div', 'category');
-    const rightAnswers = dataModel[i] ? dataModel[i].filter((it) => it).length : false;
+    const rightAnswers = dataModel[i].length > 0 ? dataModel[i].filter((it) => it).length : false;
     const header = new Control(this.node, 'div', 'category_round', `Раунд ${(i + 1).toString()}`);
-    new Control(header.node, 'span', '', `${rightAnswers || rightAnswers === 0 ? `${rightAnswers}/10` : ''}`);
+    new Control(header.node, 'span', '', `${rightAnswers ? `${rightAnswers}/10` : ''}`);
 
     const buttonImg = new Control(this.node, 'div', 'category_img');
     buttonImg.node.style.backgroundImage = `url('${data.picture}')`;
-    buttonImg.node.style.filter = !dataModel[i] ? 'grayscale(1)' : 'grayscale(0)';
+    buttonImg.node.style.filter = !rightAnswers ? 'grayscale(1)' : 'grayscale(0)';
     buttonImg.node.onclick = () => {
       controller.onSelect();
     };
