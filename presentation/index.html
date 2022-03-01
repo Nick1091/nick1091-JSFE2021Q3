@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>presentation</title>
+<script defer src="node_vendors.97841c263aa5070921b8.js"></script><script defer src="main.eb25e11b714bbbbef250.js"></script></head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>TYPESCRIPT</h1>
+        <img src="./assets/typescript_litl.png"  height="200">
+      </section>
+      <section><h2>A short history about typescript</h2> 					
+        <div>TypeScript  is a programming language introduced by Microsoft in 2012 and positioned as a web application development tool that extends the capabilities of JavaScript. 
+        </div>
+        <div>The developer of the TypeScript language is Anders Hejlsberg , who previously created Turbo Pascal , Delphi and C# </div>
+      </section>
+      <section> 
+        <div><h2>What is TypeScript?</h2></div>
+        <img src="./assets/typescript.png"  height="200">
+      </section>
+      <section>
+          <section>
+            <div>
+              <div>
+                <div>
+                  <img src="./assets/js_mistake.png" width ="400">
+                </div>
+                <div>DOES NOT EXIST, BUT LOOKS GOOD</div>
+              </div>
+              <img class="fragment" src="./assets/Mask Group.png" width ="500">
+            </div>
+          </section>
+          <section>
+            <div>
+              <img src="./assets/ts_mistake.png" width ="400">
+            </div>
+            <div>DOES NOT EXIST, DOES NOT WORK HERE</div>
+            <img class="fragment" src="./assets/someObjectShowMistake.png">
+          </section>
+      </section>
+      <section>
+        <img src="./assets/what-is-typescript-compiler.png" height="280">
+        <img src="./assets/js_and_more.png"  height="200">
+      </section>
+      <section>
+        <img src="./assets/evolutionTS.png" height="400">
+      </section>
+      <section>
+        <div style="margin: 0px; padding: 0px">
+          <img style="margin: 0px; padding: 0px" src="./assets/typeMistake1.png">
+        </div>
+        <div>
+          <img  style="margin: 0px; padding: 0px" class="fragment" src="./assets/typeMistake.png">
+        </div>
+        <div>
+          <img style="margin: 0px; padding: 0px" class="fragment" src="./assets/typeMistake2.png">
+        </div>
+        <div>
+          <img style="margin: 0px; padding: 0px" class="fragment" src="./assets/anyType.png">
+        </div>
+      </section>
+      <section>
+        <pre style="width: 50%;"><code data-trim data-noescape>
+          interface ICar {
+            model: string;
+            year: number;
+            diesel: boolean;
+          }
+
+          const myCar: ICar;
+          myCar.   // model, year, diesel;
+        </code></pre>
+      </section>
+      <section>
+        <h2>Type Annotations</h2>
+      </section>
+      <section>
+        <section>
+          <h4>PRIMITIVE TYPES</h4>
+          <div><pre><code> let age: number = 32; // Number variable</code></pre></div>
+          <div><pre><code> let firstName: string = 'John'; // String variable</code></pre></div>
+          <div><pre><code> let isUpdated: boolean = true; // Boolean variable</code></pre></div>
+        </section>
+        <section>
+          <h4>ARRAYS</h4>
+          <div><pre><code> let arrayNumbers: number[] = [1, 2, 3, 4]; // array variable</code></pre></div>
+          <div><pre><code> let arrayNumbersTwo: Array< number > = [1, 2, 3, 4]; </code></pre></div>
+          <div><pre><code> let arrayStrings: string[] = ['He', 'is', 'name', 'Josh']; </code></pre></div>
+          <div><pre><code> let array:(string | number)[] = [ 'years', 10]; // </code></pre></div>
+        </section>
+        <section>
+          <h4>CREATE TYPES</h4>
+          <div><pre><code> 
+            type Name = string;
+            const name: Name = 'Mike';
+            
+            type Age = string | number;
+            const age: Age = 10;
+            const MikeAge: Age = '10';
+            
+            type somethingValue = string | undefined | number;
+          </code></pre></div>
+        </section>
+      </section>
+      <section>
+        <h4>INTERFACES</h4>
+        <section>
+          <div style="display: flex; gap: 20px">
+            <pre style="max-width: 45%"><code data-trim data-noescape>
+              interface ISomeObject {
+                readonly id: string;
+                color?: string;
+                size: {
+                  width: number;
+                  height: number;
+                }
+              }
+            </code></pre>
+            <pre style="max-width: 45%"><code data-trim data-noescape>
+              const rectangle: ISomeObject  {
+                id: '1';
+                color?: '#ffffaa';
+                size: {
+                  width: 10;
+                  height: 12;
+                }
+              }
+            </code></pre>
+          </div>
+          <pre><code data-trim data-noescape>const rectObject_1 = {} as ISomeObject</code></pre>
+          <pre><code data-trim data-noescape>const rectObject_2 = < ISomeObject >{}</code></pre>
+        </section>
+      </section>
+      <section>
+        <h4>ENUM</h4>
+        <section>
+          <h5 style="font-size: 28px;">NUMERICAL CONSTANTS</h5>
+          <pre><code data-trim data-noescape>
+            enum Count {
+              zero = 0,
+              one = 1,
+              two = 2
+            }
+          </code></pre>
+          <pre><code data-trim data-noescape>
+            enum Count {
+              zero,
+              one,
+              two
+            }
+          </code></pre>
+          <pre><code data-trim data-noescape>
+            const numberFirst = Count.zero // 0
+            const numberLast = Count[2] // two
+          </code></pre>
+        </section>
+        <section>
+          <h5 style="font-size: 28px;">TEXT CONSTANTS</h5>
+          <pre><code data-trim data-noescape>
+            enum Names {
+              Mike = 'Mike',
+              Nick = 'Nick',
+              Pit = 'Pit'
+            }
+          </code></pre>
+          <pre><code data-trim data-noescape>
+            const name = Names.Pit // Pit
+          </code></pre>
+        </section>
+      </section>
+      <section>
+        <h4>FUNCTIONS</h4>
+        <section>
+          <pre><code data-trim data-noescape>
+            function getSum(a: number, b: number): number {
+
+              return a + b;
+        
+            }
+          </code></pre>
+          <pre><code data-trim data-noescape>
+            getSum(2, 5) // 7
+
+            getSum(1) // "Error to few parameters"
+
+            getSum(5, '2') // "Error the second argument must be type number"
+          </code></pre>
+        </section>
+      </section>
+      <section>
+        <h4>CLASSES</h4>
+        <section>
+          <pre><code data-trim data-noescape>
+            class Name {
+
+              age: number
+          
+              constructor (age: number) {
+                  this.age = age;
+              }
+          
+              info(name: string) {
+                  return `[${name}]: age is ${this.age}`;
+              }
+            }
+          </code></pre>
+        </section>
+        <section>
+          <h5 style="font-size: 28px;">ACCESS MODIFIERS</h5>
+          <p style = "font-size: 26px; color: #f5f5ea;"><span style="color: #13bd13">Public</span> - By default, members (properties and methods) of TypeScript class are public - so you don’t need to prefix members with the public keyword. Public members are accessible everywhere without restrictions</p>
+          <p style = "font-size: 26px; color: #f5f5ea;"><span style="color: #13bd13">Private</span> - A private member cannot be accessed outside of its containing class. Private members can be accessed only within the class.</p>
+          <p style = "font-size: 26px; color: #f5f5ea;"><span style="color: #13bd13">Protected</span> - A protected member cannot be accessed outside of its containing class. Protected members can be accessed only within the class and by the instance of its sub/child class.</p>
+        </section>
+        <section>
+          <pre><code data-trim data-noescape>
+            class Animal {
+
+              protected voice: string = ''
+          
+              public color: string = 'black'
+          
+              constructor() {
+                  this.go()
+              }
+          
+              private go() {
+                  console.log('Go');
+              }
+            }
+          </code></pre>
+          <pre><code data-trim data-noescape>
+            class Cat extends Animal {
+
+              public setVoice(voice: string): void {
+          
+                  this.voice = voice;    
+              }
+            }
+          </code></pre>
+        </section>
+      </section>
+      <section>
+        <h4>GENERIC</h4>
+        <pre><code data-trim data-noescape>
+          function dummyFun< T >(arg: T): T {
+            return arg;	
+          }
+        </code></pre>
+      </section>
+      <section style="margin-top: 30vh; color: honeydew; font-size: 32px;">
+        <div>Visit <a href="https://www.typescriptlang.org/"> https://www.typescriptlang.org/ </a> to learn more</div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
