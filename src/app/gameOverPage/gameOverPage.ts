@@ -19,7 +19,7 @@ export class GameOverPage extends AnimatedControl {
       this.onHome();
     };
     const blockResult = new Control(this.node, 'div', 'block_result', 'Поздравляем');
-    const imgSettings = '../../assets/svg/present.svg';
+    const imgSettings = './assets/svg/present.svg';
     const img = new Image(200, 200);
     img.src = imgSettings;
     blockResult.node.append(img);
