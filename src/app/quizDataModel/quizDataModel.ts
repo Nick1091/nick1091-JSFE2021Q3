@@ -1,5 +1,6 @@
 import imagesDataUrl from '../../images.json';
 import { IPictureData, IPictureDto, ICategoryData, IPicturesQuestionData, IArtistsQuestionData } from '../interfaces';
+
 export class QuizDataModel {
   private questionsCategory = 10;
 
@@ -11,11 +12,11 @@ export class QuizDataModel {
   }
 
   public getCategoriesData(gameName: string) {
-    const questionsCategory = this.questionsCategory;
+    const { questionsCategory } = this;
     const categoriesCount = Math.floor(this.data.length / questionsCategory / 2);
     const categories: Array<ICategoryData> = [];
     if (gameName === 'artists') {
-      for (let i = 0; i < categoriesCount; i++) {
+      for (let i = 0; i < categoriesCount; i += 1) {
         const pictureUrl = `./assets/image/${i * 10}.jpg`;
         const categoryData: ICategoryData = {
           name: i.toString(),
@@ -25,7 +26,7 @@ export class QuizDataModel {
         categories.push(categoryData);
       }
     } else {
-      for (let i = 12; i < categoriesCount + 12; i++) {
+      for (let i = 12; i < categoriesCount + 12; i += 1) {
         const pictureUrl = `./assets/image/${i * 10}.jpg`;
         const categoryData: ICategoryData = {
           name: i.toString(),
@@ -39,15 +40,15 @@ export class QuizDataModel {
   }
 
   public getPicturesQuestions(categoryIndex: number) {
-    const questionsCategory = this.questionsCategory;
+    const { questionsCategory } = this;
     const result: Array<IPicturesQuestionData> = [];
-    categoryIndex += 12;
-    for (let i = categoryIndex * questionsCategory; i < (categoryIndex + 1) * questionsCategory; i++) {
+    const index = categoryIndex + 12;
+    for (let i = index * questionsCategory; i < (index + 1) * questionsCategory; i += 1) {
       const answers: Array<string> = [];
       const answersCount = 4;
       const correctAnswerIndex = Math.floor(Math.random() * answersCount);
       const correctAnswer = `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${this.data[i].imageNum}.jpg`;
-      for (let j = 0; j < answersCount; j++) {
+      for (let j = 0; j < answersCount; j += 1) {
         if (correctAnswerIndex === j) {
           answers.push(correctAnswer);
         } else {
@@ -57,8 +58,8 @@ export class QuizDataModel {
       }
       const question: IPicturesQuestionData = {
         artistsName: this.data[i].author,
-        answers: answers,
-        correctAnswerIndex: correctAnswerIndex,
+        answers,
+        correctAnswerIndex,
       };
       result.push(question);
     }
@@ -66,14 +67,14 @@ export class QuizDataModel {
   }
 
   public getArtistsQuestions(categoryIndex: number) {
-    const questionsCategory = this.questionsCategory;
+    const { questionsCategory } = this;
     const result: Array<IArtistsQuestionData> = [];
-    for (let i = categoryIndex * questionsCategory; i < (categoryIndex + 1) * questionsCategory; i++) {
+    for (let i = categoryIndex * questionsCategory; i < (categoryIndex + 1) * questionsCategory; i += 1) {
       const answers: Array<string> = [];
       const answersCount = 4;
       const correctAnswerIndex = Math.floor(Math.random() * answersCount);
       const correctAnswer = this.data[i].author;
-      for (let j = 0; j < answersCount; j++) {
+      for (let j = 0; j < answersCount; j += 1) {
         if (correctAnswerIndex === j) {
           answers.push(correctAnswer);
         } else {
@@ -83,8 +84,8 @@ export class QuizDataModel {
       }
       const question: IArtistsQuestionData = {
         artistsUrl: `https://raw.githubusercontent.com/Nick1091/image-data/master/img/${this.data[i].imageNum}.jpg`,
-        answers: answers,
-        correctAnswerIndex: correctAnswerIndex,
+        answers,
+        correctAnswerIndex,
       };
       result.push(question);
     }

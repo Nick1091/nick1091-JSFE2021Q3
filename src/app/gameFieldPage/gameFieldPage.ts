@@ -5,6 +5,10 @@ import { AnimatedControl } from '../animatedControl/index';
 import { Timer } from '../timer/timer';
 import './gameFieldPage.scss';
 
+interface IQuestionViewConstructor<DataType> {
+  new (parentNode: HTMLElement, data: DataType): IQuestionView & AnimatedControl;
+}
+
 export class GameFieldPage<QuestionDataType> extends AnimatedControl {
   onBack: () => void;
 
@@ -48,9 +52,7 @@ export class GameFieldPage<QuestionDataType> extends AnimatedControl {
     this.progressQuestion = new Control(this.node, 'div', '', 'Вопрос');
 
     this.answersIndicator = new Control(this.node, 'div', 'dots', '');
-    questionsData.map(() => {
-      return new Control(this.answersIndicator.node, 'p', 'dot');
-    });
+    questionsData.map(() => new Control(this.answersIndicator.node, 'p', 'dot'));
 
     this.results = [];
     this.questionCycle(gameOptions.gameName, questionsData, 0, () => {
@@ -71,13 +73,13 @@ export class GameFieldPage<QuestionDataType> extends AnimatedControl {
       return;
     }
 
-    // eslint-disable-next-line prefer-const
     let Quest: Control;
     this.results.map((it, i: number) =>
       it
         ? ((<HTMLElement>document.querySelectorAll('.dot')[i]).style.backgroundColor = '#ffcb0f')
         : ((<HTMLElement>document.querySelectorAll('.dot')[i]).style.backgroundColor = '#ae0101')
     );
+
     this.progressQuestion.node.textContent = `Вопрос ${index + 1} / ${questions.length}`;
     if (this.gameOptions.settings.timeEnable) {
       this.timer.start(this.gameOptions.settings.time);
@@ -109,8 +111,4 @@ export class GameFieldPage<QuestionDataType> extends AnimatedControl {
     this.timer.stop();
     super.destroy();
   }
-}
-
-interface IQuestionViewConstructor<DataType> {
-  new (parentNode: HTMLElement, data: DataType): IQuestionView & AnimatedControl;
 }

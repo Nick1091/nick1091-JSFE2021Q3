@@ -9,7 +9,8 @@
       "prettier",
       "airbnb-typescript/base",
       "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "eslint-config-airbnb-base"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -23,13 +24,28 @@
       "@typescript-eslint"
   ],
   "rules": {
-      "eol-last": 2,
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/comma-dangle": "off",
-      "no-debugger": "off",
-      "no-console": 0,
-      "class-methods-use-this": "off",
-      "prettier/prettier": [
+    "@typescript-eslint/default-param-last":"off",
+    "default-param-last":"off",
+    "no-param-reassign":"off",
+    "function-paren-newline":"off",
+    "implicit-arrow-linebreak":"off",
+    "no-confusing-arrow":"off",
+    "no-return-assign":"off",
+    "array-callback-return":"off",
+    "max-len":"off",
+    "comma-dangle":"off",
+    "object-curly-newline": "off",
+    "import/prefer-default-export": "off",
+    "max-classes-per-file": "off",
+    "import/extensions": "off",
+    "no-new":"off",
+    "eol-last": 2,
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/comma-dangle": "off",
+    "no-debugger": "off",
+    "no-console": 0,
+    "class-methods-use-this": "off",
+    "prettier/prettier": [
           "error",
           {
               "trailingComma": "es5",

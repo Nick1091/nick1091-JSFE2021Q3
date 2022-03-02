@@ -14,9 +14,7 @@ export class SettingsModel {
 
   loadFromStorage() {
     const storageData = localStorage.getItem('settings');
-    const checkStorageData = (data: string | null) => {
-      return !!data;
-    };
+    const checkStorageData = (data: string | null) => !!data;
     if (!checkStorageData(storageData)) {
       this.settings = defaultSettings;
     } else {

@@ -5,7 +5,6 @@ export class AnimatedControl extends Control {
 
   constructor(
     parentNode: HTMLElement | null,
-    // eslint-disable-next-line @typescript-eslint/default-param-last
     tagName = 'div',
     styles: { default: string; hidden: string },
     content = ''

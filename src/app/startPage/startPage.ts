@@ -14,7 +14,7 @@ export class StartPage extends AnimatedControl {
 
     const settingsWrapper = new Control(this.node, 'div', 'main_bottom');
     const settingsButton = new Control(settingsWrapper.node, 'button', 'button');
-    const imgSettings = './assets/svg/carbon_settings.svg';
+    const imgSettings = '../assets/svg/carbon_settings.svg';
     const img = new Image(24, 24);
     img.src = imgSettings;
     settingsButton.node.append(img);

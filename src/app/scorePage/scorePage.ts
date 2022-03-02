@@ -34,8 +34,6 @@ export class ScorePage extends AnimatedControl {
     const scoreContainer = new Control(this.node, 'div', 'score_container');
 
     const arrData = data.slice(index * 10, index * 10 + 10);
-    score.map((it, i) => {
-      return new ScoreItem(scoreContainer.node, arrData[i], it);
-    });
+    score.map((it, i) => new ScoreItem(scoreContainer.node, arrData[i], it));
   }
 }

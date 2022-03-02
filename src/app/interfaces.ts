@@ -33,19 +33,19 @@ export interface IQuizSettings {
   volume: number;
   volumeEnable: boolean;
 }
+export type IQuizResults = Array<boolean>;
+
+export interface IQuizData {
+  artists: IQuizResults[] | [];
+  pictures: IQuizResults[] | [];
+}
 export interface IQuizOptions {
   gameName: string;
   categoryIndex: number;
   settings: IQuizSettings;
   dataModel: IQuizData;
 }
-export type IQuizResults = Array<boolean>;
 
 export interface IQuestionView {
   onAnswer: (index: number) => void;
-}
-
-export interface IQuizData {
-  artists: IQuizResults[] | [];
-  pictures: IQuizResults[] | [];
 }

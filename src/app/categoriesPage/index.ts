@@ -59,21 +59,22 @@ export class CategoriesPage extends AnimatedControl {
     new Control(headerWrapper.node, 'h1', 'head_name', `${gameName === 'pictures' ? 'Картины' : 'Художники'}`);
     const categoryContainer = new Control(this.node, 'div', 'categories');
     const partQuiz = gameName === 'pictures' ? dataModel.pictures : dataModel.artists;
-    quizCategoriesData.map((it, i) => {
-      return new CategoryItem(
-        categoryContainer.node,
-        it,
-        i,
-        {
-          onSelect: () => {
-            this.onSelect(i);
+    quizCategoriesData.map(
+      (it, i) =>
+        new CategoryItem(
+          categoryContainer.node,
+          it,
+          i,
+          {
+            onSelect: () => {
+              this.onSelect(i);
+            },
+            onScore: () => {
+              this.onScore(+it.name, partQuiz[i]);
+            },
           },
-          onScore: () => {
-            this.onScore(+it.name, partQuiz[i]);
-          },
-        },
-        partQuiz
-      );
-    });
+          partQuiz
+        )
+    );
   }
 }

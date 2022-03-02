@@ -18,7 +18,7 @@ export class Timer extends Control {
     };
     render(time);
     this.timer = window.setInterval(() => {
-      currentTime--;
+      currentTime -= 1;
       render(currentTime);
       if (currentTime <= 0) {
         this.onTimeout();

@@ -76,8 +76,8 @@ export class App extends Control {
         this.main.node,
         ArtistsQuestionView,
         {
-          gameName: gameName,
-          categoryIndex: categoryIndex,
+          gameName,
+          categoryIndex,
           settings: this.settingsModel.getData(),
           dataModel: this.dataModel.getData(),
         },
@@ -88,8 +88,8 @@ export class App extends Control {
         this.main.node,
         PicturesQuestionView,
         {
-          gameName: gameName,
-          categoryIndex: categoryIndex,
+          gameName,
+          categoryIndex,
           settings: this.settingsModel.getData(),
           dataModel: this.dataModel.getData(),
         },

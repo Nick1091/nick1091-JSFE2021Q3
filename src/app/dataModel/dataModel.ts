@@ -9,9 +9,7 @@ export class DataModel {
 
   loadFromStorage() {
     const dataModel = localStorage.getItem('dataModel');
-    const checkStorageData = (data: string | null) => {
-      return !!data;
-    };
+    const checkStorageData = (data: string | null) => !!data;
     if (!checkStorageData(dataModel)) {
       this.dataModel = defaultData;
     } else {
