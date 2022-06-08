@@ -25,6 +25,7 @@
   ],
   "rules": {
     "@typescript-eslint/default-param-last":"off",
+    "linebreak-style": ["error", "windows"],
     "default-param-last":"off",
     "no-param-reassign":"off",
     "function-paren-newline":"off",

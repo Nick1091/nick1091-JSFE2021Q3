@@ -44,7 +44,7 @@ export class SettingsPage extends AnimatedControl {
 
   constructor(parentNode: HTMLElement, initialSettings: IQuizSettings) {
     super(parentNode, 'div', { default: 'settings', hidden: 'hide' });
-
+    this.quickOut();
     const settings: IQuizSettings = initialSettings;
     const backButton = new Control(this.node, 'button', 'button_main', 'назад');
     backButton.node.onclick = () => {
@@ -76,7 +76,7 @@ export class SettingsPage extends AnimatedControl {
     timeCheckBox.node.type = 'checkbox';
     timeCheckBox.node.checked = settings.timeEnable;
     const p = document.createElement('p');
-    p.innerHTML = 'Вкл / Выкл';
+    p.innerHTML = 'Выкл / Вкл';
     timeBlock.node.append(p);
     (<HTMLElement>document.querySelectorAll('.label_checkbox')[0]).style.left = timeCheckBox.node.checked
       ? '27px'
@@ -113,7 +113,7 @@ export class SettingsPage extends AnimatedControl {
     volumeCheckBox.node.type = 'checkbox';
     volumeCheckBox.node.checked = settings.volumeEnable;
     const elem = document.createElement('p');
-    elem.innerHTML = 'Вкл / Выкл';
+    elem.innerHTML = 'Выкл / Вкл';
     volumeBlock.node.append(elem);
 
     (<HTMLElement>document.querySelectorAll('.label_checkbox')[1]).style.left = volumeCheckBox.node.checked
