@@ -1,4 +1,6 @@
+import { getStorage } from '../../toysPage/getLocalStorage/index';
 import { audioPlay } from '../audioPlay/index';
+import { IData } from '../../types/index';
 import Loader from '../../loader/index';
 import { getSnowInterval } from '../snowDown/index';
 import { getTreesStart } from '../treesStart/index';
@@ -7,7 +9,6 @@ import { handleDraggle } from './handleDraggle/index';
 import { getGarland } from './getGarland/index';
 import { addToysPage } from './renderToysArray/index';
 import './treeRender.scss';
-import { getStorage } from '../../toysPage/getLocalStorage/index';
 
 class TreeRender {
   async getPageTree() {
@@ -43,19 +44,25 @@ class TreeRender {
 
     const loader = new Loader();
     const list = await loader.getToysList();
-    let arrayToys = list.slice(0, 20);
 
-    arrayToys = getStorage('arrayFavorite')
-      ? getStorage('arrayFavorite').length > 0
-        ? getStorage('arrayFavorite')
-        : arrayToys
-      : arrayToys;
+    const arrayToys: IData[] = getStorage('toysToTree')
+      ? getStorage('toysToTree').length > 0
+        ? getStorage('toysToTree')
+        : list.slice(0, 20)
+      : list.slice(0, 20);
+
+    const currentArr = (() => {
+      if (getStorage('arrayFavorite') && getStorage('arrayFavorite').length > 0) {
+        const arr = getStorage('arrayFavorite') as IData[];
+        return arrayToys.filter((item) => arr.find((it) => it.name === item.name));
+      } else return arrayToys.slice(0, 20);
+    })();
 
     const containerToysFavorite = document.querySelector('.choice-favorite-toys');
     if (!(containerToysFavorite instanceof HTMLElement)) {
       throw new Error('Error');
     }
-    addToysPage(arrayToys, containerToysFavorite);
+    addToysPage(currentArr.length === 0 ? list.slice(0, 20) : currentArr, containerToysFavorite);
 
     handleDraggle();
   }

@@ -1,10 +1,10 @@
-import './style/style.scss';
 import PageMain from './mainPage/index';
 import PageFirst from './toysPage/render/index';
 import PageSecond from './treePage/render/index';
 import CardRender from './toysPage/controllerFilters/index';
 import TreeRender from './treePage/treeRender/index';
 import { getStorage } from './toysPage/getLocalStorage/index';
+import './style/style.scss';
 
 const buttonTree = document.querySelector('.page-main');
 if (!(buttonTree instanceof HTMLAnchorElement)) {

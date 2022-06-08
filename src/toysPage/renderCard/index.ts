@@ -1,7 +1,7 @@
 import { IData } from '../../types/index';
+import { getStorage } from '../getLocalStorage/index';
 import './card.scss';
 import './popup.scss';
-import { getStorage } from '../getLocalStorage/index';
 
 let popupActive = 0;
 export function ShowPopup(text: string) {

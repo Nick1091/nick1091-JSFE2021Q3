@@ -1,13 +1,13 @@
-import { target } from '../slider/nouislider';
 import Loader from '../../loader/index';
-import SliderRender from '../slider/index';
-import FilterFirst from '../filters/changeObject';
+import { target } from '../slider/nouislider';
 import { IData } from '../../types/index';
+import FilterFirst from '../filters/changeObject';
+import SliderRender from '../slider/index';
 import { getSortRange, getFilterPage, getFilterSearch, getIsBooleanSort } from '../filters/otherFilter';
 import { renderPage } from '../renderCard/index';
 import { resetFilters } from '../reset/index';
-import { ObjectFlag } from './variables/object';
 import { getStorage } from '../getLocalStorage/index';
+import { ObjectFlag } from './variables/object';
 
 class CardRender {
   async getCard() {
@@ -45,7 +45,16 @@ class CardRender {
       }
       const dataListSearch = isSearch ? getFilterSearch(list, search.value) : arr;
       const render = getFilterPage(dataListSearch, ObjectFlag);
-      renderPage(render);
+      const valuesYear = getStorage('valuesYear');
+      const valuesCount = getStorage('valuesCount');
+      const filteredYearArray = valuesYear
+        ? render.filter((item) => +item.year >= +valuesYear[0] && +item.year <= +valuesYear[1])
+        : render;
+      const filteredCountArray = valuesCount
+        ? filteredYearArray.filter((item) => +item.count >= +valuesCount[0] && +item.count <= +valuesCount[1])
+        : filteredYearArray;
+      localStorage.setItem('toysToTree', JSON.stringify(filteredCountArray));
+      renderPage(filteredCountArray);
     }
     getToysPage(list);
 
