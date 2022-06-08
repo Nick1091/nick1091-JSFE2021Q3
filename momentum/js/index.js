@@ -1,17 +1,11 @@
 import playList from './playList.js';
 import trans from './translete.js';
 
-
-
 const select = document.querySelector('#select'); 
-
-
-
 // showTime
 const time = document.querySelector('.time');
 const dateCurrent = document.querySelector('.date');
 let date = new Date();
-
 //translatepage
 let lang = select.options[select.selectedIndex].value;
 function translateSite(){
@@ -38,7 +32,6 @@ function getLang() {
   inputName.placeholder = `[${trans['placehold'][lang]}]`;
 }
 getLang()
-
 //show date
 const options = {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' };
 
@@ -46,14 +39,11 @@ function showDate() {
   const currentDate = date.toLocaleDateString(`${lang}`, options);
   dateCurrent.textContent = currentDate.charAt(0).toUpperCase() + currentDate.slice(1);
 }
-
 // greeting
 let greeting = document.querySelector('.greeting')
 let currentHour = date.getHours();
 let timeOfDay;
-
 // inputName.placeholder = `${dat}${placeholder}${lang}`;
-
 function showTimeOFDay(){
   getTimeOfDay()
   let goodDay  = `${trans["good"][lang]}`;
@@ -66,7 +56,6 @@ function showTimeOFDay(){
 }
 
 function getTimeOfDay(){
-  
   let arr = ['night', 'morning', 'afternoon', 'evening']; 
   if (currentHour <= 5) {
     timeOfDay = arr[0];
@@ -77,11 +66,8 @@ function getTimeOfDay(){
   } else {
     timeOfDay = arr[3];
   } 
-  
-  return timeOfDay
+    return timeOfDay
 }
-
-
 //showtime and other
 function showTime() {
   date = new Date();
@@ -92,8 +78,6 @@ function showTime() {
   showTimeOFDay();
 }
 showTime();
-
-
 //random 1-20
 function getRandomNum(){
   return Math.floor(Math.random() * 20 + 1);
@@ -114,7 +98,6 @@ function setBg(){
   };
 };
 // setBg()
-
 function getSlideNext(){
   if(randomNum === 20){
     randomNum = (randomNum % 20) + 1;
@@ -130,9 +113,6 @@ function getSlidePrev(){
 }
 const slidePrev = document.querySelector('.slide-prev')
 const slideNext = document.querySelector('.slide-next')
-
-
-
 //weather
 const weatherError = document.querySelector('.weather-error')
 let city = document.querySelector('.city');
@@ -141,7 +121,6 @@ const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
 const windSpeed = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
-
 
 city.value = `${trans["minsk"][lang]}`
 function CityValue(){
@@ -153,14 +132,12 @@ function CityValue(){
 }
 let message;
 // let errorCity;
-
 async function getWeather() {
   message = `${trans["massage"][lang]}`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${lang}&appid=c556d9cc09a9cb6b257758ae9ace940d&units=metric`;
   const res = await fetch(url);
   const data = await res.json(); 
   weatherError.textContent = `${trans["errorCity"][lang]} ${message} ${city.value}!` 
-  // console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
   if (data.cod === 200){
   weatherIcon.className = 'weather-icon owf'
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
@@ -171,7 +148,6 @@ async function getWeather() {
   weatherError.textContent = '';
   }
   else if(data.cod > 400 && data.cod < 600  ){
-    // weatherError.textContent = `${trans["errorCity"][lang]} ${message} '${(city.value)}'!`
     temperature.textContent = "";
     weatherDescription.textContent = "";
     windSpeed.textContent = "";
@@ -179,7 +155,6 @@ async function getWeather() {
     weatherIcon.classList.add('weather-icon-none');
   }
   else {
-    // message = 'Nothing to geocode for';
     weatherError.textContent = `${trans["errorCity"][lang]} ${message} '${(city.value)}'!`
     city.value = "";
     weatherError.textContent = `${trans["errorCity"][lang]} ${message} '${(city.value)}'!`
@@ -193,41 +168,14 @@ async function getWeather() {
   
 }
 // getWeather()
-
 city.addEventListener('change', function(){
   getWeather()
-  // setLocalStorage()
 })
 document.addEventListener('DOMContentLoaded', getWeather);
-
-
-// //localStorage
-// function setLocalStorage() {
-//   let name = document.querySelector('.name')
-//   localStorage.setItem('name', name.value);
-//   localStorage.setItem('city', city.value )
-// }
-// window.addEventListener('beforeunload', setLocalStorage)
-
-// function getLocalStorage() {
-//   let name = document.querySelector('.name')
-//   if(localStorage.getItem('name')) {
-//     name.value = localStorage.getItem('name');
-//   }
-//   if(localStorage.getItem('city')) {
-//     city.value = localStorage.getItem('city');
-//   }
-//   getWeather()
-// }
-// window.addEventListener('load', getLocalStorage);
-
-
-
 //quotes
 let quote = document.querySelector('.quote');
 let author = document.querySelector('.author');
 let changeQuote = document.querySelector('.change-quote');
-
 async function getQuotes() {  
   const quotes = './js/data/quotes.json';
   const dates = './js/data/data.json';
@@ -240,16 +188,12 @@ async function getQuotes() {
   const res = await fetch(CurrentQuotes);
   const data = await res.json(); 
   let index = Math.floor(Math.random() * data.length);
-  // console.log(data[index].text);
   quote.textContent = `"${data[index].text}."`;
   author.textContent = `${data[index].author}`;  
 }
 getQuotes();
   
 changeQuote.addEventListener('click', getQuotes)
-
-
-
 //audio
 let playNum = 0;
 let isPlay = false;
@@ -258,16 +202,9 @@ let playButton = document.querySelector('.play');
 let playPrev = document.querySelector('.play-prev');
 let playNext = document.querySelector('.play-next');
 let textAudio = document.querySelector('.text_under');
-
-// let playItem = document.querySelector('.play_item');
-
-
 playButton.addEventListener('click', togglePlay);
 playPrev.addEventListener('click', PrevPlay);
 playNext.addEventListener('click', NextPlay);
-
-
-
 //add list title
 playList.forEach(el => {
   let li = document.createElement('li');
@@ -280,12 +217,9 @@ playList.forEach(el => {
   playNum++
 });
 // console.log(listPlay)
-
-
 let audio = document.querySelector('audio');
 let listLi = document.querySelectorAll('.play-item');
 playNum = 0;
-
 //add remove active title
 function playNumberMinus(){
   if(playNum === 0 ){
@@ -309,7 +243,6 @@ function playNumberPlus(){
     listLi[playNum].classList.add('item-active')
     textAudio.textContent = listLi[playNum].textContent;
 }
-
 // prevplay
 function PrevPlay(){
   isPlay = false;
@@ -327,15 +260,12 @@ function NextPlay(){
   toggleAudio();
 }
 audio.addEventListener('ended',  function(){
-  
   nextAudioPlay();
 })
   //play next song
 function nextAudioPlay(){
   NextPlay()
-  
 };
-
 //change btn
 function togglePlay(){
   toggleBtn();
@@ -343,7 +273,6 @@ function togglePlay(){
   listLi[playNum].classList.toggle('item-active')
   textAudio.textContent = listLi[playNum].textContent;
 } 
-
 //change small btn
 for(let Nume = 0; Nume < listLi.length; Nume++){
   listLi[Nume].addEventListener('click', function(){
@@ -365,16 +294,13 @@ for(let Nume = 0; Nume < listLi.length; Nume++){
     playNum = Nume;
     textAudio.textContent = listLi[playNum ].textContent;
     textAudio.textContent = listLi[playNum].textContent;
-  toggleAudio()
-  toggleBtn();
-})
+    toggleAudio()
+    toggleBtn();
+  })
 }
-
-
 function toggleBtn() {
   playButton.classList.toggle('pause');
 }
-
 //play pause
 function toggleAudio(){
   if(!isPlay){
@@ -386,7 +312,6 @@ function toggleAudio(){
     isPlay = false;
   }
 }
-
 
 const range1  = document.querySelector('.range1');
 const range2  = document.querySelector('.range2');
@@ -404,36 +329,34 @@ window.addEventListener('load', function() {
   const value = range2.value;
   range2.style.background = `linear-gradient(to right, #82CFD0 0%, #82CFD0 ${value}%, #fff ${value}%, #fff 100%)`;
 })
-
 //volume
 const volumeBtn = document.querySelector('.volume_svg');
 const volumeIcon = document.querySelector('.volume_icon');
 
 function handleRange2Progress(){
-    let volumeValue = range2.value;
-    audio.volume = volumeValue / 100;
-    if(audio.volume === 0){
-      volumeIcon.classList.add('volume_off');
-    } else{
-      volumeIcon.classList.remove('volume_off');
-    }    
+  let volumeValue = range2.value;
+  audio.volume = volumeValue / 100;
+  if(audio.volume === 0){
+    volumeIcon.classList.add('volume_off');
+  } else{
+    volumeIcon.classList.remove('volume_off');
+  }    
 }
 function changeVolume(){
-    if(audio.volume !== 0 ){
-      volumeIcon.classList.add('volume_off');
-      audio.volume = 0;
-      range2.value = 0;
+  if(audio.volume !== 0 ){
+    volumeIcon.classList.add('volume_off');
+    audio.volume = 0;
+    range2.value = 0;
+    range2.style.background = `linear-gradient(to right, #82CFD0 0%, #82CFD0 ${audio.volume * 100}%, #fff ${audio.volume * 100}%, #fff 100%)`;
+  } else if (audio.volume === 0){
+      volumeIcon.classList.remove('volume_off');
+      audio.volume = 0.2;
+      range2.value = 20;
       range2.style.background = `linear-gradient(to right, #82CFD0 0%, #82CFD0 ${audio.volume * 100}%, #fff ${audio.volume * 100}%, #fff 100%)`;
-    } else if (audio.volume === 0){
-        volumeIcon.classList.remove('volume_off');
-        audio.volume = 0.2;
-        range2.value = 20;
-        range2.style.background = `linear-gradient(to right, #82CFD0 0%, #82CFD0 ${audio.volume * 100}%, #fff ${audio.volume * 100}%, #fff 100%)`;
   }
 }
 volumeBtn.addEventListener('click',  changeVolume);
 range2.addEventListener('input',  handleRange2Progress);
-
 // range progress
 function handleRange1Update(){
   audio.currentTime = range1.value / 100 * audio.duration;
@@ -451,7 +374,6 @@ function handleProgress(){
 }   
 range1.addEventListener('input',  handleRange1Update);
 audio.addEventListener('timeupdate',  handleProgress);
-
 //time progress
 function formatTime(time){
   let minutes = (time / 60).toFixed(0) || 0;
@@ -461,49 +383,42 @@ function formatTime(time){
 let p = document.createElement('p');
 currentTimeAudio.append(p);
 p.innerHTML = `${formatTime(0)} / ${formatTime(0)}`;
-
-
-
 let tegImage = timeOfDay;
 //images for other site
 function getLinkToImage() {
   const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${tegImage}&client_id=ES22Oak79L8BAErw89Ci37hdSFs9INzJzNwMgYc-ves;`
   fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data.urls.regular);
-      let img = new Image();
-      img.src = data.urls.regular 
-      img.onload = ()  =>{   
-            document.body.style.backgroundImage = `url(${img.src})`; } 
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundPosition = 'center';       
-      })
-    }
+  .then(res => res.json())
+  .then(data => {
+    let img = new Image();
+    img.src = data.urls.regular 
+    img.onload = ()  =>{   
+      document.body.style.backgroundImage = `url(${img.src})`; } 
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';       
+  })
+}
   
 let Un = document.querySelector('.unsplash') 
 let imageTag = timeOfDay;
 function getLinkToImageFl() {
   const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=38659cc7f1be7f071c92f0c55988c990&tags=${imageTag}&extras=url_l&format=json&nojsoncallback=1`
   fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data.photos.photo[Math.floor(Math.random() * 40)].url_l);
-      let img = new Image();
-      img.src = data.photos.photo[Math.floor(Math.random() * 40)].url_l 
-      if(data.cod === 404 || data.cod === undefined){
-        getLinkToImageFl
-      }
-      img.onload = ()  =>{   
-            document.body.style.backgroundImage = `url(${img.src})`; } 
-            document.body.style.backgroundSize = 'cover';
-            document.body.style.backgroundPosition = 'center';
-            
-      })
+  .then(res => res.json())
+  .then(data => {
+    let img = new Image();
+    img.src = data.photos.photo[Math.floor(Math.random() * 40)].url_l 
+    if(data.cod === 404 || data.cod === undefined){
+      getLinkToImageFl
     }
-    
-  let Fl = document.querySelector('.flick')   
-  let gHub = document.querySelector('.GHub')
+    img.onload = ()  =>{   
+      document.body.style.backgroundImage = `url(${img.src})`; } 
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';      
+  })
+}    
+let Fl = document.querySelector('.flick')   
+let gHub = document.querySelector('.GHub')
 
 let radios = document.querySelectorAll('input[type=radio][name="bgImage"]');
 let lab1 = document.querySelector(".g_h");
@@ -545,8 +460,6 @@ radios[0].addEventListener('change', changeHandler );
 radios[1].addEventListener('change', changeHandler );
 radios[2].addEventListener('change', changeHandler );
 
-
-
 function changeHandler() {
 if(radios[0].checked){
   changeHandler0 ()
@@ -566,16 +479,11 @@ if(radios[0].checked){
 }
 }
 window.addEventListener('load', changeHandler)
-
-
-
 // settings
 let inputUnsplashSource = document.querySelector(".unspl");
 let inputFlickrSource = document.querySelector(".flic");
-
 inputUnsplashSource.placeholder = tegImage;
 inputFlickrSource.placeholder = imageTag;
-
 
 function changeTagUns(){
   tegImage = inputUnsplashSource.value;
@@ -591,35 +499,21 @@ function changeTagFl(){
 }
 inputFlickrSource.addEventListener('change', changeTagFl)
 
-
-// transition
-// opacity или visibility.
-// let tegImage = timeOfDay;
-// let imageTag = timeOfDay;
-
 const state = {
   language: lang.textContent,
   photoSource: 'github',
   blocks: ['time', 'date','greeting', 'quote', 'weather', 'audio', 'todolist']
 }
-
 let timeHidden = document.querySelector('.time_hidden');
-
-
 let dataHidden = document.querySelector('.data_hidden')
-
 let greetingHidden = document.querySelector('.greeting_hidden')
 let greeting1 = document.querySelector('.greeting-container')
-
 let quoteHidden = document.querySelector('.quote_hidden')
 let quoteBlock = document.querySelector('.quote_block')
-
 let weathHidden = document.querySelector('.weather_hidden')
 let WeatherBlock = document.querySelector('.weather')
-
 let audioHidden = document.querySelector('.audio_hidden')
 let playerHidden = document.querySelector('.player')
-
 let toDoHidden = document.querySelector('.todo_hidden')
 let todoBlock = document.querySelector('.list_to_do')
 
@@ -633,22 +527,18 @@ audioHidden.textContent = `${trans["audioHidden"][lang]}`;
 toDoHidden.textContent = `${trans["todoHidden"][lang]}`;
 }
 
-
-
-
 let isAudio = false;
-
 function HiddenAudio (){
   if (!isAudio) {
     playerHidden.style.transition = '0.2s';
     playerHidden.style.opacity = '0';
     playerHidden.style.visibility = "hidden";
     isAudio = true;
-} else{
-  playerHidden.style.opacity = '1';
-  playerHidden.style.visibility = "visible";
-  isAudio = false;
-}
+  } else{
+    playerHidden.style.opacity = '1';
+    playerHidden.style.visibility = "visible";
+    isAudio = false;
+  }
 }
 audioHidden.addEventListener('click', HiddenAudio)
 
@@ -659,11 +549,11 @@ function HiddenTime (){
     time.style.opacity = '0';
     time.style.visibility = "hidden";
     isTime = true;
-} else{
-  time.style.opacity = '1';
-  time.style.visibility = "visible";
-  isTime = false;
-}
+  } else{
+    time.style.opacity = '1';
+    time.style.visibility = "visible";
+    isTime = false;
+  }
 }
 timeHidden.addEventListener('click', HiddenTime)
 
@@ -674,11 +564,11 @@ function HiddenDate (){
     dateCurrent.style.opacity = '0';
     dateCurrent.style.visibility = "hidden";
     isDate = true;
-} else{
-  dateCurrent.style.opacity = '1';
-  dateCurrent.style.visibility = "visible";
-  isDate = false;
-}
+  } else{
+    dateCurrent.style.opacity = '1';
+    dateCurrent.style.visibility = "visible";
+    isDate = false;
+  }
 }
 dataHidden.addEventListener('click', HiddenDate)
 
@@ -689,11 +579,11 @@ function HiddenGreeting (){
     greeting1.style.opacity = '0';
     greeting1.style.visibility = "hidden";
     isGreeting = true;
-} else{
-  greeting1.style.opacity = '1';
-  greeting1.style.visibility = "visible";
-  isGreeting = false;
-}
+  } else{
+    greeting1.style.opacity = '1';
+    greeting1.style.visibility = "visible";
+    isGreeting = false;
+  }
 }
 greetingHidden.addEventListener('click', HiddenGreeting)
 
@@ -704,11 +594,11 @@ function HiddenQuote(){
     quoteBlock.style.opacity = '0';
     quoteBlock.style.visibility = "hidden";
     isQuote = true;
-} else{
-  quoteBlock.style.opacity = '1';
-  quoteBlock.style.visibility = "visible";
-  isQuote = false;
-}
+  } else{
+    quoteBlock.style.opacity = '1';
+    quoteBlock.style.visibility = "visible";
+    isQuote = false;
+  }
 }
 quoteHidden.addEventListener('click', HiddenQuote)
 
@@ -719,11 +609,11 @@ function weatherHidden(){
     WeatherBlock.style.opacity = '0';
     WeatherBlock.style.visibility = "hidden";
     isWeather = true;
-} else{
-  WeatherBlock.style.opacity = '1';
-  WeatherBlock.style.visibility = "visible";
-  isWeather = false;
-}
+  } else{
+    WeatherBlock.style.opacity = '1';
+    WeatherBlock.style.visibility = "visible";
+    isWeather = false;
+  }
 }
 weathHidden.addEventListener('click', weatherHidden)
 
@@ -734,42 +624,16 @@ function todoHidden(){
     todoBlock.style.opacity = '0';
     todoBlock.style.visibility = "hidden";
     isTodo = true;
-} else{
-  todoBlock.style.opacity = '1';
-  todoBlock.style.visibility = "visible";
-  isTodo = false;
-}
+  } else{
+    todoBlock.style.opacity = '1';
+    todoBlock.style.visibility = "visible";
+    isTodo = false;
+  }
 }
 
 toDoHidden.addEventListener('click', todoHidden)
 
-
-
-
-// function setLocalStorage() {
-  
-//   localStorage.setItem('lang', lang.value);
-//   // localStorage.setItem('city', city.value )
-// }
-// window.addEventListener('beforeunload', setLocalStorage)
-
-// function getLocalStorage() {
-//   // let name = document.querySelector('.name')
-//   if(localStorage.getItem('lang')) {
-//     lang.value = localStorage.getItem('lang');
-//   }
-//   translateSite()
-// }
-  // if(localStorage.getItem('city')) {
-  //   city.value = localStorage.getItem('city');
-  // }
-  // getWeather()
-
-// window.addEventListener('load', getLocalStorage);
-//localStorage
-// let lang = select.options[select.selectedIndex].value
 function setLocalStorage() {
-  
   let name = document.querySelector('.name')
   localStorage.setItem('name', name.value);
   localStorage.setItem('city', city.value );
@@ -780,11 +644,7 @@ function setLocalStorage() {
   localStorage.setItem('isDate', isDate);
   localStorage.setItem('isTime', isTime );
   localStorage.setItem('isAudio', isAudio);
-  localStorage.setItem('isTodo', isTodo);
-  
-  
-  
-  
+  localStorage.setItem('isTodo', isTodo);  
 }
 window.addEventListener('beforeunload', setLocalStorage)
 
@@ -805,8 +665,6 @@ function getLocalStorage() {
   translateSite()
   if(localStorage.getItem('isWeather')){
     isWeather = localStorage.getItem('isWeather');
-  
-    // weatherHidden()
   }
   if(localStorage.getItem('isQuote')){}
   if(localStorage.getItem('isGreeting')){}
@@ -837,59 +695,42 @@ toDo.addEventListener('click', () =>{
 toDoBtn.addEventListener('click', () => {
   toDoBtn.classList.add('btn_to');
   let newInput = document.createElement('input')
-
   newInput.innerHTML = `type="text"  id="input_to_do" `;
   newInput.placeholder = "New Todo";
   toDoList.prepend(newInput);
   let sum = 0;
   newInput.addEventListener('change', () => {
-  let newContainerDiv = document.createElement('div');
-  newContainerDiv.style.display = 'flex';
-  newContainerDiv.style.gap = '10px';
-  newContainerDiv.style.marginBottom = '3px';
-  let newChecbox = document.createElement('input');
-  newChecbox.style.marginBottom = "px"
-  newChecbox.type = 'checkbox'
-  newChecbox.class = 'check_box'
-  newChecbox.id = `'chek${sum}'`;
-  newChecbox.addEventListener('click', () =>{
-    if(newChecbox.checked){
-      labelCheck.style.textDecoration = 'line-through'
-      
-    } else labelCheck.style.textDecoration = "none";
+    let newContainerDiv = document.createElement('div');
+    newContainerDiv.style.display = 'flex';
+    newContainerDiv.style.gap = '10px';
+    newContainerDiv.style.marginBottom = '3px';
+    let newChecbox = document.createElement('input');
+    newChecbox.style.marginBottom = "px"
+    newChecbox.type = 'checkbox'
+    newChecbox.class = 'check_box'
+    newChecbox.id = `'chek${sum}'`;
+    newChecbox.addEventListener('click', () =>{
+        if(newChecbox.checked){
+          labelCheck.style.textDecoration = 'line-through'
+          
+        } else labelCheck.style.textDecoration = "none";
+      })
+    newChecbox.style.display = "inline-block";
+    newChecbox.style.cursor = "pointer";
+    let labelCheck = document.createElement('label')
+    labelCheck.htmlFor = `'chek${sum}'`;
+    labelCheck.class = 'lable_check';
+    labelCheck.appendChild(document.createTextNode(`${newInput.value}`));
+    labelCheck.style.lineHeight = `0.9`;
+    labelCheck.style.color = "#000000"
+    labelCheck.style.display = "inline-block"
+    labelCheck.style.cursor = "pointer"
+    newContainerDiv.prepend(labelCheck);
+    newContainerDiv.prepend(newChecbox);
+    toDoList.prepend(newContainerDiv);
+    sum++;
   })
-  newChecbox.style.display = "inline-block";
-  newChecbox.style.cursor = "pointer";
-  let labelCheck = document.createElement('label')
-  labelCheck.htmlFor = `'chek${sum}'`;
-  labelCheck.class = 'lable_check';
-  labelCheck.appendChild(document.createTextNode(`${newInput.value}`));
-  labelCheck.style.lineHeight = `0.9`;
-  labelCheck.style.color = "#000000"
-  labelCheck.style.display = "inline-block"
-  labelCheck.style.cursor = "pointer"
-  newContainerDiv.prepend(labelCheck);
-  newContainerDiv.prepend(newChecbox);
-  toDoList.prepend(newContainerDiv);
-  sum++;
 })
-})
-
-
-// let LableList = document.querySelectorAll('.lable_check');
-// let checkList = document.querySelectorAll('.check_box');
-
-// function clickCheckbox(){
-// for (let i = 0; i < checkList.length; i++){
-//   checkList[i].addEventListener ('click', () =>{
-//     if(checkList[i].checked){
-//       LableList[i].style.textDecoration = 'line-through'
-//       console.log(checkList)
-//     } else LableList[i].style.textDecoration = "none";
-//   })
-// }
-// }
-// document.addEventListener('click', clickCheckbox)
 
 let settingText = document.querySelector('.text_settings')
 function translateSetting(){
@@ -908,4 +749,3 @@ settings.addEventListener('click', () =>{
     isSettings = false;
   }
 })
-
