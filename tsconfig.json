@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es2016",
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true, 
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+  },
+  "files": ["./src/index.ts", "src/treePage/typings.d.ts", "node_modules/nouislider/dist/nouislider.d.ts"]
+}

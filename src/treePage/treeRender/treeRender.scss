@@ -1,0 +1,29 @@
+.fa-snowflake {
+  width: 20px;
+  height: 20px;
+	color: #fff;
+	position: absolute;
+	top: 115px;
+	animation: fall linear forwards;
+  background-image: url(../../assets/svg/snow.svg);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center center;
+}
+  
+@keyframes fall {
+  to {
+    transform: translateY(105vh);
+  }
+}
+.main-tree {
+  display: block;
+  width: 500px;
+  height: 714px;
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center center;
+  border: none;
+}

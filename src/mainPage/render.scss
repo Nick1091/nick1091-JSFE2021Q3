@@ -1,0 +1,111 @@
+.first__page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: calc(100vh - 140px);
+}
+.toy1 {
+  width: 400px;
+  height: 400px;
+  left: calc(50% - 500px);
+  top: 150px;
+  background-image: url(../assets/ball/2.png);
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.toy2 {
+  width: 200px;
+  height: 200px;
+  left: calc(50% + 150px);
+  top: 150px;
+  background-image: url(../assets/ball/1.png);
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.toy3 {
+  width: 200px;
+  height: 200px;
+  left: calc(50% - 150px);
+  top: 450px;
+  background-image: url(../assets/ball/3.png);
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.toy2::before {
+  top: -150px;
+  left: calc(50% - 22px);
+  width: 4px;
+  height: 153px;
+  width: 5px;
+  content: "";
+  position: absolute;
+  background-color: #aaa;
+}
+.toy1::before {
+  top: -150px;
+  left: calc(50% - 42px);
+  width: 4px;
+  height: 156px;
+  width: 5px;
+  content: "";
+  position: absolute;
+  background-color: #aaa;
+}
+.toy3::before {
+  top: -450px;
+  left: calc(50% - 5px);
+  width: 4px;
+  height: 458px;
+  width: 5px;
+  content: "";
+  position: absolute;
+  background-color: #aaa;
+}
+.first__page-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 600px;
+  height: 260px;
+  margin-bottom: 80px;
+  margin-top: 50px;
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  border: 3px solid #18836c;
+  border-radius: 25px;
+  background-color: rgba(31, 112, 127, .3);
+  backdrop-filter: blur(6px);
+  font-size: 48px;
+}
+.first__start-game {
+  position: relative;
+  width: 320px;
+  height: 60px;
+  border: 3px solid #18836c;
+  border-radius: 30px;
+  background-color: rgba(31, 112, 127, .3);
+  backdrop-filter: blur(6px);
+  font-weight: 300;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+  transition: .3s;
+  overflow: hidden;
+  outline: 1px solid;
+  outline-color: hsla(167, 69%, 30%, 0.5);
+  outline-offset: 0px;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+  &:hover{
+    outline-color: transparent;
+    outline-offset: 35px;
+  }
+}
