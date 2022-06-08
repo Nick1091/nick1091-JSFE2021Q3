@@ -1,0 +1,21 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  --whole-color: #f0f0f0;
+  --secondary-color: #797979;
+  --tertiary-color: #ffcb0f;
+  --quaternary-color: #55505C;
+  --hover-color: #4e616b;
+  --shadow-color:#000000;
+  --bg_category:#000000;
+  --attention: #ae0101;
+  --font-style: 'Questrial';
+}
+body{
+  height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #ffffff;
+}
